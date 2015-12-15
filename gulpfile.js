@@ -199,6 +199,7 @@ gulp.task('serve', ['styles'], function() {
   browserSync({
     port: 5000,
     notify: false,
+    open: false,
     logPrefix: 'PSK',
     snippetOptions: {
       rule: {
@@ -229,6 +230,7 @@ gulp.task('serve:dist', ['default'], function() {
   browserSync({
     port: 5001,
     notify: false,
+    open: false,
     logPrefix: 'PSK',
     snippetOptions: {
       rule: {
