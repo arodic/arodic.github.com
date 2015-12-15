@@ -253,7 +253,7 @@ gulp.task('default', ['clean'], function(cb) {
   runSequence(
     ['ensureFiles', 'copy', 'styles'],
     'build',
-    'vulcanize', // 'cache-config',
+    'vulcanize', 'cache-config',
     cb);
 });
 
