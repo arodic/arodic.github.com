@@ -274,7 +274,9 @@ gulp.task('deploy-gh-pages', function() {
       remoteUrl: 'https://$GH_TOKEN@github.com/arodic/arodic.github.com.git',
       silent: true,
       branch: 'master'
-    }), $.ghPages()));
+    }), $.ghPages({
+      branch: 'master'
+    })));
 });
 
 // Load tasks for web-component-tester
