@@ -21,6 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       page.base(app.baseUrl.replace(/\/$/, ''));
     }
 
+    var bgelement = document.body.querySelector('#background');
+
     // Middleware
     function scrollToTop(ctx, next) {
       app.scrollPageToTop();
@@ -44,6 +46,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/', function() {
+<<<<<<< HEAD
       app.route = 'home';
       setFocus(app.route);
     });
@@ -51,10 +54,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page(app.baseUrl, function() {
       app.route = 'home';
       setFocus(app.route);
+=======
+      app.route = 'about';
+    });
+
+    page(app.baseUrl, function() {
+      app.route = 'about';
+>>>>>>> Added icons and images
     });
 
     page('/projects', function() {
       app.route = 'projects';
+<<<<<<< HEAD
       setFocus(app.route);
     });
 
@@ -62,11 +73,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'project-info';
       app.params = data.params;
       setFocus(app.route);
+=======
+      bgelement.style.background = 'url("images/background.jpg")';
+    });
+
+    page('/projects/:name', function(data) {
+      app.route = 'project/' + data.params.name;
+      bgelement.style.background = 'url("images/' + data.params.name + '.jpg")';
+>>>>>>> Added icons and images
     });
 
     page('/about', function() {
       app.route = 'about';
+<<<<<<< HEAD
       setFocus(app.route);
+=======
+      bgelement.style.background = 'url("images/background.jpg")';
+>>>>>>> Added icons and images
     });
 
     // 404

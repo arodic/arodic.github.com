@@ -26,103 +26,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   /* Application theme */
 
   :root {
-    --dark-primary-color: #303F9F;
-    --default-primary-color: #FFFFFF;
-    --light-primary-color: #C5CAE9;
-    --text-primary-color: #333; /*text/icons*/
-    --accent-color: #FF4081;
-    --primary-background-color: #c5cae9;
-    --primary-text-color: #212121;
-    --secondary-text-color: #727272;
-    --disabled-text-color: #bdbdbd;
-    --divider-color: #B6B6B6;
-
-    /* Components */
-
-    /* paper-drawer-panel */
-    --drawer-menu-color: #ffffff;
-    --drawer-border-color: 1px solid #ccc;
-    --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
-
-    /* paper-menu */
-    --paper-menu-background-color: #fff;
-    --menu-link-color: #111111;
+    --default-primary-color: #efefef;
+    --default-text-color: #59595B;
+    --text-primary-color: #444;
+  }
+  #background {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    background-image: url('../images/background.jpg');
+    background-size: cover !important;
+    filter: blur(25px) saturate(0.8) contrast(0.3) brightness(1.5);
+    -webkit-filter: blur(25px) saturate(0.3) contrast(0.1) brightness(1.8);
   }
 
-  /* General styles */
-
-  body {
-    @apply(--layout-fullbleed);
-    @apply(--layout-vertical);
+  paper-scroll-header-panel[drawer] {
+    border-left: 1px solid #333;
+    box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
-  .space {
-    @apply(--layout-flex);
-  }
-
-  #drawerToolbar {
-    color: var(--secondary-text-color);
-    background-color: var(--drawer-menu-color);
-    border-bottom: var(--drawer-toolbar-border-color);
-  }
   #drawerToolbar .paper-font-title {
     font-size: 20px;
     font-weight: lighter;
-  }
-
-  #drawerToolbar .menu-name {
-    @apply(--paper-font-title);
-  }
-
-  paper-scroll-header-panel {
-    height: 100%;
-  }
-
-  paper-material {
-    border-radius: 2px;
-    height: 100%;
-    padding: 8px 0 8px 0;
-    width: calc(98.66% - 16px);
-    margin: 8px auto;
-    background: white;
-  }
-
-  paper-menu iron-icon {
-    margin-right: 33px;
-    opacity: 0.54;
-  }
-
-  paper-menu a {
-    @apply(--layout-horizontal);
-    @apply(--layout-center);
-
-    text-decoration: none;
-    color: var(--menu-link-color);
-    font-family: 'Roboto', 'Noto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    min-height: 48px;
-    padding: 0 16px;
-  }
-
-  paper-toolbar {
-    border-bottom: var(--drawer-toolbar-border-color);
-  }
-  paper-toolbar.tall .app-name {
-    font-size: 40px;
-    font-weight: 100;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
-
-  #mainToolbar .middle-container,
-  #mainToolbar .bottom-container {
-    @apply(--layout-horizontal);
-    @apply(--layout-center);
   }
 
   #mainToolbar .middle-container  {
@@ -130,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     margin-left: 42px;
   }
 
-  #mainToolbar:not(.tall) .middle-container {
+  #mainToolbar:not(.tall) .middle {
     font-size: 18px;
     padding-bottom: 0;
   }
@@ -143,24 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   .content {
-    /*height: 200px;*/
-  }
-
-  section[data-route="home"] paper-material {
-    @apply(--paper-font-body2);
-  }
-
-  section[data-route="home"] paper-material .subhead {
-    @apply(--paper-font-subhead);
-  }
-
-  paper-material {
-    border-radius: 2px;
-    height: 100%;
-    padding: 16px 0 16px 0;
-    width: calc(98.66% - 16px);
-    margin: 16px auto;
-    background: white;
+    font-weight: lighter;
   }
 
   #toast .toast-hide-button {
@@ -168,8 +78,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     margin: 10px;
   }
 
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  paper-material {
+    border-radius: 5px;
+    height: 100%;
+    padding: 8px 0 8px 0;
+    width: calc(98.66% - 16px);
+    margin: 8px auto;
+    overflow: hidden;
+    background: var(--default-primary-color);
+  }
+
+  paper-menu iron-icon {
+    margin-right: 33px;
+    opacity: 0.54;
+  }
+
+  .paper-menu > .iron-selected {
+    color: var(--default-text-color);
+  }
+
+  paper-menu a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+
+    text-decoration: none;
+    color: var(--text-primary-color);
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  paper-drawer-panel {
+    --paper-drawer-panel-left-drawer-container: {
+      background-color: var(--default-primary-color);
+    };
+  }
+
+  paper-menu.paper-menu-0 {
+    background: none;
+  }
+
+  paper-toolbar.tall .app-name {
+    font-size: 40px;
+    font-weight: 100;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
   paper-material.project {
-    margin: 8px;
+    margin: 8px 14px 16px 2px;
     height: auto;
     padding: 0;
     overflow: hidden;
@@ -181,17 +148,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     display: block;
   }
   paper-material.project .page-title {
+    background: linear-gradient(rgba(0,0,0,.75) 0, transparent 50%);
     position: absolute;
     top: 0;
-    padding: 0 1em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5em;
+    margin: 0;
     color: white;
   }
 
-  /* Breakpoints */
+  iron-icon.logo {
+    margin: 24px 8px;
+  }
 
-  /* Small */
   @media (max-width: 600px) {
-
     paper-material {
       --menu-container-display: none;
       width: calc(97.33% - 32px);
@@ -199,59 +171,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding-right: 16px;
       margin: 8px;
     }
-
-    #mainToolbar.tall .app-name {
+    paper-toolbar.tall .app-name {
       font-size: 24px;
       font-weight: 400;
     }
-
     paper-material.project {
       width: calc(100% - 16px);
+      margin: 8px;
     }
-
     #drawer .paper-toolbar {
       margin-left: 16px;
     }
-
   }
 
-  /* Tablet+ */
   @media (min-width: 601px) {
-
     paper-material {
       width: calc(98% - 46px);
       margin-bottom: 16px;
       padding-left: 30px;
       padding-right: 30px;
     }
-
     paper-material.project {
       width: calc(50% - 16px);
     }
-
-    #drawer.paper-drawer-panel > [drawer] {
-      border-right: 1px solid rgba(0, 0, 0, 0.14);
-    }
-
     iron-pages {
       padding: 24px 32px;
     }
-
   }
 
   @media (min-width: 1281px) {
-
     paper-material.project {
       width: calc(33% - 13px);
     }
+  }
 
-    paper-material {
-      width: calc(98% - 46px);
-      margin-bottom: 32px;
-      padding-left: 30px;
-      padding-right: 30px;
+  @media (min-width: 1920px) {
+    paper-material.project {
+      width: calc(25% - 16px);
     }
-
   }
 
   /* Material Design Adaptive Breakpoints */

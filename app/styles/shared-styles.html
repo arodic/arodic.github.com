@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
   <template>
     <style>
+
       .page-title {
         @apply(--paper-font-display2);
       }
@@ -29,9 +30,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pointer-events: none;
       }
 
+      .page-title {
+        font-size: 42px;
+      }
+
       @media (max-width: 600px) {
         .page-title {
-          font-size: 24px!important;
+          font-size: 32px!important;
         }
       }
     </style>

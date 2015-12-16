@@ -13,7 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="">
+  <meta name="description" content="My name is Aleksandar Aki Rodić and I am an artist, designer and software engineer.
+  I use computer graphics and the art of programming to create new experiences on the web.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="generator" content="Polymer Starter Kit" />
@@ -22,17 +23,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
-  <meta name="theme-color" content="#2E3AA1">
+  <meta name="theme-color" content="#111111">
 
   <!-- Web Application Manifest -->
   <link rel="manifest" href="manifest.json">
 
   <!-- Tile color for Win8 -->
-  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-TileColor" content="#111111">
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="PSK">
+  <meta name="application-name" content="Aki Rodic">
   <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
 
   <!-- Add to homescreen for Safari on iOS -->
@@ -67,20 +68,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template is="dom-bind" id="app">
 
-    <paper-drawer-panel id="paperDrawerPanel" drawer-width="200px" responsive-width="800px">
-      <!-- Drawer Scroll Header Panel -->
+    <div id="background"></div>
+
+    <paper-drawer-panel id="paperDrawerPanel" drawer-width="160px" responsive-width="800px">
       <paper-scroll-header-panel drawer fixed>
 
-        <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Hello!</span>
-        </paper-toolbar>
+        <img src="images/origin_of_mass_logo.gif" width="100%"></img>
 
-        <!-- Drawer Content -->
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="about" href="{{baseUrl}}">
+          <a data-route="about" href="{{baseUrl}}about">
             <iron-icon icon="info"></iron-icon>
-            <span>about</span>
+            <span>About</span>
           </a>
 
           <a data-route="projects" href="{{baseUrl}}projects">
@@ -90,28 +88,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-menu>
       </paper-scroll-header-panel>
 
-      <!-- Main Area -->
       <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-        <!-- Main Toolbar -->
         <paper-toolbar id="mainToolbar" class="tall">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-
+          <span class="flex"></span>
           <div class="middle middle-container center horizontal layout">
             <div class="app-name">Aki Rodić</div>
           </div>
-
           <div class="bottom bottom-container center horizontal layout right-justify">
-            <div class="bottom-title paper-font-subhead">Artist, designer and software engineer.</div>
+            <div class="bottom-title paper-font-subhead">Artist / Designer / Software Engineer</div>
           </div>
         </paper-toolbar>
 
-        <!-- Main Content -->
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
-            <section data-route="home">
+
+            <section data-route="about">
+
               <paper-material elevation="1">
-                <h2 class="page-title">about</h2>
-                <p>I use computer graphics and the art of programming to create new experiences on the web.</p>
+                <h2 class="page-title">Hello!</h2>
+                <p>My name is Aleksandar Aki Rodić.
+                  I use computer graphics and the art of programming to create new experiences on the web.</p>
+                <p>I've spent most of my early life in Belgrade (Serbia).
+                  Also, for quite a while I lived in San Francisco.
+                  Most recently, I've been living/working nomadically and traveling around the world to places such as UK, Indonesia and China.</p>
+                <p>I studied electrical engineering, visual effects and game development and I worked at companies such as EA Games, Pixar, LucasArts and Google.</p>
+                <p>Check out my projects and social media for more information!</p>
+                <p>
+                  <a href="https://github.com/arodic" target="_blank"><iron-icon class="logo" icon="logos:github"></iron-icon></a>
+                  <a href="https://twitter.com/arodic" target="_blank"><iron-icon class="logo" icon="logos:twitter"></iron-icon></a>
+                  <a href="https://vimeo.com/user1857580" target="_blank"><iron-icon class="logo" icon="logos:vimeo"></iron-icon></a>
+                  <a href="https://www.youtube.com/channel/UCFAZkkzL01JoDfeyNPnXbrw" target="_blank"><iron-icon class="logo" icon="logos:youtube"></iron-icon></a>
+                  <a href="https://www.facebook.com/aleksandar" target="_blank"><iron-icon class="logo" icon="logos:facebook"></iron-icon></a>
+                  <a href="https://medium.com/@xyz_ak" target="_blank"><iron-icon class="logo" icon="logos:medium"></iron-icon></a>
+                  <a href="https://plus.google.com/u/0/+AleksandarRodic" target="_blank"><iron-icon class="logo" icon="logos:googleplus"></iron-icon></a>
+                  <a href="https://linkedin.com/in/aleksandarrodic" target="_blank"><iron-icon class="logo" icon="logos:linkedin"></iron-icon></a>
+                  <a href="skype:aleksandar.rodic?action=chat" target="_blank"><iron-icon class="logo" icon="logos:skype"></iron-icon></a>
+                  <a href="weixin:contacts/profile/akirodic" target="_blank"><iron-icon class="logo" icon="logos:wechat"></iron-icon></a>
+                </p>
               </paper-material>
             </section>
 
@@ -127,6 +141,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
+                  <a href$="{{baseUrl}}projects/cardboard">
+                  <img width="100%" height="auto" src="images/cardboard.jpg"></img>
+                  <h2 class="page-title">Cardboard I/O Launch</h2>
+                  </a>
+                </paper-material>
+
+                <paper-material elevation="1" class="project">
+                  <a href$="{{baseUrl}}projects/flux">
+                  <img width="100%" height="auto" src="images/flux.jpg"></img>
+                  <h2 class="page-title">Flux Front End</h2>
+                  </a>
+                </paper-material>
+
+                <paper-material elevation="1" class="project">
                   <a href$="{{baseUrl}}projects/daily_routines">
                   <img width="100%" height="auto" src="images/daily_routines.jpg"></img>
                   <h2 class="page-title">Daily Routines</h2>
@@ -134,9 +162,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/cardboard">
-                  <img width="100%" height="auto" src="images/cardboard.jpg"></img>
-                  <h2 class="page-title">Cardboard</h2>
+                  <a href$="{{baseUrl}}projects/google_zeitgeist">
+                  <img width="100%" height="auto" src="images/google_zeitgeist.jpg"></img>
+                  <h2 class="page-title">Google Zeitgeist 2013</h2>
+                  </a>
+                </paper-material>
+
+                <paper-material elevation="1" class="project">
+                  <a href$="{{baseUrl}}projects/chrysaora">
+                  <img width="100%" height="auto" src="images/chrysaora.jpg"></img>
+                  <h2 class="page-title">WebGL Jellyfish</h2>
+                  </a>
+                </paper-material>
+
+                <paper-material elevation="1" class="project">
+                  <a href$="{{baseUrl}}projects/star_wars_1313">
+                  <img width="100%" height="auto" src="images/star_wars_1313.jpg"></img>
+                  <h2 class="page-title">Star Wars 1313</h2>
                   </a>
                 </paper-material>
 
@@ -148,9 +190,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/lidar">
-                  <img width="100%" height="auto" src="images/lidar.jpg"></img>
-                  <h2 class="page-title">Lidar Visualization</h2>
+                  <a href$="{{baseUrl}}projects/romanesco_broccoli">
+                  <img width="100%" height="auto" src="images/romanesco_broccoli.jpg"></img>
+                  <h2 class="page-title">Romanesco Broccoli</h2>
                   </a>
                 </paper-material>
 
@@ -162,32 +204,99 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/Addy">
-                  <img width="100%" height="auto" src="images/saph_cloud.jpg"></img>
-                  <h2 class="page-title">Saph Cloud</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/Addy">
-                  <img width="100%" height="auto" src="images/shader_flow.jpg"></img>
-                  <h2 class="page-title">Shader Flow</h2>
+                  <a href$="{{baseUrl}}projects/energy_plant">
+                  <img width="100%" height="auto" src="images/energy_plant.jpg"></img>
+                  <h2 class="page-title">Energy Plant</h2>
                   </a>
                 </paper-material>
 
               </div>
 
-
-              <!--  -->
             </section>
 
-            <section data-route="project-info">
+            <section data-route="project/unnumbered_sparks">
               <paper-material elevation="1">
-                <h1 class="page-title focus-target" tabindex="-1">User: {{params.name}}</h1>
-                <div>This is {{params.name}}'s section</div>
+                <h2 class="page-title">Unnumbered Sparks</h2>
+                <div>This is {{params.name}}</div>
               </paper-material>
             </section>
 
+            <section data-route="project/cardboard">
+              <paper-material elevation="1">
+                <h2 class="page-title">Carboard I/O Launch</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/flux">
+              <paper-material elevation="1">
+                <h2 class="page-title">Flux Front End</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/daily_routines">
+              <paper-material elevation="1">
+                <h2 class="page-title">Daily Routines</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/google_zeitgeist">
+              <paper-material elevation="1">
+                <h2 class="page-title">Google Zeitgeist 2013</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/chrysaora">
+              <paper-material elevation="1">
+                <h2 class="page-title">WebGL Jellyfish</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/google_zeitgeist">
+              <paper-material elevation="1">
+                <h2 class="page-title">Google Zeitgeist 2013</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/star_wars_1313">
+              <paper-material elevation="1">
+                <h2 class="page-title">Star Wars 1313</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/just_a_reflector">
+              <paper-material elevation="1">
+                <h2 class="page-title">Just a Reflector</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/romanesco_broccoli">
+              <paper-material elevation="1">
+                <h2 class="page-title">Romanesco Broccoli</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/origin_of_mass">
+              <paper-material elevation="1">
+                <h2 class="page-title">The Origin of Mass</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
+
+            <section data-route="project/energy_plant">
+              <paper-material elevation="1">
+                <h2 class="page-title">Energy Plant</h2>
+                <div>This is {{params.name}}</div>
+              </paper-material>
+            </section>
           </iron-pages>
         </div>
       </paper-scroll-header-panel>
