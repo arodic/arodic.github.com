@@ -25,13 +25,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#EFEFEF">
 
   <!-- Web Application Manifest -->
   <link rel="manifest" href="manifest.json">
 
   <!-- Tile color for Win8 -->
-  <meta name="msapplication-TileColor" content="#111111">
+  <meta name="msapplication-TileColor" content="#EFEFEF">
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <paper-drawer-panel id="paperDrawerPanel" drawer-width="160px" responsive-width="800px">
       <paper-scroll-header-panel drawer fixed>
-        <img src="images/origin_of_mass_logo.gif" width="100%"></img>
+        <img src="images/touch/logo.gif" width="100%"></img>
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
           <a data-route="about" href="{{baseUrl}}about">
             <iron-icon icon="info"></iron-icon>
@@ -119,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div class="app-name">Aki Rodić</div>
           </div>
           <div class="bottom bottom-container center horizontal layout right-justify">
-            <div class="bottom-title paper-font-subhead">Artist / Designer / Software Engineer</div>
+            <div class="bottom-title paper-font-subhead">Artist / Designer / Engineer</div>
           </div>
         </paper-toolbar>
 
@@ -347,7 +347,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                  text="Caching complete! This app will work offline.">
     </paper-toast>
 
-    <platinum-sw-register auto-register
+    <!-- <platinum-sw-register auto-register
                           clients-claim
                           skip-waiting
                           base-uri="bower_components/platinum-sw/bootstrap"
@@ -355,7 +355,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <platinum-sw-cache default-cache-strategy="fastest"
                          cache-config-file="cache-config.json">
       </platinum-sw-cache>
-    </platinum-sw-register>
+    </platinum-sw-register> -->
 
   </template>
 

@@ -1,4 +1,4 @@
-# www.robotstxt.org
+# akirodic.com
 
 User-agent: *
 Disallow:
