@@ -12,6 +12,12 @@ body {
   background: #000;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #59595B;
+  line-height: 1.5em;
+}
+
+a {
+  color: #39393B;
+  font-weight: bolder;
 }
 
 /*

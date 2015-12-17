@@ -43,13 +43,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   paper-scroll-header-panel[drawer] {
-    border-left: 1px solid #333;
-    box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   #drawerToolbar .paper-font-title {
     font-size: 20px;
     font-weight: lighter;
+  }
+
+  #mainToolbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   #mainToolbar .middle-container  {
@@ -87,7 +90,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     height: 100%;
     padding: 8px 0 8px 0;
     width: calc(98.66% - 16px);
-    margin: 8px auto;
+    max-width: 640px;
+
+    margin: 8px;
     overflow: hidden;
     background: var(--default-primary-color);
   }
@@ -149,6 +154,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
   paper-material.project .page-title {
     background: linear-gradient(rgba(0,0,0,.75) 0, transparent 50%);
+    font-size: 28px;
+    line-height: 1em;
     position: absolute;
     top: 0;
     left: 0;
@@ -163,7 +170,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     margin: 24px 8px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 480px) {
     paper-material {
       --menu-container-display: none;
       width: calc(97.33% - 32px);
@@ -184,7 +191,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   }
 
-  @media (min-width: 601px) {
+  @media (min-width: 481px) {
     paper-material {
       width: calc(98% - 46px);
       margin-bottom: 16px;
@@ -199,15 +206,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   }
 
+  @media (min-width: 841px) {
+    paper-material.project {
+      width: calc(33.33% - 16px);
+    }
+  }
+
   @media (min-width: 1281px) {
     paper-material.project {
-      width: calc(33% - 13px);
+      width: calc(25% - 16px);
+    }
+  }
+
+  @media (min-width: 1601px) {
+    paper-material.project {
+      width: calc(20% - 16px);
     }
   }
 
   @media (min-width: 1920px) {
     paper-material.project {
-      width: calc(25% - 16px);
+      width: calc(16.66% - 16px);
     }
   }
 

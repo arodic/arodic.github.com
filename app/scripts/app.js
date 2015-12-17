@@ -11,14 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 (function(document) {
   'use strict';
 
-  // Grab a reference to our auto-binding template
-  // and give it some initial binding values
-  // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
-  
+
   // Sets app default base URL
   app.baseUrl = '/';
-  if (window.location.port === '') {  // if production
+  if (window.location.port === '') { // if production
     // Uncomment app.baseURL below and
     // set app.baseURL to '/your-pathname/' if running from folder in production
     // app.baseUrl = '/polymer-starter-kit/';
@@ -31,16 +28,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
-  // Listen for template bound event to know when bindings
-  // have resolved and content has been stamped to the page
+  app.resizeVideo = function() {
+    var videos =  Polymer.dom(document).querySelectorAll('.videoframe');
+    for(var i = 0; i < videos.length; i++) {
+      videos[i].height = videos[i].clientWidth / 16 * 9;
+    }
+  }
+
   app.addEventListener('dom-change', function() {
-    console.log('Our app is ready to rock!');
+    // Ready
   });
-  
+
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
-    // imports are loaded and elements have been registered
+    app.resizeVideo();
   });
+
+
+
+  window.addEventListener('resize', app.resizeVideo);
+
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
   // the appName in the middle-container and the bottom title in the bottom-container.

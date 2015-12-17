@@ -72,15 +72,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <paper-drawer-panel id="paperDrawerPanel" drawer-width="160px" responsive-width="800px">
       <paper-scroll-header-panel drawer fixed>
-
         <img src="images/origin_of_mass_logo.gif" width="100%"></img>
-
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
           <a data-route="about" href="{{baseUrl}}about">
             <iron-icon icon="info"></iron-icon>
             <span>About</span>
           </a>
-
           <a data-route="projects" href="{{baseUrl}}projects">
             <iron-icon icon="apps"></iron-icon>
             <span>Projects</span>
@@ -110,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>My name is Aleksandar Aki Rodić.
                   I use computer graphics and the art of programming to create new experiences on the web.</p>
                 <p>I've spent most of my early life in Belgrade (Serbia).
-                  Also, for quite a while I lived in San Francisco.
+                  I also lived in San Francisco for many years.
                   Most recently, I've been living/working nomadically and traveling around the world to places such as UK, Indonesia and China.</p>
                 <p>I studied electrical engineering, visual effects and game development and I worked at companies such as EA Games, Pixar, LucasArts and Google.</p>
                 <p>Check out my projects and social media for more information!</p>
@@ -150,21 +147,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-material elevation="1" class="project">
                   <a href$="{{baseUrl}}projects/flux">
                   <img width="100%" height="auto" src="images/flux.jpg"></img>
-                  <h2 class="page-title">Flux Front End</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/daily_routines">
-                  <img width="100%" height="auto" src="images/daily_routines.jpg"></img>
-                  <h2 class="page-title">Daily Routines</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/google_zeitgeist">
-                  <img width="100%" height="auto" src="images/google_zeitgeist.jpg"></img>
-                  <h2 class="page-title">Google Zeitgeist 2013</h2>
+                  <h2 class="page-title">Flux Factory</h2>
                   </a>
                 </paper-material>
 
@@ -190,23 +173,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/romanesco_broccoli">
-                  <img width="100%" height="auto" src="images/romanesco_broccoli.jpg"></img>
-                  <h2 class="page-title">Romanesco Broccoli</h2>
+                  <a href$="{{baseUrl}}projects/google_zeitgeist">
+                  <img width="100%" height="auto" src="images/google_zeitgeist.jpg"></img>
+                  <h2 class="page-title">Google Zeitgeist 2013</h2>
                   </a>
                 </paper-material>
 
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/origin_of_mass">
-                  <img width="100%" height="auto" src="images/origin_of_mass.jpg"></img>
-                  <h2 class="page-title">The Origin of Mass</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/energy_plant">
-                  <img width="100%" height="auto" src="images/energy_plant.jpg"></img>
-                  <h2 class="page-title">Energy Plant</h2>
+                  <a href$="{{baseUrl}}projects/daily_routines">
+                  <img width="100%" height="auto" src="images/daily_routines.jpg"></img>
+                  <h2 class="page-title">Daily Routines</h2>
                   </a>
                 </paper-material>
 
@@ -217,86 +193,120 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <section data-route="project/unnumbered_sparks">
               <paper-material elevation="1">
                 <h2 class="page-title">Unnumbered Sparks</h2>
-                <div>This is {{params.name}}</div>
+                <p>
+                  Unnumbered Sparks was a colossal interactive aerial sculpture created by
+                  <a href="http://workshop.chromeexperiments.com/" target="_blank">Google Data Arts Team</a> and
+                  <a href="http://www.echelman.com/" target="_blank">Studio Echelman</a> for the TED 2014 Conference in Vancouver, BC.
+                </p>
+                <iframe width="100%" class="videoframe" src="https://www.youtube.com/embed/6JGzPLZrVFU" frameborder="0" allowfullscreen></iframe>
+                <p>
+                  The sculpture was installed between Fairmont Waterfront and the Vancouver Convention Center and lit by 5 extremely powerful projectors.
+                </p>
+                <p>
+                  Our team at Google developed a website with interactive WebGL graphics that can be controlled by anyone in the vicinity of the sculpture using only a smartphone and a web browser.
+                  In addition, we created local network infrastructure that could support interactions of several hundred users simultaneously using WebSocket protocol.
+                </p>
+                <p>
+                  To learn more about the project, visit <a href="http://www.unnumberedsparks.com/" target="_blank">Unnumbered Sparks</a>.
+                </p>
               </paper-material>
             </section>
 
             <section data-route="project/cardboard">
               <paper-material elevation="1">
                 <h2 class="page-title">Carboard I/O Launch</h2>
-                <div>This is {{params.name}}</div>
+                <iron-image style="width:100%; height:160px" sizing="cover" src="images/cardboard.jpg"></iron-image>
+                <p>
+                  Few weeks before the Google I/O 2014 conference we were approached by the <a href="https://www.google.com/get/cardboard/" target="_blank">Google Cardboard</a> team
+                  to create a mobile VR experience using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>. This was the very first attempt to create such experience for cardboard.
+                  You can <a href="https://vr.chromeexperiments.com" target="_blank">see the VR experiment here</a>.
+                </p>
               </paper-material>
             </section>
 
             <section data-route="project/flux">
               <paper-material elevation="1">
-                <h2 class="page-title">Flux Front End</h2>
-                <div>This is {{params.name}}</div>
-              </paper-material>
-            </section>
-
-            <section data-route="project/daily_routines">
-              <paper-material elevation="1">
-                <h2 class="page-title">Daily Routines</h2>
-                <div>This is {{params.name}}</div>
-              </paper-material>
-            </section>
-
-            <section data-route="project/google_zeitgeist">
-              <paper-material elevation="1">
-                <h2 class="page-title">Google Zeitgeist 2013</h2>
-                <div>This is {{params.name}}</div>
+                <h2 class="page-title">Flux Factory</h2>
+                <iron-image style="width:100%; height:160px" sizing="cover" src="images/flux.jpg"></iron-image>
+                <p>
+                  In September 2014 I joined <a href="https://flux.io/" target="_blank">Flux Factory</a> as a front-end software engineer
+                  specializing in <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
+                </p>
+                <p>
+                  The goal of the team was to create technology that improves the way buildings are designed and built. My role was to continuously improve out tools, user interface and rendering capabilities of the platform. Visit <a href="https://flux.io/" target="_blank">Flux Factory</a> to learn more about the project.
+                </p>
               </paper-material>
             </section>
 
             <section data-route="project/chrysaora">
               <paper-material elevation="1">
                 <h2 class="page-title">WebGL Jellyfish</h2>
-                <div>This is {{params.name}}</div>
-              </paper-material>
-            </section>
-
-            <section data-route="project/google_zeitgeist">
-              <paper-material elevation="1">
-                <h2 class="page-title">Google Zeitgeist 2013</h2>
-                <div>This is {{params.name}}</div>
+                <iframe width="100%" class="videoframe" src="https://player.vimeo.com/video/20875622" frameborder="0" allowfullscreen></iframe>
+                <p>
+                  <a href="http://chrysaora.com/" target="_blank">Chrysaora</a> (WebGL Jellyfish) is one of my first WebGL projects originally commissioned by SCAD as a multi-screen video installation in Hong Kong.
+                  Later on, I created <a href="http://akirodic.com/p/jellyfish" target="_blank">this more optimized version for the web</a>.
+                </p>
               </paper-material>
             </section>
 
             <section data-route="project/star_wars_1313">
               <paper-material elevation="1">
                 <h2 class="page-title">Star Wars 1313</h2>
-                <div>This is {{params.name}}</div>
+                <iframe width="100%" class="videoframe" src="https://www.youtube.com/embed/WCCsGd7_kZM" frameborder="0" allowfullscreen></iframe>
+                <p>
+                  Star Wars 1313 was a game in development by LucasArts but unfortunately it was shelved after LucasArts was shut down.
+                  I worked on various parts of texturing and shading pipeline and occasionally on some special assets like the <a href="http://www.youtube.com/watch?v=t6-xJnrl93M&t=57s" target="_blank">real-time 3D Hologram projector</a>.
+                </p>
               </paper-material>
             </section>
 
             <section data-route="project/just_a_reflector">
               <paper-material elevation="1">
                 <h2 class="page-title">Just a Reflector</h2>
-                <div>This is {{params.name}}</div>
+                <iframe width="100%" class="videoframe" src="https://www.youtube.com/embed/-dl0w15A_eI" frameborder="0" allowfullscreen></iframe>
+                <p>
+                  Just a Reflector is an interactive music video experience created by
+                  <a href="http://workshop.chromeexperiments.com/" target="_blank">Google Data Arts Team</a> and
+                  <a href="http://www.unit9.com/" target="_blank">Unit 9</a>.
+                  It takes advantage of <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> technology to deliver real-time video effects in the browser.
+                </p>
+                <p>
+                  You can <a href="http://www.justareflektor.com/tech" target="_blank">learn more about the technology here</a> and <a href="http://www.justareflektor.com/" target="_blank">experience the video here</a>.
+                </p>
               </paper-material>
             </section>
 
-            <section data-route="project/romanesco_broccoli">
+            <section data-route="project/google_zeitgeist">
               <paper-material elevation="1">
-                <h2 class="page-title">Romanesco Broccoli</h2>
-                <div>This is {{params.name}}</div>
+                <h2 class="page-title">Google Zeitgeist 2013</h2>
+                <iron-image style="width:100%; height:160px" sizing="cover" src="images/google_zeitgeist.jpg"></iron-image>
+                <p>
+                  Towards the end of each year, Google creates a website to highlight the search trends trough the year.
+                  In 2013 I took the role of technical lead in creating an interactive data visualization using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
+                </p>
+                <p>
+                  This was a project on an extremely short deadline and mobile support was one its main requirements.
+                </p>
+                <p>
+                  You can <a href="https://zeitgeist-globe.appspot.com" target="_blank">see the final product here</a>.
+                </p>
               </paper-material>
             </section>
 
-            <section data-route="project/origin_of_mass">
+            <section data-route="project/daily_routines">
               <paper-material elevation="1">
-                <h2 class="page-title">The Origin of Mass</h2>
-                <div>This is {{params.name}}</div>
+                <h2 class="page-title">Daily Routines</h2>
+                <iron-image style="width:100%; height:160px" sizing="cover" src="images/daily_routines.jpg"></iron-image>
+                <p>
+                  This is an ongoing and unfinished project that I wish to give more attention in the future.
+                  It is essentially a GPS data visualization application that takes advantage of GPU and shaders to provide extremely fast and interactive filtering of massive GPS datasets.
+                </p>
+                <p>
+                  You can <a href="akirodic.com/p/daily-routines/" target="_blank">see the last running version of the visualization here</a>. However, the data has not been updated in years.
+                </p>
               </paper-material>
             </section>
 
-            <section data-route="project/energy_plant">
-              <paper-material elevation="1">
-                <h2 class="page-title">Energy Plant</h2>
-                <div>This is {{params.name}}</div>
-              </paper-material>
-            </section>
           </iron-pages>
         </div>
       </paper-scroll-header-panel>
