@@ -251,7 +251,6 @@ gulp.task('serve:dist', ['default'], function() {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function(cb) {
-  // Uncomment 'cache-config' if you are going to use service workers.
   runSequence(
     ['ensureFiles', 'copy', 'styles'],
     'build',

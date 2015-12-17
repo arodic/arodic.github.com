@@ -29,11 +29,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   };
 
   app.resizeVideo = function() {
-    var videos =  Polymer.dom(document).querySelectorAll('.videoframe');
-    for(var i = 0; i < videos.length; i++) {
+    var videos = Polymer.dom(document).querySelectorAll('.videoframe');
+    for (var i = 0; i < videos.length; i++) {
       videos[i].height = videos[i].clientWidth / 16 * 9;
     }
-  }
+  };
 
   app.addEventListener('dom-change', function() {
     // Ready
@@ -44,10 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     app.resizeVideo();
   });
 
-
-
   window.addEventListener('resize', app.resizeVideo);
-
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
   // the appName in the middle-container and the bottom title in the bottom-container.
