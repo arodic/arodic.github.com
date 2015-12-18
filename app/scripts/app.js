@@ -14,6 +14,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   var app = document.querySelector('#app');
 
   // Sets app default base URL
+  app.projects = [
+    {
+      id: 'unnumbered_sparks',
+      title: 'Unnumbered Sparks'
+    },
+    {
+      id: 'cardboard',
+      title: 'Cardboard I/O Launch'
+    },
+    {
+      id: 'flux',
+      title: 'Flux Factory'
+    },
+    {
+      id: 'chrysaora',
+      title: 'WebGL Jellyfish'
+    },
+    {
+      id: 'star_wars_1313',
+      title: 'Star Wars 1313'
+    },
+    {
+      id: 'just_a_reflector',
+      title: 'Just a Reflector'
+    },
+    {
+      id: 'google_zeitgeist',
+      title: 'Google Zeitgeist 2013'
+    },
+    {
+      id: 'daily_routines',
+      title: 'Daily Routines'
+    }
+  ]
+
   app.baseUrl = '/';
   if (window.location.port === '') { // if production
     // Uncomment app.baseURL below and

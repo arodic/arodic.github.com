@@ -127,10 +127,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
             <section data-route="about">
-
               <paper-material elevation="1">
                 <h2 class="page-title">Hello!</h2>
-                <p>My name is Aleksandar Aki Rodić.
+                <p>My name is Aki Rodić.
                   I use computer graphics and the art of programming to create new experiences on the web.</p>
                 <p>I've spent most of my early life in Belgrade (Serbia).
                   I also lived in San Francisco for many years.
@@ -152,68 +151,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-            <section data-route="projects">
-
-              <div class="horizontal layout wrap start-justified">
-
+            <section data-route="projects" class="horizontal layout wrap start-justified">
+              <template is="dom-repeat" items="{{projects}}">
                 <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/unnumbered_sparks">
-                  <img width="100%" height="auto" src="images/unnumbered_sparks.jpg"></img>
-                  <h2 class="page-title">Unnumbered Sparks</h2>
+                  <a href$="{{baseUrl}}projects/{{item.id}}">
+                  <img width="100%" height="auto" src="images/{{item.id}}.jpg"></img>
+                  <h2 class="page-title">{{item.title}}</h2>
                   </a>
                 </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/cardboard">
-                  <img width="100%" height="auto" src="images/cardboard.jpg"></img>
-                  <h2 class="page-title">Cardboard I/O Launch</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/flux">
-                  <img width="100%" height="auto" src="images/flux.jpg"></img>
-                  <h2 class="page-title">Flux Factory</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/chrysaora">
-                  <img width="100%" height="auto" src="images/chrysaora.jpg"></img>
-                  <h2 class="page-title">WebGL Jellyfish</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/star_wars_1313">
-                  <img width="100%" height="auto" src="images/star_wars_1313.jpg"></img>
-                  <h2 class="page-title">Star Wars 1313</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/just_a_reflector">
-                  <img width="100%" height="auto" src="images/just_a_reflector.jpg"></img>
-                  <h2 class="page-title">Just a Reflector</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/google_zeitgeist">
-                  <img width="100%" height="auto" src="images/google_zeitgeist.jpg"></img>
-                  <h2 class="page-title">Google Zeitgeist 2013</h2>
-                  </a>
-                </paper-material>
-
-                <paper-material elevation="1" class="project">
-                  <a href$="{{baseUrl}}projects/daily_routines">
-                  <img width="100%" height="auto" src="images/daily_routines.jpg"></img>
-                  <h2 class="page-title">Daily Routines</h2>
-                  </a>
-                </paper-material>
-
-              </div>
-
+              </template>
             </section>
 
             <section data-route="project/unnumbered_sparks">
@@ -244,7 +190,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <iron-image style="width:100%; height:160px" sizing="cover" src="images/cardboard.jpg"></iron-image>
                 <p>
                   Few weeks before the Google I/O 2014 conference we were approached by the <a href="https://www.google.com/get/cardboard/" target="_blank">Google Cardboard</a> team
-                  to create a mobile VR experience using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>. This was the very first attempt to create such experience for cardboard.
+                  to create a mobile VR experience using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>.
+                  This was the very first attempt to create such experience for cardboard.
                   You can <a href="https://vr.chromeexperiments.com" target="_blank">see the VR experiment here</a>.
                 </p>
               </paper-material>
@@ -259,7 +206,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   specializing in <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
                 </p>
                 <p>
-                  The goal of the team was to create technology that improves the way buildings are designed and built. My role was to continuously improve out tools, user interface and rendering capabilities of the platform. Visit <a href="https://flux.io/" target="_blank">Flux Factory</a> to learn more about the project.
+                  The goal of the team was to create technology that improves the way buildings are designed and built.
+                  My role was to continuously improve our tools, user interface and rendering capabilities of the platform.
+                  Visit <a href="https://flux.io/" target="_blank">Flux Factory</a> to learn more about the project.
                 </p>
               </paper-material>
             </section>
@@ -307,8 +256,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 class="page-title">Google Zeitgeist 2013</h2>
                 <iron-image style="width:100%; height:160px" sizing="cover" src="images/google_zeitgeist.jpg"></iron-image>
                 <p>
-                  Towards the end of each year, Google creates a website to highlight the search trends trough the year.
-                  In 2013 I took the role of technical lead in creating an interactive data visualization using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
+                  Towards the end of each year, Google creates a website to highlight the search trends of the year.
+                  In 2013 I took the role of technical lead in creating an interactive data visualization using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>
+                  and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
                 </p>
                 <p>
                   This was a project on an extremely short deadline and mobile support was one its main requirements.
@@ -342,12 +292,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
     </paper-toast>
 
-    <paper-toast id="caching-complete"
+    <!-- <paper-toast id="caching-complete"
                  duration="6000"
                  text="Caching complete! This app will work offline.">
     </paper-toast>
-
-    <!-- <platinum-sw-register auto-register
+    <platinum-sw-register auto-register
                           clients-claim
                           skip-waiting
                           base-uri="bower_components/platinum-sw/bootstrap"
