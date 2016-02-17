@@ -47,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       id: 'daily_routines',
       title: 'Daily Routines'
     }
-  ]
+  ];
 
   app.baseUrl = '/';
   if (window.location.port === '') { // if production
