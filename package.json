@@ -27,7 +27,11 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2",
     "vulcanize": ">= 1.4.2",
-    "web-component-tester": "^4.0.0"
+    "web-component-tester": "^4.0.0",
+    "gulp-jscs": "^3.0.0",
+    "gulp-jscs-stylish": "^1.1.2",
+    "gulp-jshint": "^1.6.3",
+    "jshint-stylish": "^2.0.0"
   },
   "scripts": {
     "test": "gulp test:local",

@@ -139,7 +139,7 @@ gulp.task('build', ['images', 'fonts'], function() {
       empty: true,
       spare: true
     })))
-    .pipe(gulp.dest(dist()))
+    .pipe(gulp.dest(dist()));
 });
 
 // Vulcanize granular configuration
@@ -199,8 +199,8 @@ gulp.task('serve', ['styles'], function() {
   browserSync({
     port: 5000,
     notify: false,
-    open: false,
     logPrefix: 'PSK',
+    open: false,
     snippetOptions: {
       rule: {
         match: '<span id="browser-sync-binding"></span>',
@@ -209,9 +209,6 @@ gulp.task('serve', ['styles'], function() {
         }
       }
     },
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
     // https: true,
     server: {
       baseDir: ['.tmp', 'app'],
@@ -230,7 +227,6 @@ gulp.task('serve:dist', ['default'], function() {
   browserSync({
     port: 5001,
     notify: false,
-    open: false,
     logPrefix: 'PSK',
     snippetOptions: {
       rule: {
@@ -240,9 +236,6 @@ gulp.task('serve:dist', ['default'], function() {
         }
       }
     },
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
     // https: true,
     server: dist(),
     middleware: [historyApiFallback()]
@@ -251,6 +244,7 @@ gulp.task('serve:dist', ['default'], function() {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function(cb) {
+  // Uncomment 'cache-config' if you are going to use service workers.
   runSequence(
     ['ensureFiles', 'copy', 'styles'],
     'build',
@@ -272,12 +266,10 @@ gulp.task('deploy-gh-pages', function() {
     // Check if running task from Travis CI, if so run using GH_TOKEN
     // otherwise run using ghPages defaults.
     .pipe($.if(process.env.TRAVIS === 'true', $.ghPages({
-      remoteUrl: 'https://$GH_TOKEN@github.com/arodic/arodic.github.com.git',
+      remoteUrl: 'https://$GH_TOKEN@github.com/PolymerElements/polymer-starter-kit.git',
       silent: true,
-      branch: 'master'
-    }), $.ghPages({
-      branch: 'master'
-    })));
+      branch: 'gh-pages'
+    }), $.ghPages()));
 });
 
 // Load tasks for web-component-tester
