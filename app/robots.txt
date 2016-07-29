@@ -1,4 +1,0 @@
-# akirodic.com
-
-User-agent: *
-Disallow:
