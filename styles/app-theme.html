@@ -1,0 +1,273 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+
+<style is="custom-style">
+
+  /*
+   Polymer includes a shim for CSS Custom Properties that we can use for application theming.
+   Below, you'll find the default palette for the Polymer Starter Kit layout. Feel free to play
+   with changing the colors used or generate your own palette of colours at MaterialPalette.com.
+
+   See https://www.polymer-project.org/1.0/docs/devguide/styling.html#xscope-styling-details
+   for further information on custom CSS properties.
+   */
+
+  /* Application theme */
+
+  :root {
+    --default-primary-color: #EFEFEF;
+    --default-text-color: #59595B;
+    --text-primary-color: #444;
+  }
+  #background {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    background-color: #E0E0E0;
+    /*background-image: url('../images/background.jpg');*/
+    /*background-size: cover !important;*/
+  }
+
+  paper-scroll-header-panel[drawer] {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  #drawerToolbar .paper-font-title {
+    font-size: 20px;
+    font-weight: lighter;
+  }
+
+  #mainToolbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  #mainToolbar .middle-container  {
+    height: 100%;
+    margin-left: 42px;
+  }
+
+  #mainToolbar:not(.tall) .middle {
+    font-size: 18px;
+    padding-bottom: 0;
+  }
+
+  #mainToolbar .bottom {
+    margin-left: 42px;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  .content {
+    font-weight: lighter;
+  }
+
+  #toast .toast-hide-button {
+    color: #eeff41;
+    margin: 10px;
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  paper-material {
+    border-radius: 5px;
+    height: 100%;
+    padding: 8px 0 8px 0;
+    width: calc(98.66% - 16px);
+    max-width: 640px;
+
+    margin: 8px;
+    overflow: hidden;
+    background: var(--default-primary-color);
+  }
+
+  paper-menu iron-icon {
+    margin-right: 33px;
+    opacity: 0.54;
+  }
+
+  .paper-menu > .iron-selected {
+    color: var(--default-text-color);
+  }
+
+  paper-menu a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+
+    text-decoration: none;
+    color: var(--text-primary-color);
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  paper-drawer-panel {
+    --paper-drawer-panel-left-drawer-container: {
+      background-color: var(--default-primary-color);
+    };
+  }
+
+  paper-menu.paper-menu-0 {
+    background: none;
+  }
+
+  paper-toolbar.tall .app-name {
+    font-size: 40px;
+    font-weight: 100;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  paper-material.project {
+    margin: 8px 14px 16px 2px;
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+  }
+  paper-material.project a {
+    text-decoration: none;
+  }
+  paper-material.project img {
+    display: block;
+  }
+  paper-material.project .page-title {
+    background: linear-gradient(rgba(0,0,0,.75) 0, transparent 50%);
+    font-size: 28px;
+    line-height: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5em;
+    margin: 0;
+    color: white;
+  }
+
+  iron-icon.logo {
+    margin: 24px 8px;
+  }
+
+  @media (max-width: 480px) {
+    paper-material {
+      --menu-container-display: none;
+      width: calc(97.33% - 32px);
+      padding-left: 16px;
+      padding-right: 16px;
+      margin: 8px;
+    }
+    paper-toolbar.tall .app-name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+    paper-material.project {
+      width: calc(100% - 16px);
+      margin: 8px;
+    }
+    #drawer .paper-toolbar {
+      margin-left: 16px;
+    }
+  }
+
+  @media (min-width: 481px) {
+    paper-material {
+      width: calc(98% - 46px);
+      margin-bottom: 16px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    paper-material.project {
+      width: calc(50% - 16px);
+    }
+    iron-pages {
+      padding: 24px 32px;
+    }
+  }
+
+  @media (min-width: 841px) {
+    paper-material.project {
+      width: calc(33.33% - 16px);
+    }
+  }
+
+  @media (min-width: 1281px) {
+    paper-material.project {
+      width: calc(25% - 16px);
+    }
+  }
+
+  @media (min-width: 1601px) {
+    paper-material.project {
+      width: calc(20% - 16px);
+    }
+  }
+
+  @media (min-width: 1920px) {
+    paper-material.project {
+      width: calc(16.66% - 16px);
+    }
+  }
+
+  /* Material Design Adaptive Breakpoints */
+  /*
+    Below you'll find CSS media queries based on the breakpoint guidance
+    published by the Material Design team. You can choose to use, customise
+    or remove these breakpoints based on your needs.
+
+    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+   */
+
+  /* mobile-small */
+  @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { }
+  /* mobile-large */
+  @media all and (min-width: 361px) and (orientation: portrait) { }
+  /* mobile-small-landscape */
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+  /* mobile-large-landscape */
+  @media all and (min-width: 481px) and (orientation: landscape) { }
+  /* tablet-small-landscape */
+  @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { }
+  /* tablet-large-landscape */
+  @media all and (min-width: 961px) and (orientation: landscape) { }
+  /* tablet-small */
+  @media all and (min-width: 600px) and (orientation: portrait) { }
+  /* tablet-large */
+  @media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
+  /* desktop-x-small-landscape */
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+  /* desktop-x-small */
+  @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
+  /* desktop-small-landscape */
+  @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
+  /* desktop-small */
+  @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
+  /* desktop-medium-landscape */
+  @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+  /* desktop-medium */
+  @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+  /* desktop-large */
+  @media all and (min-width: 1281px) and (max-width: 1600px) { }
+  /* desktop-xlarge */
+  @media all and (min-width: 1601px) and (max-width: 1920px) { }
+</style>

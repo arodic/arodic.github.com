@@ -19,7 +19,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="my-icons.html">
+<link rel="import" href="my-logos.html">
 
 <dom-module id="my-app">
 
@@ -73,11 +76,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <!-- Drawer content -->
       <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
+        <img src="/images/icons/logo.gif" width="100%"></img>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
+          <a name="about" href="/about">
+            <iron-icon icon="icons:info"></iron-icon>About</a>
+          <a name="projects" href="/projects">
+            <iron-icon icon="apps"></iron-icon>Projects</a>
         </iron-selector>
       </app-drawer>
 
@@ -87,14 +91,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>My App</div>
+            <!-- <div title>My App</div> -->
+
+            <span class="flex"></span>
+            <div class="middle middle-container center horizontal layout">
+              <div title class="app-name">Aki Rodić</div>
+            </div>
+            <div class="bottom bottom-container center horizontal layout right-justify">
+              <div class="bottom-title paper-font-subhead">Artist / Designer / Engineer</div>
+            </div>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
+          <page-about name="about"></page-about>
+          <page-projects name="projects" projects="{{projects}}"></page-projects>
+          <!-- Projects -->
+          <page-cardboard-launch
+              title="Cardboard Launch"
+              class="project"></page-cardboard-launch>
+          <page-daily-routines
+              title="Daily Routines"
+              class="project"></page-daily-routines>
+          <page-flux-factory
+              title="Flux Factory"
+              class="project"></page-flux-factory>
+          <page-google-zeitgeist-2013
+              title="Google Zeitgeist 2013"
+              class="project"></page-google-zeitgeist-2013>
+          <page-just-a-reflector
+              title="Just a Reflector"
+              class="project"></page-just-a-reflector>
+          <page-star-wars-1313
+              title="Star Wars 1313"
+              class="project"></page-star-wars-1313>
+          <page-unnumbered-sparks
+              title="Unnumbered Sparks"
+              class="project"></page-unnumbered-sparks>
+          <page-webgl-jellyfish
+              title="WebGL Jellyfish"
+              class="project"></page-webgl-jellyfish>
         </iron-pages>
 
       </app-header-layout>
@@ -117,20 +153,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           observer: '_pageChanged'
         },
 
+        projects: {
+          type: Array,
+          value: []
+        }
+
       },
 
       observers: [
         '_routePageChanged(routeData.page)'
       ],
 
+      ready: function () {
+        var projects = []
+        Array.prototype.slice.call(this.shadowRoot.querySelectorAll('.project')).forEach(function (node) {
+          var title = node.getAttribute('title')
+          projects.push({
+            id: title.toLowerCase().replace(/ /g, '-'),
+            title: title});
+        })
+        console.log(projects);
+        this.projects = projects;
+
+      },
+
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'about';
       },
 
       _pageChanged: function(page) {
         // load page import on demand.
         this.importHref(
-          this.resolveUrl('my-' + page + '.html'), null, null, true);
+          this.resolveUrl('page-' + page + '.html'), null, null, true);
       }
 
     });

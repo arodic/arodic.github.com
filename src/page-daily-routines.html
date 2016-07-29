@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="my-view2">
+<dom-module id="page-daily-routines">
 
   <template>
 
@@ -27,29 +27,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #fff;
         color: #757575;
       }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ddd;
-        line-height: 64px;
-        font-size: 30px;
-        color: #555;
-        text-align: center;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
     </style>
 
     <div class="card">
-      <div class="circle">2</div>
-      <h1>View Two</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
+      <h2 class="page-title">Daily Routines</h2>
+      <iron-image style="width:100%; height:160px" sizing="cover" src="images/daily_routines.jpg"></iron-image>
+      <p>
+        This is an ongoing and unfinished project that I wish to give more attention in the future.
+        It is essentially a GPS data visualization application that takes advantage of GPU and shaders to provide extremely fast and interactive filtering of massive GPS datasets.
+      </p>
+      <p>
+        You can <a href="http://akirodic.com/p/daily-routines/" target="_blank">see the last running version of the visualization here</a>. However, the data has not been updated in years.
+      </p>
     </div>
 
   </template>
@@ -58,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view2'
+      is: 'page-daily-routines'
 
     });
 

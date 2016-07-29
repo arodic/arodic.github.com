@@ -1,6 +1,6 @@
 {
-  "name": "My App",
-  "short_name": "My App",
+  "name": "Aki Rodic",
+  "short_name": "Aki Rodic",
     "icons": [{
       "src": "images/app-icon-32.png",
       "type": "image/png",
@@ -23,7 +23,7 @@
       "type": "image/svg"
     }],
   "start_url": "/",
+  "background_color": "#EFEFEF",
   "display": "standalone",
-  "background_color": "#3f51b5",
-  "theme_color": "#3f51b5"
+  "theme_color": "#EFEFEF"
 }

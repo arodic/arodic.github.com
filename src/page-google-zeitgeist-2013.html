@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="my-view3">
+<dom-module id="page-google-zeitgeist-2013">
 
   <template>
 
@@ -27,29 +27,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #fff;
         color: #757575;
       }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ddd;
-        line-height: 64px;
-        font-size: 30px;
-        color: #555;
-        text-align: center;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
     </style>
 
     <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <h2 class="page-title">Google Zeitgeist 2013</h2>
+      <iron-image style="width:100%; height:160px" sizing="cover" src="images/google_zeitgeist.jpg"></iron-image>
+      <p>
+        Towards the end of each year, Google creates a website to highlight the search trends of the year.
+        In 2013 I took the role of technical lead in creating an interactive data visualization using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>
+        and <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>.
+      </p>
+      <p>
+        This was a project on an extremely short deadline and mobile support was one its main requirements.
+      </p>
+      <p>
+        You can <a href="https://zeitgeist-globe.appspot.com" target="_blank">see the final product here</a>.
+      </p>
     </div>
 
   </template>
@@ -58,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view3'
+      is: 'page-google-zeitgeist-2013'
 
     });
 

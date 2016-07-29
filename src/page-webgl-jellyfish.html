@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="my-view1">
+<dom-module id="page-webgl-jellyfish">
 
   <template>
 
@@ -27,29 +27,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #fff;
         color: #757575;
       }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ddd;
-        line-height: 64px;
-        font-size: 30px;
-        color: #555;
-        text-align: center;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <h2 class="page-title">WebGL Jellyfish</h2>
+      <iframe width="100%" class="videoframe" src="https://player.vimeo.com/video/20875622" frameborder="0" allowfullscreen></iframe>
+      <p>
+        <a href="http://chrysaora.com/" target="_blank">Chrysaora</a> (WebGL Jellyfish) is one of my first WebGL projects originally commissioned by SCAD as a multi-screen video installation in Hong Kong.
+        Later on, I created <a href="http://akirodic.com/p/jellyfish" target="_blank">this more optimized version for the web</a>.
+      </p>
     </div>
 
   </template>
@@ -58,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view1'
+      is: 'page-webgl-jellyfish'
 
     });
 

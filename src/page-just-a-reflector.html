@@ -1,0 +1,58 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="page-just-a-reflector">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+      .card {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        margin: 24px;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #757575;
+      }
+    </style>
+
+    <div class="card">
+      <h2 class="page-title">Just a Reflector</h2>
+      <iframe width="100%" class="videoframe" src="https://www.youtube.com/embed/-dl0w15A_eI" frameborder="0" allowfullscreen></iframe>
+      <p>
+        Just a Reflector is an interactive music video experience created by
+        <a href="http://workshop.chromeexperiments.com/" target="_blank">Google Data Arts Team</a> and
+        <a href="http://www.unit9.com/" target="_blank">Unit 9</a>.
+        It takes advantage of <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a> technology to deliver real-time video effects in the browser.
+      </p>
+      <p>
+        You can <a href="http://www.justareflektor.com/tech" target="_blank">learn more about the technology here</a> and <a href="http://www.justareflektor.com/" target="_blank">experience the video here</a>.
+      </p>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'page-just-a-reflector'
+
+    });
+
+  </script>
+
+</dom-module>
