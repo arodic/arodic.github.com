@@ -1,41 +1,18 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="page-about">
 
   <template>
 
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-    </style>
+    <style is="custom-style" include="page-styles"></style>
 
     <div class="card">
       <h2 class="page-title">Hello!</h2>
       <p>My name is Aki Rodić.
         I use computer graphics and the art of programming to create new experiences on the web.</p>
-      <p>I've spent most of my early life in Belgrade (Serbia).
-        I also lived in San Francisco for many years.
-        Most recently, I've been living/working nomadically and traveling around the world to places such as UK, Indonesia and China.</p>
+      <p>I've spent most of my early life in Belgrade, then I moved to US to study.
+        I lived in San Francisco and few other places.
+        Most recently, I've been living/working nomadically and traveling around the world.</p>
       <p>I studied electrical engineering, visual effects and game development and I worked at companies such as EA Games, Pixar, LucasArts and Google.</p>
       <p>Check out my projects and social media for more information!</p>
       <p>
@@ -49,17 +26,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <a href="https://linkedin.com/in/aleksandarrodic" target="_blank"><iron-icon class="logo" icon="logos:linkedin"></iron-icon></a>
         <a href="skype:aleksandar.rodic?action=chat" target="_blank"><iron-icon class="logo" icon="logos:skype"></iron-icon></a>
         <a href="weixin:contacts/profile/akirodic" target="_blank"><iron-icon class="logo" icon="logos:wechat"></iron-icon></a>
-      </p>    </div>
+      </p>
+    </div>
 
   </template>
 
   <script>
 
-    Polymer({
-
-      is: 'page-about'
-
-    });
+    Polymer({is: 'page-about'});
 
   </script>
 

@@ -72,9 +72,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // load webcomponents polyfills
     (function() {
-      if ('registerElement' in document
-          && 'import' in document.createElement('link')
-          && 'content' in document.createElement('template')) {
+      if ('registerElement' in document &&
+          'import' in document.createElement('link') &&
+          'content' in document.createElement('template')) {
         // browser has web components
       } else {
         // polyfill web components
@@ -94,18 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </script>
 
   <link rel="import" href="/src/my-app.html">
-
-  <style>
-
-    body {
-      margin: 0;
-      font-family: 'Roboto', 'Noto', sans-serif;
-      line-height: 1.5;
-      min-height: 100vh;
-      background-color: #eee;
-    }
-
-  </style>
+  <link rel="stylesheet" href="/src/style/main.css">
 
 </head>
 <body>

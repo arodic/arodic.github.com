@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="page-projects">
+
+  <template>
+
+    <style is="custom-style" include="page-styles"></style>
+
+    <style include="app-grid-style">
+
+    :host {
+      --app-grid-columns: 5;
+      --app-grid-item-height: 100%;
+      --app-grid-gutter: 20px;
+    }
+
+    .item {
+      display: block;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+    }
+    .item-title {
+      display: block;
+      position: absolute;
+      font-size: 18px;
+      line-height: 20px;
+      margin: 0;
+      padding: 10px;
+      color: var(--app-primary-color);
+      background: linear-gradient(rgba(0,0,0,.95) 0, transparent 75%);
+    }
+
+    @media (max-width: 1000px) {
+      :host {
+        --app-grid-columns: 4;
+      }
+    }
+    @media (max-width: 750px) {
+      :host {
+        --app-grid-columns: 3;
+      }
+    }
+    @media (max-width: 500px) {
+      :host {
+        --app-grid-columns: 2;
+      }
+    }
+    @media (max-width: 250px) {
+      :host {
+        --app-grid-columns: 1;
+      }
+    }
+
+  </style>
+
+    <div id="content" class="app-grid" has-aspect-ratio>
+
+      <template is="dom-repeat" items="{{projects}}">
+        <a class="card item" href$="{{baseUrl}}/{{item.id}}">
+          <img width="100%" height="auto" src="images/{{item.id}}.jpg"></img>
+          <h2 class="item-title">{{item.title}}</h2>
+        </a>
+      </template>
+
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'page-projects',
+
+      properties: {
+
+        projects: {
+          type: Array
+        }
+
+      }
+
+    });
+
+  </script>
+
+</dom-module>

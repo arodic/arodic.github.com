@@ -8,30 +8,17 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<dom-module id="page-google-zeitgeist-2013">
+<dom-module id="page-project-google-zeitgeist-2013">
 
   <template>
 
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-    </style>
+    <style is="custom-style" include="page-styles"></style>
 
     <div class="card">
       <h2 class="page-title">Google Zeitgeist 2013</h2>
-      <iron-image style="width:100%; height:160px" sizing="cover" src="images/google_zeitgeist.jpg"></iron-image>
+      <iron-image style="width:100%; height:160px" sizing="cover" src="../../../images/project/google-zeitgeist-2013.jpg"></iron-image>
       <p>
         Towards the end of each year, Google creates a website to highlight the search trends of the year.
         In 2013 I took the role of technical lead in creating an interactive data visualization using <a href="https://www.khronos.org/webgl/" target="_blank">WebGL</a>
@@ -49,11 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    Polymer({
-
-      is: 'page-google-zeitgeist-2013'
-
-    });
+    Polymer({is: 'page-project-google-zeitgeist-2013'});
 
   </script>
 

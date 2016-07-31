@@ -8,30 +8,17 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<dom-module id="page-daily-routines">
+<dom-module id="page-project-daily-routines">
 
   <template>
 
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-    </style>
+    <style is="custom-style" include="page-styles"></style>
 
     <div class="card">
       <h2 class="page-title">Daily Routines</h2>
-      <iron-image style="width:100%; height:160px" sizing="cover" src="images/daily_routines.jpg"></iron-image>
+      <iron-image style="width:100%; height:160px" sizing="cover" src="../../../images/project/daily-routines.jpg"></iron-image>
       <p>
         This is an ongoing and unfinished project that I wish to give more attention in the future.
         It is essentially a GPS data visualization application that takes advantage of GPU and shaders to provide extremely fast and interactive filtering of massive GPS datasets.
@@ -45,11 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    Polymer({
-
-      is: 'page-daily-routines'
-
-    });
+    Polymer({is: 'page-project-daily-routines'});
 
   </script>
 

@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.focus-target {
+  outline: none;
+}
