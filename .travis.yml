@@ -1,16 +1,8 @@
 language: node_js
 sudo: required
 dist: trusty
-addons:
-  firefox: latest
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
 node_js:
-  - '0.12'
-  - '4.2'
+  - '4.4'
   - '5.1'
 cache:
   directories:
@@ -19,7 +11,7 @@ before_script:
   - 'export DISPLAY=:99.0'
   - sh -e /etc/init.d/xvfb start
   - sleep 3
-  - npm i -g bower@1.7.1 gulp@3.9.0 firebase-tools@2.2.0
+  - npm i -g bower@1.7.9 polymer-cli@0.12.0
   - bower i
 script:
   - ./travis-runner.sh
