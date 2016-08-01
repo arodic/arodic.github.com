@@ -11,19 +11,5 @@ then
     polymer build
   }
 
-  # deploy_to_gh () {
-  #   echo Deploying to GitHub
-  #   rm -rf ../out || exit 0;
-  #   cp -r build/bundled ../out
-  #   git fetch ${DEST_BRANCH}
-  #   git checkout ${DEST_BRANCH}
-  #   rm -rf *
-  #   cp -r ../out/* .
-  #   git add .
-  #   git commit -m "Travis-CI: Deployed to Github"
-  #   git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master > /dev/null 2>&1
-  # }
-
   build_polymer
-  # deploy_to_gh
 fi

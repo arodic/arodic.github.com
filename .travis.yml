@@ -19,4 +19,15 @@ env:
     - secure: XwpzUCepQserNClpI5XnMFFxfPd69m1zJvB+D+AUXbdGUki2VEJcN5p4Lu/7sr5beoo19bh6dMRjMXVRmMnaphLa+PfSm6CM/j3iCrOdmehsgmQMrhNmflqW4a3QfcJ4QFNcg+v7Q0O+GsBKim3WVX1lRaGFU/OHKjsSomTqdWOeIzsfqlpt21FV6F84HwsUjLrA1iGndioXQ+HsjD1+RxO6QF5remQuTUGVbNZhgxiv+qbB27izH3TTItuU6etU0lUqsVinSL9Tdibqm3OkgV0sbulTfufIq+7y8Oug8QahZQDVTKENB5MAJW2JbMJ1+RAWwKEA2Dl7JntmI7vMRL74UOLXVVlWeATHzaBJaivR6d+MDZIkMvFmn+kQPWPo7k/5oQUfQ2MketR/tAMFWmpRMoDfR00Ib2P0pqdg57CDoGrz7Pn27iDZWivtYRiri+uOjPNSqxrjwBJuXR8/E5voCSb9h353PSHvu2k23vhtNCT+H0qXUUBTBzz73PJtoqjV4+4vTWqTE86NPvaiyLEA+mRHofKhOYFprS4xwaL8G7DnqMef+sqdtGMSRttRV2CQYKZXvMg5vVvaBlbquV64nOO1wagakjbm+3dIE4V6iABwulFsMWCgsNc1TTcDVR4niOVcMQ9l1s0cukZ4bsj2edDgp0/t+oQd5acA55Q=
     - SRC_REF: github.com/arodic/arodic.github.com.git
     - SRC_BRANCH: dev
-    - DEST_BRANCH: master
+    # - DEST_BRANCH: master
+
+deploy:
+  provider: releases
+  overwrite: true
+  api_key:
+    secure: XwpzUCepQserNClpI5XnMFFxfPd69m1zJvB+D+AUXbdGUki2VEJcN5p4Lu/7sr5beoo19bh6dMRjMXVRmMnaphLa+PfSm6CM/j3iCrOdmehsgmQMrhNmflqW4a3QfcJ4QFNcg+v7Q0O+GsBKim3WVX1lRaGFU/OHKjsSomTqdWOeIzsfqlpt21FV6F84HwsUjLrA1iGndioXQ+HsjD1+RxO6QF5remQuTUGVbNZhgxiv+qbB27izH3TTItuU6etU0lUqsVinSL9Tdibqm3OkgV0sbulTfufIq+7y8Oug8QahZQDVTKENB5MAJW2JbMJ1+RAWwKEA2Dl7JntmI7vMRL74UOLXVVlWeATHzaBJaivR6d+MDZIkMvFmn+kQPWPo7k/5oQUfQ2MketR/tAMFWmpRMoDfR00Ib2P0pqdg57CDoGrz7Pn27iDZWivtYRiri+uOjPNSqxrjwBJuXR8/E5voCSb9h353PSHvu2k23vhtNCT+H0qXUUBTBzz73PJtoqjV4+4vTWqTE86NPvaiyLEA+mRHofKhOYFprS4xwaL8G7DnqMef+sqdtGMSRttRV2CQYKZXvMg5vVvaBlbquV64nOO1wagakjbm+3dIE4V6iABwulFsMWCgsNc1TTcDVR4niOVcMQ9l1s0cukZ4bsj2edDgp0/t+oQd5acA55Q=
+  file: build/bundled/*
+  skip_cleanup: true
+  on:
+    branch: 'master'
+    tags: true
