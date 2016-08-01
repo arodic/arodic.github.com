@@ -107,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <app-location route="{{route}}"></app-location>
+    <app-location route="{{route}}" use-hash-as-path></app-location>
 
     <app-route route="{{route}}" pattern="/:page" data="{{pageData}}"></app-route>
     <app-route route="{{route}}" pattern="/project" tail="{{projectTail}}"></app-route>
@@ -118,9 +118,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer>
         <img src="/images/icons/logo.gif" width="100%"></img>
         <iron-selector selected="[[path]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="about" href="/about">
+          <a name="about" href="/#/about">
             <iron-icon icon="icons:info"></iron-icon>About</a>
-          <a name="projects" href="/projects">
+          <a name="projects" href="/#/projects">
             <iron-icon icon="apps"></iron-icon>Projects</a>
         </iron-selector>
       </app-drawer>
@@ -205,6 +205,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       ready: function() {
+        console.log(1)
         var projects = [];
         Array.prototype.slice.call(this.shadowRoot.querySelectorAll('.project')).forEach(function(node) {
           projects.push({
@@ -216,18 +217,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
+        console.log(page)
         if (page != 'project') {
           this.path = page || 'about';
         }
       },
 
       _projectChanged: function (project) {
+        console.log(project)
         if (project) {
           this.path = 'project' + project;
         }
       },
 
       _pathChanged: function(path) {
+        console.log(path)
         this.importHref(
           this.resolveUrl('page/' + this.path + '.html'), null, null, true);
       }
