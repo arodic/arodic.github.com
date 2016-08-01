@@ -231,6 +231,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _pageChanged: function(page) {
         if (page != 'project') {
           this.path = page || 'about';
+        } else if (this.projectTail) {
+          this._projectChanged(this.projectTail.path)
         }
       },
 
@@ -241,9 +243,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pathChanged: function(path) {
-        // this.closeDrawer();
-        this.importHref(
-          this.resolveUrl('page/' + this.path + '.html'), null, null, true);
+        this.importHref(this.resolveUrl('page/' + this.path + '.html'), null, null, true);
       }
 
     });
