@@ -12,6 +12,7 @@ then
   }
 
   deploy_github () {
+    echo Deploying to GitHub
     git config --global user.email "nobody@nobody.org"
     git config --global user.name "Travis CI"
 
@@ -22,7 +23,8 @@ then
     git init
     git add .
     git commit -m "Deploy to Github Pages"
-    git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" dev:master > /dev/null 2>&1
+    echo ":${GH_OAUTH_TOKEN}"
+    git push --force --quiet "https://${GH_OAUTH_TOKEN}@$github.com/arodic.github.com.git" dev:master > /dev/null 2>&1
   }
 
   build_polymer
