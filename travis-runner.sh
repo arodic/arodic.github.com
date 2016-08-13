@@ -11,19 +11,22 @@ then
     polymer build
   }
 
-  # deploy_to_gh () {
-  #   echo Deploying to GitHub
-  #   rm -rf ../out || exit 0;
-  #   cp -r build/bundled ../out
-  #   git fetch ${DEST_BRANCH}
-  #   git checkout ${DEST_BRANCH}
-  #   rm -rf *
-  #   cp -r ../out/* .
-  #   git add .
-  #   git commit -m "Travis-CI: Deployed to Github"
-  #   git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master > /dev/null 2>&1
-  # }
+  deploy_github () {
+    echo Deploying to GitHub
+    git config --global user.email "nobody@nobody.org"
+    git config --global user.name "Travis CI"
+
+    rm -rf ../bundled
+    cp -r build/bundled ../
+    cd ../bundled
+
+    git init
+    git add .
+    git commit -m "Deploy to Github Pages"
+    echo ":${GH_OAUTH_TOKEN}"
+    git push --force --quiet "https://${GH_OAUTH_TOKEN}@$github.com/arodic.github.com.git" dev:master > /dev/null 2>&1
+  }
 
   build_polymer
-  # deploy_to_gh
+  deploy_github
 fi
