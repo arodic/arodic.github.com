@@ -121,7 +121,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-route route="{{route}}" pattern="/:page" data="{{pageData}}"></app-route>
     <app-route route="{{route}}" pattern="/project" tail="{{projectTail}}"></app-route>
 
-    <app-drawer-layout fullbleed narrow="{{isNarrowLayout}}">
+    <app-drawer-layout id="drawerlayout" fullbleed narrow="{{isNarrowLayout}}">
 
       <!-- Drawer content -->
       <app-drawer id="drawer">
@@ -135,7 +135,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-drawer>
 
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+      <app-header-layout id="headerlayout" has-scrolling-region>
 
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
@@ -222,6 +222,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
         this.projects = projects;
+        //TODO: app-layout bug work-around
+        setTimeout(function () {
+          this.$.drawerlayout.resetLayout()
+          this.$.headerlayout.resetLayout()
+        }.bind(this), 1)
       },
 
       closeDrawer: function () {
