@@ -11,5 +11,20 @@ then
     polymer build
   }
 
+  deploy_github () {
+    git config --global user.email "nobody@nobody.org"
+    git config --global user.name "Travis CI"
+
+    rm -rf ../bundled
+    cp -r build/bundled ../
+    cd ../bundled
+
+    git init
+    git add .
+    git commit -m "Deploy to Github Pages"
+    git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" dev:master > /dev/null 2>&1
+  }
+
   build_polymer
+  deploy_github
 fi
