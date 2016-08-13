@@ -2,7 +2,7 @@
 # set -o pipefail
 set -o errexit
 
-if [ "$TRAVIS_BRANCH" = "$SRC_BRANCH" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]  && [ "$TRAVIS_NODE_VERSION" = "5.1" ]
+if [ "$TRAVIS_BRANCH" = "dev" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]  && [ "$TRAVIS_NODE_VERSION" = "5.1" ]
 then
   git config --global user.email "aleksandar.xyz@gmail.com"
   git config --global user.name "Travis-CI"
@@ -24,7 +24,7 @@ then
     git init
     git add .
     git commit -m "Deploy to Github Pages"
-    git push -f "https://${GH_TOKEN}@${GH_REF}" dev:gh-pages > /dev/null 2>&1
+    git push -f -q "https://${GITHUB_TOKEN}@${GH_REF}" dev:master > /dev/null 2>&1
   }
 
   build_polymer
