@@ -1,5 +1,6 @@
 #!/bin/bash -e
-set -o pipefail
+# set -o pipefail
+set -o errexit
 
 if [ "$TRAVIS_BRANCH" = "$SRC_BRANCH" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]  && [ "$TRAVIS_NODE_VERSION" = "5.1" ]
 then
@@ -23,8 +24,7 @@ then
     git init
     git add .
     git commit -m "Deploy to Github Pages"
-    echo ":${GH_OAUTH_TOKEN}"
-    git push --force --quiet "https://${GH_OAUTH_TOKEN}@$github.com/arodic.github.com.git" dev:master > /dev/null 2>&1
+    git push -f "https://${GH_TOKEN}@${GH_REF}" dev:gh-pages > /dev/null 2>&1
   }
 
   build_polymer
