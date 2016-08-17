@@ -116,7 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-location route="{{route}}"></app-location>
 
     <app-route route="{{route}}" pattern="/:page" data="{{pageData}}"></app-route>
     <app-route route="{{route}}" pattern="/project" tail="{{projectTail}}"></app-route>
@@ -127,9 +127,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer">
         <img src="/images/icons/logo.gif" width="100%"></img>
         <iron-selector selected="[[path]]" attr-for-selected="name" class="drawer-list" role="navigation" on-tap="closeDrawer">
-          <a name="about" href="/#/about">
+          <a name="about" href="/about">
             <iron-icon icon="icons:info"></iron-icon>About</a>
-          <a name="projects" href="/#/projects">
+          <a name="projects" href="/projects">
             <iron-icon icon="apps"></iron-icon>Projects</a>
         </iron-selector>
       </app-drawer>

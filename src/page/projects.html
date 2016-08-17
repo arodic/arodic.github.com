@@ -61,7 +61,7 @@
     <div id="content" class="app-grid" has-aspect-ratio>
 
       <template is="dom-repeat" items="{{projects}}">
-        <a class="card item" href$="{{baseUrl}}/#/{{item.id}}">
+        <a class="card item" href$="{{baseUrl}}/{{item.id}}">
           <img width="100%" height="auto" src="images/{{item.id}}.jpg"></img>
           <h2 class="item-title">{{item.title}}</h2>
         </a>
