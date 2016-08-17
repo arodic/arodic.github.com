@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
 
     // setup Polymer options
-    window.Polymer = {lazyRegister: true, dom: 'shadow'};
+    window.Polymer = {lazyRegister: true, dom: 'shady'};
 
     // load webcomponents polyfills
     (function() {
@@ -87,8 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       } else {
         // polyfill web components
         var e = document.createElement('script');
-        // e.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
-        e.src = '/bower_components/webcomponentsjs/webcomponents.min.js';
+        e.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
         document.head.appendChild(e);
       }
     })();

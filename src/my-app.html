@@ -215,7 +215,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready: function() {
         var projects = [];
-        Array.prototype.slice.call(this.shadowRoot.querySelectorAll('.project')).forEach(function(node) {
+        Array.prototype.slice.call(this.querySelectorAll('.project')).forEach(function(node) {
           projects.push({
             id: node.getAttribute('id'),
             title: node.getAttribute('title')

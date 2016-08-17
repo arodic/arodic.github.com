@@ -17,14 +17,18 @@ then
     git config --global user.email "nobody@nobody.org"
     git config --global user.name "Travis CI"
 
-    rm -rf ../bundled
-    cp -r build/bundled ../
-    cd ../bundled
-
-    git init
-    git add .
-    git commit -m "Deploy to Github Pages"
-    git push -f -q "https://${GITHUB_TOKEN}@${GH_REF}" dev:master > /dev/null 2>&1
+    cd ..
+    git clone "https://${GITHUB_TOKEN}@${GH_REF}" deploy
+    cd deploy
+    ls
+    # rm -rf ../bundled
+    # cp -r build/bundled ../
+    # cd ../bundled
+    #
+    # git init
+    # git add .
+    # git commit -m "Deploy to Github Pages"
+    # git push -f -q "https://${GITHUB_TOKEN}@${GH_REF}" dev:master > /dev/null 2>&1
   }
 
   build_polymer
