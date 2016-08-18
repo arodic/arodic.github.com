@@ -4,6 +4,8 @@
   },
   "hosting": {
     "public": "build/bundled",
+    "trailingSlash": false,
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -25,6 +27,22 @@
         "source": "/renderman/:page*",
         "destination": "http://arodic.github.io/renderman/:page*",
         "type" : 301
+      }
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers" : [ {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        } ]
+      },
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png)",
+        "headers" : [ {
+          "key" : "Cache-Control",
+          "value" : "max-age=7200"
+        } ]
       }
     ]
   }
