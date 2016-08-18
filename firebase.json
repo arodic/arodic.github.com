@@ -8,6 +8,47 @@
       {
         "source": "**/!{*.*}",
         "destination": "/index.html"
+      },
+      {
+        "source": "/p/",
+        "destination": "/p/"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/p/chrysaora/**",
+        "destination": "http://arodic.github.io/p/chrysaora/",
+        "type" : 301
+      },
+      {
+        "source": "/p/daily-routines/**",
+        "destination": "http://arodic.github.io/p/daily-routines/",
+        "type" : 301
+      },
+      {
+        "source": "/p/hackathon/**",
+        "destination": "http://arodic.github.io/p/hackathon/",
+        "type" : 301
+      },
+      {
+        "source": "/p/jellyfish/**",
+        "destination": "http://arodic.github.io/p/jellyfish/",
+        "type" : 301
+      },
+      {
+        "source": "/p/mass64k/**",
+        "destination": "http://arodic.github.io/p/mass64k/",
+        "type" : 301
+      },
+      {
+        "source": "/p/nyc/**",
+        "destination": "http://arodic.github.io/p/nyc/",
+        "type" : 301
+      },
+      {
+        "source": "/p/snow/**",
+        "destination": "http://arodic.github.io/p/snow/",
+        "type" : 301
       }
     ]
   }

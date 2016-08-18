@@ -11,16 +11,11 @@ then
     cp -r bower_components build/bundled/
   }
 
-  get_p () {
-    git clone https://github.com/arodic/p.git build/bundled/p
-  }
-
   deploy_firebase () {
     echo Deploying to Firebase
     firebase deploy --token "$FIREBASE_TOKEN" -m "Auto Deployed by Travis CI"
   }
 
   build_polymer
-  get_p
   deploy_firebase
 fi
