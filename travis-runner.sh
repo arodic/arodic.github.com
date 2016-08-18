@@ -8,6 +8,11 @@ then
     echo Bulding with polymer-cli
     polymer build
     cp -r images build/bundled/
+    cp -r bower_components build/bundled/
+  }
+
+  get_p () {
+    git clone https://github.com/arodic/p.git
   }
 
   deploy_firebase () {
@@ -16,5 +21,6 @@ then
   }
 
   build_polymer
+  get_p
   deploy_firebase
 fi
