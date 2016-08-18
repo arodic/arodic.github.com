@@ -20,4 +20,4 @@ env:
     - GH_REF: github.com/arodic/arodic.github.com.git
 branches:
   only:
-    - dev
+    - master
