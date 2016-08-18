@@ -49,6 +49,10 @@
         "source": "/p/snow/**",
         "destination": "http://arodic.github.io/p/snow/",
         "type" : 301
+      },{
+        "source": "/renderman/**",
+        "destination": "http://arodic.github.io/renderman/",
+        "type" : 301
       }
     ]
   }
