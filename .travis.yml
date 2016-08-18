@@ -9,7 +9,7 @@ cache:
 before_script:
   - 'export DISPLAY=:99.0'
   - sh -e /etc/init.d/xvfb start
-  - sleep 3
+  - sleep 2
   - npm i -g bower@1.7.9 polymer-cli@0.14.0 firebase-tools@3.0.7
   - bower i
 script:

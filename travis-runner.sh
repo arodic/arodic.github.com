@@ -12,7 +12,7 @@ then
   }
 
   get_p () {
-    git clone https://github.com/arodic/p.git
+    git clone https://github.com/arodic/p.git build/bundled/p
   }
 
   deploy_firebase () {
