@@ -5,7 +5,7 @@
   "hosting": {
     "public": "build/bundled",
     "trailingSlash": false,
-    "cleanUrls": true,
+    "cleanUrls": false,
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -13,7 +13,7 @@
     ],
     "rewrites": [
       {
-        "source": "**/!{*.*}",
+        "source": "**",
         "destination": "/index.html"
       }
     ],
