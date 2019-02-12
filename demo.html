@@ -71,20 +71,71 @@
       body {
         padding: 0;
         margin: 0;
+        background: green;
+        color: #4d4d4d;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
         height: 100%;
         display: flex;
+        flex-direction: column;
       }
       io-main-page {
-        flex: 1 1 auto;
+        --io-theme-spacing: 12px;
+        --io-theme-padding: 8px;
+        --io-theme-link-color: #06f;
+        flex: 1 1 auto !important;
         display: flex;
+        background: #ccc;
+      }
+      .wrapper-about {
+        display: flex;
+        flex-direction: row;
+      }
+      .wrapper-about > three-demo {
+        /* display: block; */
+        flex: 1 1 38.2% !important;
+        min-width: 60px;
+        align-self: stretch;
+      }
+      .wrapper-about > io-md-view {
+        flex: 0 0 61.8% !important;
+        overflow: hidden;
+      }
+      .selectable-main {
+        flex: 1 1 auto;
+      }
+      .selectable-main > div.io-content  {
+        background: none;
+        flex: 1 1 auto;
+        border-top: var(--io-theme-border);
+        background-image: linear-gradient(180deg, var(--io-theme-bg), #ddd 5em);
+      }
+      .selectable-main > div.io-content > * {
+        margin: var(--io-theme-spacing);
+      }
+      .selectable-docs {
+        --io-theme-spacing: 8px;
+        --io-theme-padding: 3px;
+      }
+      .selectable-docs > div.io-content  {
+        background: none;
+        border: 0;
+        margin: 0 !important;
+      }
+      .selectable-docs > div.io-buttons > io-button,
+      .selectable-docs > div.io-buttons > io-button.io-selected {
+        color: var(--io-theme-link-color);
+        border: none;
+        background: none;
+        background-image: none !important;
+      }
+      .selectable-docs > div.io-buttons > io-button:hover {
+        text-decoration: underline;
       }
       three-demo {
         flex: 1 1 auto;
-        align-self: stretch !important;
-        background: red;
-        height: 100%;
+        height: 400px !important;
       }
     </style>
     <script type="module">
@@ -100,7 +151,25 @@
       constructor(props) {
         super(props);
         this.template([
-          ['three-demo', {id: 'viewport'}],
+          ['io-selectable', {className: 'selectable-main', selected: $('page', 0, true), elements: [
+            ['div', {label: 'About', className: 'wrapper-about'}, [
+              ['three-demo', {id: 'viewport'}],
+              ['io-md-view', {path :'./docs/about.md'}],
+            ]],
+            ['div', {label: 'Sketches'}, [
+            ]],
+            ['io-selectable', {label: 'Archive', className: 'selectable-docs', vertical: true, selected: $('project', 0, true), elements: [
+              ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+              ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+              ['io-md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+              ['io-md-view', {label: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+              ['io-md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+              ['io-md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+              ['io-md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+              ['io-md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+            ]}],
+            ['io-md-view', {label: 'Contact', path :'./docs/contact.md'}],
+          ]}],
         ]);
       }
     }
