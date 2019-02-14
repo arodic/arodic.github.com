@@ -18,8 +18,8 @@
 
     <link rel="manifest" href="./manifest.json" />
 
-    <meta name="theme-color" content="#7254a3" />
-    <meta name="msapplication-TileColor" content="#7254a3" />
+    <meta name="theme-color" content="#83a61e" />
+    <meta name="msapplication-TileColor" content="#83a61e" />
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes" />
@@ -71,11 +71,9 @@
       body {
         padding: 0;
         margin: 0;
-        background: green;
         color: #4d4d4d;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -83,24 +81,28 @@
       io-main-page {
         --io-theme-spacing: 12px;
         --io-theme-padding: 8px;
-        --io-theme-link-color: #06f;
         flex: 1 1 auto !important;
         display: flex;
         background: #ccc;
+        max-width: 120em;
       }
-      .wrapper-about {
+      .about {
         display: flex;
         flex-direction: row;
       }
-      .wrapper-about > three-demo {
+      .about > three-demo {
         /* display: block; */
         flex: 1 1 38.2% !important;
         min-width: 60px;
         align-self: stretch;
       }
-      .wrapper-about > io-md-view {
+      .about > io-md-view {
         flex: 0 0 61.8% !important;
         overflow: hidden;
+      }
+      .notes > io-md-view {
+        background: rgba(255, 255, 255,  0.5);
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
       }
       .selectable-main {
         flex: 1 1 auto;
@@ -133,7 +135,7 @@
       .selectable-docs > div.io-buttons > io-button:hover {
         text-decoration: underline;
       }
-      three-demo {
+      three-editor {
         flex: 1 1 auto;
         height: 400px !important;
       }
@@ -145,19 +147,21 @@
     import {html, IoElement, IoStorage as $} from "../io/src/io.js";
     import {ThreeViewport} from "../three-ui/src/three-ui.js";
 
-    import {ThreeDemo} from "../three-ui/demo/demo.js";
+    import {ThreeEditor} from "../three-ui/demo/editor.js";
 
     export class IoMainPage extends IoElement {
       constructor(props) {
         super(props);
         this.template([
           ['io-selectable', {className: 'selectable-main', selected: $('page', 0, true), elements: [
-            ['div', {label: 'About', className: 'wrapper-about'}, [
-              ['three-demo', {id: 'viewport'}],
+            ['div', {label: 'About', className: 'about'}, [
+              ['three-editor'],
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
-            ['div', {label: 'Sketches'}, [
+            ['div', {label: 'Notes', className: 'notes'}, [
+              ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
             ]],
+            ['div', {label: 'Sketches'}, []],
             ['io-selectable', {label: 'Archive', className: 'selectable-docs', vertical: true, selected: $('project', 0, true), elements: [
               ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
