@@ -80,10 +80,9 @@
         flex: 1 1 auto;
         display: flex;
       }
-      three-demo {
+      three-editor {
         flex: 1 1 auto;
         align-self: stretch !important;
-        background: red;
         height: 100%;
       }
     </style>
@@ -94,13 +93,13 @@
     import {html, IoElement, IoStorage as $} from "../io/src/io.js";
     import {ThreeViewport} from "../three-ui/src/three-ui.js";
 
-    import {ThreeDemo} from "../three-ui/demo/demo.js";
+    import "../three-ui/demo/editor.js";
 
     export class IoMainPage extends IoElement {
       constructor(props) {
         super(props);
         this.template([
-          ['three-demo', {id: 'viewport'}],
+          ['three-editor', {id: 'viewport'}],
         ]);
       }
     }

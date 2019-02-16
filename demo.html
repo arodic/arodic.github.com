@@ -78,20 +78,35 @@
         display: flex;
         flex-direction: column;
       }
+
       io-main-page {
-        --io-theme-spacing: 12px;
+        --io-theme-spacing: 8px;
         --io-theme-padding: 8px;
         flex: 1 1 auto !important;
         display: flex;
         background: #ccc;
         max-width: 120em;
       }
+
+      .main {
+        flex: 1 1 auto;
+      }
+      .main > io-tabs {
+        margin: var(--io-theme-spacing) !important;
+        margin-bottom: -1px !important;
+      }
+      .main > io-element-cache  {
+        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2) 15em) !important;
+      }
+      .main > io-element-cache > * {
+        margin: var(--io-theme-spacing);
+      }
+
       .about {
         display: flex;
         flex-direction: row;
       }
       .about > three-demo {
-        /* display: block; */
         flex: 1 1 38.2% !important;
         min-width: 60px;
         align-self: stretch;
@@ -104,35 +119,23 @@
         background: rgba(255, 255, 255,  0.5);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
       }
-      .selectable-main {
-        flex: 1 1 auto;
-      }
-      .selectable-main > div.io-content  {
-        background: none;
-        flex: 1 1 auto;
-        border-top: var(--io-theme-border);
-        background-image: linear-gradient(180deg, var(--io-theme-bg), #ddd 5em);
-      }
-      .selectable-main > div.io-content > * {
-        margin: var(--io-theme-spacing);
-      }
-      .selectable-docs {
+      .archive {
         --io-theme-spacing: 8px;
         --io-theme-padding: 3px;
       }
-      .selectable-docs > div.io-content  {
+      .archive > io-element-cache  {
         background: none;
         border: 0;
         margin: 0 !important;
       }
-      .selectable-docs > div.io-buttons > io-button,
-      .selectable-docs > div.io-buttons > io-button.io-selected {
+      .archive > io-tabs > io-button,
+      .archive > io-tabs > io-button.io-selected {
         color: var(--io-theme-link-color);
         border: none;
         background: none;
         background-image: none !important;
       }
-      .selectable-docs > div.io-buttons > io-button:hover {
+      .archive > io-tabs > io-button:hover {
         text-decoration: underline;
       }
       three-editor {
@@ -153,7 +156,7 @@
       constructor(props) {
         super(props);
         this.template([
-          ['io-selectable', {className: 'selectable-main', selected: $('page', 0, true), elements: [
+          ['io-selector', {className: 'main', selected: $('page', 0), elements: [
             ['div', {label: 'About', className: 'about'}, [
               ['three-editor'],
               ['io-md-view', {path :'./docs/about.md'}],
@@ -162,7 +165,7 @@
               ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
             ]],
             ['div', {label: 'Sketches'}, []],
-            ['io-selectable', {label: 'Archive', className: 'selectable-docs', vertical: true, selected: $('project', 0, true), elements: [
+            ['io-selector', {label: 'Archive', className: 'archive', vertical: true, selected: $('project', 0), elements: [
               ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
               ['io-md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
