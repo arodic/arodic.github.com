@@ -1,8 +1,12 @@
 ### Unnumbered Sparks
 
+<img style="width:100%;" sizing="cover" src="./images/project/unnumbered-sparks.jpg" />
+
 Unnumbered Sparks was a colossal interactive aerial sculpture created by <a href="http://workshop.chromeexperiments.com/" target="_blank">Google Data Arts Team</a> and <a href="http://www.echelman.com/" target="_blank">Studio Echelman</a> for the TED 2014 Conference in Vancouver, BC.
 
-<iframe width="100%" class="videoframe" src="https://www.youtube.com/embed/6JGzPLZrVFU" frameborder="0" allowfullscreen></iframe>
+<div class="videocontainer">
+  <iframe src="https://www.youtube.com/embed/6JGzPLZrVFU" frameborder="0" allowfullscreen></iframe>
+</div>
 
 The sculpture was installed between Fairmont Waterfront and the Vancouver Convention Center and lit by 5 extremely powerful projectors.
 

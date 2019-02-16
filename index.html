@@ -18,8 +18,8 @@
 
     <link rel="manifest" href="./manifest.json" />
 
-    <meta name="theme-color" content="#7254a3" />
-    <meta name="msapplication-TileColor" content="#7254a3" />
+    <meta name="theme-color" content="#83a61e" />
+    <meta name="msapplication-TileColor" content="#83a61e" />
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes" />
@@ -71,19 +71,79 @@
       body {
         padding: 0;
         margin: 0;
+        color: #4d4d4d;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
         display: flex;
+        flex-direction: column;
       }
       io-main-page {
-        flex: 1 1 auto;
+        --io-theme-spacing: 8px;
+        --io-theme-padding: 8px;
+        flex: 1 1 auto !important;
         display: flex;
+        background: #ccc;
       }
+
+      io-md-view {}
+
+      .main {
+        flex: 1 1 auto;
+      }
+      .main > io-tabs {
+        margin-top: var(--io-theme-spacing) !important;
+      }
+      .main > io-element-cache  {
+        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2) 15em) !important;
+        border-width: 1px 0 0 0;
+        border-radius: 0;
+      }
+      .main > io-element-cache > * {
+        max-width: 50em;
+      }
+
+      .about {
+        display: flex;
+        flex-direction: row;
+      }
+      .about > three-editor {
+        flex: 0 1 55%;
+        max-width: 6.5em;
+        min-width: 1.5em;
+        margin-right: var(--io-theme-spacing);
+        align-self: stretch !important;
+        grid-template-columns: 100%;
+      }
+      .about > io-md-view {
+        flex: 1 1 auto;
+      }
+
+      .archive {
+        --io-theme-spacing: 8px;
+        --io-theme-padding: 3px;
+        overflow: visible;
+      }
+      .archive > io-element-cache  {
+        display: contents;
+      }
+      .archive > io-tabs  {
+        margin-right: 0 !important;
+      }
+      .archive > io-tabs > io-button,
+      .archive > io-tabs > io-button.io-selected {
+        color: var(--io-theme-link-color);
+        border: none;
+        background: none;
+        background-image: none !important;
+      }
+      .archive > io-tabs > io-button:hover {
+        text-decoration: underline;
+      }
+
       three-editor {
         flex: 1 1 auto;
-        align-self: stretch !important;
-        height: 100%;
+        height: 400px !important;
       }
     </style>
     <script type="module">
@@ -91,15 +151,35 @@
     import "../io/lib/io-md-view.js";
 
     import {html, IoElement, IoStorage as $} from "../io/src/io.js";
-    import {ThreeViewport} from "../three-ui/src/three-ui.js";
-
-    import "../three-ui/demo/editor.js";
+    import {ThreeEditor} from "../three-ui/demo/editor.js";
 
     export class IoMainPage extends IoElement {
       constructor(props) {
         super(props);
         this.template([
-          ['three-editor', {id: 'viewport'}],
+          ['io-selector', {className: 'main', selected: $('page', 0, true), elements: [
+            ['div', {label: 'About', className: 'about'}, [
+              ['three-editor'],
+              ['io-md-view', {path :'./docs/about.md'}],
+            ]],
+            ['div', {label: 'Updates', className: 'updates'}, [
+              ['io-md-view', {path :'./docs/updates/new-website.md'}],
+            ]],
+            ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0, true), elements: [
+              ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+              ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+              ['io-md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+              ['io-md-view', {label: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+              ['io-md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+              ['io-md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+              ['io-md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+              ['io-md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+            ]}],
+            // ['div', {label: 'Sketches'}, [
+            //   ['three-editor'],
+            // ]],
+            ['io-md-view', {label: 'Elsewhere', path :'./docs/contact.md'}],
+          ]}],
         ]);
       }
     }
