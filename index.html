@@ -7,12 +7,12 @@
     <meta name="description" content="Aleksandar Aki Rodić is an artist, designer and software engineer.
     He uses computer graphics and the art of programming to create new experiences on the web." />
 
-    <link rel="author" content="Aki Rodić" href="https://github.com/arodic" />
-    <link rel="me" content="Aki Rodić" href="http://akirodic.com" />
+    <link rel="author" content="Aleksandar Aki Rodić" href="https://github.com/arodic" />
+    <link rel="me" content="Aleksandar Aki Rodić" href="http://akirodic.com" />
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
 
-    <title>Aki Rodić</title>
+    <title>Aleksandar Aki Rodić</title>
 
     <link rel="shortcut icon" sizes="72x72" href="./images/icons/icon-72x72.png" />
 
@@ -23,7 +23,7 @@
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="Aki Rodić" />
+    <meta name="application-name" content="Aleksandar Aki Rodić" />
 
     <link rel="icon" sizes="144x144" href="images/icons/icon-144x144.png" />
     <link rel="icon" sizes="152x152" href="images/icons/icon-152x152.png" />
@@ -35,7 +35,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="Aki Rodić" />
+    <meta name="apple-mobile-web-app-title" content="Aleksandar Aki Rodić" />
     <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
 
     <!-- Tile icon for Win8 (144x144) -->
@@ -44,21 +44,21 @@
     <!-- Tages for sharing -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="arodic" />
-    <meta name="twitter:title" content="Aki Rodić" />
+    <meta name="twitter:title" content="Aleksandar Aki Rodić" />
     <meta name="twitter:creator" content="arodic" />
 
     <meta name="twitter:image:src" content="images/icons/icon-192x192.png" />
     <meta name="twitter:domain" content="akirodic.com" />
 
-    <meta itemprop="name" content="Aki Rodić" />
-    <meta itemprop="description" content="Aki Rodić" />
+    <meta itemprop="name" content="Aleksandar Aki Rodić" />
+    <meta itemprop="description" content="Aleksandar Aki Rodić" />
     <meta itemprop="image" src="images/icons/icon-192x192.png" />
     <meta name="keywords" content="portfolio, webgl, visual effects, new media, art, design, engineering, web development" />
-    <meta property="og:title" content="Aki Rodić" />
+    <meta property="og:title" content="Aleksandar Aki Rodić" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="images/icons/icon-192x192.png" />
-    <meta property="og:site_name" content="Aki Rodić" />
-    <meta property="og:description" content="Aki Rodić" />
+    <meta property="og:site_name" content="Aleksandar Aki Rodić" />
+    <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
     <style>
@@ -79,19 +79,25 @@
         flex-direction: column;
       }
       io-main-page {
-        --io-theme-spacing: 8px;
+        --io-theme-spacing: 6px;
         --io-theme-padding: 8px;
         flex: 1 1 auto !important;
         display: flex;
         background: #ccc;
       }
-
+      @media screen and (max-width: 540px) {
+        .main > io-tabs > * {
+          padding: var(--io-theme-padding);
+          font-size: 0.9em;
+        }
+      }
       md-view {}
 
       .main {
         flex: 1 1 auto;
       }
       .main > io-tabs {
+        /* font-size: 0.8em; */
         margin-top: var(--io-theme-spacing) !important;
       }
       .main > io-element-cache  {
@@ -110,7 +116,7 @@
       .about > three-editor {
         flex: 0 1 55%;
         max-width: 6.5em;
-        min-width: 1.5em;
+        min-width: 3.5em;
         margin-right: var(--io-theme-spacing);
         align-self: stretch !important;
         grid-template-columns: 100%;
@@ -165,7 +171,7 @@
             ['div', {label: 'Updates', className: 'updates'}, [
               ['md-view', {path :'./docs/updates/new-website.md'}],
             ]],
-            ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0, true), elements: [
+            ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0), elements: [
               ['md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
               ['md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],

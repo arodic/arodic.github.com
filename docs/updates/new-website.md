@@ -6,7 +6,7 @@ This is mostly a technical update but I also added some new projects to the arch
 
 Since the [Polymer](https://github.com/polymer) library which I used to build my previous website is now deprecated, I built this new website with the latest version of [io](https://github.com/arodic/io), inspired by Polymer and powered by the latest web standards. I hope this will be a good testcase for the designs and ideas I've developed so far.
 
-This is a work in progress, so I apologize for possible hiccups browser compatibility issues.
+This is a work in progress, so I apologize for possible hiccups and browser compatibility issues.
 
 **For web developers:**
 
