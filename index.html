@@ -163,7 +163,7 @@
       constructor(props) {
         super(props);
         this.template([
-          ['io-selector', {className: 'main', selected: $('page', 0, true), elements: [
+          ['io-selector', {className: 'main', precache: true, selected: $('page', 0, true), elements: [
             ['div', {label: 'About', className: 'about'}, [
               ['three-editor'],
               ['md-view', {path :'./docs/about.md'}],
@@ -172,6 +172,7 @@
               ['md-view', {path :'./docs/updates/new-website.md'}],
             ]],
             ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0), elements: [
+              ['md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
               ['md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
               ['md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
@@ -179,7 +180,6 @@
               ['md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
               ['md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
               ['md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
-              ['md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
             ]}],
             // ['div', {label: 'Sketches'}, [
             //   ['three-editor'],
