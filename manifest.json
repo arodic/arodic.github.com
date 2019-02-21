@@ -1,46 +1,46 @@
 {
-  "name": "Aki Rodic Porfolio",
-  "short_name": "Aki Rodic",
-  "description": "Personal website of Aki Rodic.",
+  "name": "Aleksandar Aki Rodic Porfolio",
+  "short_name": "Aleksandar Aki Rodic",
+  "description": "Personal website of Aleksandar Aki Rodic.",
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#7254a3",
   "theme_color": "#7254a3",
   "icons": [{
-    "src": "images/icons/app-icon-32x32.png",
+    "src": "images/logo/io-32.png",
     "type": "image/png",
     "sizes": "32x32"
   }, {
-    "src": "images/icons/app-icon-72x72.png",
+    "src": "images/logo/io-72.png",
     "type": "image/png",
     "sizes": "72x72"
   }, {
-    "src": "images/icons/app-icon-96x96.png",
+    "src": "images/logo/io-96.png",
     "type": "image/png",
     "sizes": "96x96"
   }, {
-    "src": "images/icons/icon-128x128.png",
+    "src": "images/logo/io-128.png",
     "sizes": "128x128",
     "type": "image/png"
   }, {
-    "src": "images/icons/icon-144x144.png",
+    "src": "images/logo/io-144.png",
     "sizes": "144x144",
     "type": "image/png"
   }, {
-    "src": "images/icons/icon-152x152.png",
+    "src": "images/logo/io-152.png",
     "sizes": "152x152",
     "type": "image/png"
   }, {
-    "src": "images/icons/icon-192x192.png",
+    "src": "images/logo/io-192.png",
     "sizes": "192x192",
     "type": "image/png"
   }, {
-    "src": "images/icons/icon-384x384.png",
+    "src": "images/logo/io-384.png",
     "sizes": "384x384",
     "type": "image/png"
   }, {
-    "src": "images/icons/icon-512x512.png",
+    "src": "images/logo/io-512.png",
     "sizes": "512x512",
     "type": "image/png"
   }]
