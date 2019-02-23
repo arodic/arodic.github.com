@@ -1,6 +1,6 @@
 ### New Website! ###
 
-Last few months I have been busy working on [io](https://github.com/arodic/io) and [three-ui](https://github.com/arodic/three-ui). Today, I finally got around to updating my website.
+Last few months I have been busy working on [io](https://github.com/arodic/io). Today, I finally got around to updating my website.
 
 This is mostly a technical update but I also added some new projects to the archive and information about my current work.
 
