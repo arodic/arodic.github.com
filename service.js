@@ -7,18 +7,23 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
+const getSubscription = () => {
+
+}
+
 self.addEventListener('install', function(event) {
-  // console.log('sw installed');
+  console.log('sw installed');
   event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('activate', async (event) => {
-  // console.log('sw activated');
+  console.log('sw activated');
   event.waitUntil(self.clients.claim());
   try {
+    getSubscription();
     const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
     const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
-    // console.log('sw subscribed', subscription);
+    console.log('sw subscribed');
     clients.matchAll({type: "window"}).then((clientList) => {
       for (var i = 0; i < clientList.length; i++) {
         clientList[i].postMessage(JSON.stringify({subscription: subscription}));

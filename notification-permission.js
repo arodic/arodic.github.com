@@ -19,16 +19,19 @@ export class IoNotificationPermission extends IoCore {
     this.requestService();
   }
   async requestService() {
-    const serviceWorker = await navigator.serviceWorker.register(this.path);
-    if (!serviceWorker.active) {
-      serviceWorker.addEventListener('activate', () => { this.serviceWorker = serviceWorker; });
-    } else {
-      this.serviceWorker = serviceWorker;
+    if (this.granted) {
+      const serviceWorker = await navigator.serviceWorker.register(this.path);
+      if (!serviceWorker.active) {
+        serviceWorker.addEventListener('activate', () => { this.serviceWorker = serviceWorker; });
+      } else {
+        this.serviceWorker = serviceWorker;
+      }
+      navigator.serviceWorker.addEventListener('message', this.onServiceWorkerMessage);
     }
-    navigator.serviceWorker.addEventListener('message', this.onServiceWorkerMessage);
   }
   async requestNotification() {
     this.granted = await window.Notification.requestPermission() === 'granted';
+    this.requestService();
   }
   subscriptionChanged(event) {
     if (this.subscription) db.collection("subscriptions").add({value: this.subscription});
