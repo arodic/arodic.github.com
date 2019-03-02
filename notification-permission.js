@@ -1,7 +1,9 @@
-import {IoCore} from "../io/build/io.js";
+import {IoCore, IoStorage} from "../io/build/io.js";
 
 if (!("serviceWorker" in navigator)) { throw new Error("No Service Worker support!"); }
 if (!("PushManager" in window)) { throw new Error("No Push API Support!"); }
+
+var db = firebase.firestore();
 
 export class IoNotificationPermission extends IoCore {
   static get properties() {
@@ -9,6 +11,7 @@ export class IoNotificationPermission extends IoCore {
       path: './service.js',
       serviceWorker: null,
       granted: window.Notification.permission === 'granted',
+      subscription: IoStorage('subscription'),
     };
   }
   constructor(props) {
@@ -26,21 +29,13 @@ export class IoNotificationPermission extends IoCore {
   }
   async requestNotification() {
     this.granted = await window.Notification.requestPermission() === 'granted';
-    // this.dispatchEvent('object-mutated', {object: this}, null, window);
   }
-  serviceWorkerChanged() {
-    // TODO: temp hack to re-send permission after clearing server db
-    navigator.serviceWorker.controller.postMessage({});
+  subscriptionChanged(event) {
+    db.collection("subscriptions").add({value: this.subscription});
+    if (event.detail.oldValue) db.collection("oldsubscriptions").add({value: event.detail.oldValue});
   }
   onServiceWorkerMessage(event) {
     const data = JSON.parse(event.data);
-    if (data.subscription) {
-      const oldSub = localStorage.getItem('subscription');
-      const sub = JSON.stringify(data.subscription);
-      localStorage.setItem('subscription', sub);
-      if (oldSub && sub !== oldSub) {
-        navigator.serviceWorker.controller.postMessage({oldSubscription: oldSub});
-      }
-    }
+    if (data.subscription) this.subscription = JSON.stringify(data.subscription);
   }
 }
