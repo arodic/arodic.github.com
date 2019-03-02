@@ -17,6 +17,7 @@ export class IoNotificationPermission extends IoCore {
   constructor(props) {
     super(props);
     this.requestService();
+    console.log(this.subscription)
   }
   async requestService() {
     if (this.granted) {
@@ -34,6 +35,7 @@ export class IoNotificationPermission extends IoCore {
     this.requestService();
   }
   subscriptionChanged(event) {
+    console.log(event.detail.oldValue)
     if (this.subscription) db.collection("subscriptions").add({value: this.subscription});
     if (event.detail.oldValue) db.collection("oldsubscriptions").add({value: event.detail.oldValue});
   }
