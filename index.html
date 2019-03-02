@@ -126,6 +126,11 @@
         flex: 1 1 auto;
       }
 
+      .updates > io-button {
+        background: #eee;
+        margin: var(--io-theme-spacing) 0;
+      }
+
       .archive {
         --io-theme-spacing: 8px;
         --io-theme-padding: 3px;
@@ -159,17 +164,24 @@
     import "../io/lib/md-view.js";
     import "../three-ui/build/three-ui.js";
 
+    import {IoNotificationPermission} from "./notification-permission.js";
+
 
     export class IoMainPage extends IoElement {
-      constructor(props) {
-        super(props);
+      static get properties() {
+        return {
+          permission: IoNotificationPermission
+        };
+      }
+      changed() {
         this.template([
           ['io-selector', {className: 'main', precache: true, selected: $('page', 0, true), elements: [
             ['div', {label: 'About', className: 'about'}, [
               ['three-editor'],
               ['md-view', {path :'./docs/about.md'}],
             ]],
-            ['div', {label: 'Updates', className: 'updates'}, [
+            ['div', {label: 'Updates', className: 'updates', cache: false}, [
+              !this.permission.granted ? ['io-button', {label: 'Subscribe', action: this.permission.requestNotification}] : ['div'],
               ['md-view', {path :'./docs/updates/new-website.md'}],
             ]],
             ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0), elements: [
