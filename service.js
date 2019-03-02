@@ -18,7 +18,7 @@ self.addEventListener('activate', async (event) => {
   try {
     const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
     const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
-    // console.log('sw subscribed');
+    // console.log('sw subscribed', subscription);
     clients.matchAll({type: "window"}).then((clientList) => {
       for (var i = 0; i < clientList.length; i++) {
         clientList[i].postMessage(JSON.stringify({subscription: subscription}));
