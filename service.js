@@ -60,28 +60,21 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// const urls = []
-
 self.addEventListener('fetch', (event) => {
-  // if (urls.indexOf(event.request.url) === -1) {
-  //   urls.push(event.request.url);
-  //   console.log(urls);
-  // }
-  // console.log(event.request.url);
   event.respondWith(
     caches.open(cacheName)
     .then(cache => {
-      cache.match(event.request, {ignoreSearch: true});
-      // cache.addAll([event.request.url]);
+      return cache.match(event.request, {ignoreSearch: true});
     })
     .then(response => {
-      // if (!response) {
-      //   // console.log(event.request);
-      // } else {
-      //   console.log("ASD", response);
-      // }
+      if (!response && event.request.url.search(event.request.referrer) !== -1) {
+        caches.open(cacheName)
+        .then(cache => {
+          cache.addAll([event.request.url]);
+        });
+      }
       return response || fetch(event.request);
-    })
+    }).catch(console.error)
   );
 });
 
