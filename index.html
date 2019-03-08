@@ -137,14 +137,6 @@
         display: flex;
         flex-direction: row;
       }
-      .about > three-editor {
-        flex: 0 1 55%;
-        max-width: 6.5em;
-        min-width: 3.5em;
-        margin-right: var(--io-theme-spacing);
-        align-self: stretch !important;
-        grid-template-columns: 100%;
-      }
       .about > md-view {
         flex: 1 1 auto;
       }
@@ -175,17 +167,11 @@
       .archive > io-tabs > io-button:hover {
         text-decoration: underline;
       }
-
-      three-editor {
-        flex: 1 1 auto;
-        height: 400px !important;
-      }
     </style>
     <script type="module">
 
     import {html, IoElement, IoStorage as $} from "../io/build/io.js";
     import "../io/lib/md-view.js";
-    import "../three-ui/build/three-ui.js";
 
     import {IoNotificationPermission} from "./notification-permission.js";
 
@@ -199,7 +185,6 @@
         this.template([
           ['io-selector', {className: 'main', precache: true, selected: $('page', 0, true), elements: [
             ['div', {label: 'About', className: 'about'}, [
-              ['three-editor'],
               ['md-view', {path :'./docs/about.md'}],
             ]],
             ['div', {label: 'Updates', className: 'updates', cache: false}, [

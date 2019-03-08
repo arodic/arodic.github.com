@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.2";
+const version = "0.0.3";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
@@ -21,12 +21,7 @@ self.addEventListener('install', (event) => {
         '/notification-permission.js',
         '/io/lib/marked.min.js',
         '/io/build/io-core.js',
-        '/three.js/build/three.module.js',
-        '/three-ui/lib/BufferGeometryUtils.js',
-        '/three-ui/lib/GLTFLoader.js',
-        '/three-ui/lib/DRACOLoader.js',
         '/docs/about.md',
-        '/three-ui/demo/scene/cubes.gltf',
         '/docs/archive/webgl-jellyfish.md',
         '/docs/archive/cardboard-launch.md',
         '/docs/archive/rome.md',
@@ -38,8 +33,6 @@ self.addEventListener('install', (event) => {
         '/docs/archive/unnumbered-sparks.md',
         '/docs/contact.md',
         '/docs/updates/new-website.md',
-        '/three-ui/demo/scene/wall.png',
-        '/three-ui/demo/scene/cube.jpg',
         '/images/project/webgl-jellyfish.jpg',
         '/images/project/cardboard-launch.jpg',
         '/images/project/rome.jpg',
@@ -50,7 +43,6 @@ self.addEventListener('install', (event) => {
         '/images/project/star-wars-1313.jpg',
         '/images/project/unnumbered-sparks.jpg',
         '/images/logo/io-32.png',
-        '/three-ui/demo/scene/cubes.bin',
       ])
       .then(() => {
         self.skipWaiting();
