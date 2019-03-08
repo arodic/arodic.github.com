@@ -3,7 +3,7 @@ import {IoCore, IoStorage} from "../io/build/io.js";
 if (!("serviceWorker" in navigator)) { throw new Error("No Service Worker support!"); }
 if (!("PushManager" in window)) { throw new Error("No Push API Support!"); }
 
-const db = firebase.firestore();
+const db = window.firebase !== undefined ? firebase.firestore() : null;
 
 export class IoNotificationPermission extends IoCore {
   static get properties() {
@@ -21,6 +21,8 @@ export class IoNotificationPermission extends IoCore {
   async requestService() {
     if (this.granted) {
       const serviceWorker = await navigator.serviceWorker.register(this.path);
+      // const serviceWorker = await navigator.serviceWorker.register(this.path);
+      serviceWorker.update();
       if (!serviceWorker.active) {
         serviceWorker.addEventListener('activate', () => { this.serviceWorker = serviceWorker; });
       } else {
@@ -34,8 +36,8 @@ export class IoNotificationPermission extends IoCore {
     this.requestService();
   }
   subscriptionChanged(event) {
-    if (this.subscription) db.collection("subscriptions").add({value: this.subscription});
-    if (event.detail.oldValue) db.collection("oldsubscriptions").add({value: event.detail.oldValue});
+    if (db && this.subscription) db.collection("subscriptions").add({value: this.subscription});
+    if (db && event.detail.oldValue) db.collection("oldsubscriptions").add({value: event.detail.oldValue});
   }
   onServiceWorkerMessage(event) {
     const data = JSON.parse(event.data);

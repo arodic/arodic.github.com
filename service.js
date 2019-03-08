@@ -7,14 +7,37 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-self.addEventListener('install', function(event) {
-  console.log('sw installed');
-  event.waitUntil(self.skipWaiting());
+const version = "0.0.1";
+const cacheName = `arodic-${version}`;
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(cacheName).then(c => {
+      cache = c;
+      return cache.addAll([
+        `/`,
+      ])
+      .then(() => {
+        self.skipWaiting();
+        console.log('sw installed');
+      });
+    })
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.open(cacheName)
+    .then(cache => cache.match(event.request, {ignoreSearch: true}))
+    .then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });
 
 self.addEventListener('activate', async (event) => {
-  console.log('sw activated');
   event.waitUntil(self.clients.claim());
+  console.log('sw activated');
   try {
     const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
     const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
@@ -29,7 +52,7 @@ self.addEventListener('activate', async (event) => {
   }
 });
 
-self.addEventListener('push', function(event) {
+self.addEventListener('push', (event) => {
   const options = {
     body: event.data.text(),
     icon : './images/logo/io-512.png',
@@ -45,7 +68,7 @@ self.addEventListener('push', function(event) {
   };
 });
 
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   const url = 'https://akirodic.com/#page=1';
   event.waitUntil(

@@ -62,17 +62,27 @@
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-68216254-1');
+    </script>
+
     <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
     <script>
-      firebase.initializeApp({
-        apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
-        authDomain: "akirodic-c3d1d.firebaseapp.com",
-        databaseURL: "https://akirodic-c3d1d.firebaseio.com",
-        projectId: "akirodic-c3d1d",
-        storageBucket: "akirodic-c3d1d.appspot.com",
-        messagingSenderId: "717681979194"
-      });
+      if (window.firebase) {
+        firebase.initializeApp({
+          apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
+          authDomain: "akirodic-c3d1d.firebaseapp.com",
+          databaseURL: "https://akirodic-c3d1d.firebaseio.com",
+          projectId: "akirodic-c3d1d",
+          storageBucket: "akirodic-c3d1d.appspot.com",
+          messagingSenderId: "717681979194"
+        });
+      }
     </script>
 
     <style>
@@ -207,22 +217,12 @@
               ['md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
               ['md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
             ]}],
-            // ['div', {label: 'Sketches'}, [
-            //   ['three-editor'],
-            // ]],
             ['md-view', {label: 'Elsewhere', path :'./docs/contact.md'}],
           ]}],
         ]);
       }
     }
     IoMainPage.Register();
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-68216254-1');
     </script>
   </head>
   <body>
