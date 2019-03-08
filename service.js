@@ -7,15 +7,50 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.1";
+const version = "0.0.2";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(cacheName).then(c => {
-      cache = c;
+    caches.open(cacheName).then(cache => {
       return cache.addAll([
-        `/`,
+        '/',
+        '/io/build/io.js',
+        '/io/lib/md-view.js',
+        '/three-ui/build/three-ui.js',
+        '/notification-permission.js',
+        '/io/lib/marked.min.js',
+        '/io/build/io-core.js',
+        '/three.js/build/three.module.js',
+        '/three-ui/lib/BufferGeometryUtils.js',
+        '/three-ui/lib/GLTFLoader.js',
+        '/three-ui/lib/DRACOLoader.js',
+        '/docs/about.md',
+        '/three-ui/demo/scene/cubes.gltf',
+        '/docs/archive/webgl-jellyfish.md',
+        '/docs/archive/cardboard-launch.md',
+        '/docs/archive/rome.md',
+        '/docs/archive/daily-routines.md',
+        '/docs/archive/flux-factory.md',
+        '/docs/archive/google-zeitgeist-2013.md',
+        '/docs/archive/just-a-reflector.md',
+        '/docs/archive/star-wars-1313.md',
+        '/docs/archive/unnumbered-sparks.md',
+        '/docs/contact.md',
+        '/docs/updates/new-website.md',
+        '/three-ui/demo/scene/wall.png',
+        '/three-ui/demo/scene/cube.jpg',
+        '/images/project/webgl-jellyfish.jpg',
+        '/images/project/cardboard-launch.jpg',
+        '/images/project/rome.jpg',
+        '/images/project/daily-routines.jpg',
+        '/images/project/flux-factory.jpg',
+        '/images/project/google-zeitgeist-2013.jpg',
+        '/images/project/just-a-reflector.jpg',
+        '/images/project/star-wars-1313.jpg',
+        '/images/project/unnumbered-sparks.jpg',
+        '/images/logo/io-32.png',
+        '/three-ui/demo/scene/cubes.bin',
       ])
       .then(() => {
         self.skipWaiting();
@@ -25,11 +60,26 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// const urls = []
+
 self.addEventListener('fetch', (event) => {
+  // if (urls.indexOf(event.request.url) === -1) {
+  //   urls.push(event.request.url);
+  //   console.log(urls);
+  // }
+  // console.log(event.request.url);
   event.respondWith(
     caches.open(cacheName)
-    .then(cache => cache.match(event.request, {ignoreSearch: true}))
+    .then(cache => {
+      cache.match(event.request, {ignoreSearch: true});
+      // cache.addAll([event.request.url]);
+    })
     .then(response => {
+      // if (!response) {
+      //   // console.log(event.request);
+      // } else {
+      //   console.log("ASD", response);
+      // }
       return response || fetch(event.request);
     })
   );
