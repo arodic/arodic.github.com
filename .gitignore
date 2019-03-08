@@ -8,3 +8,10 @@ package-lock.json
 .vs/
 .project
 .jshintrc
+
+editor/
+io/
+p/
+three-ui/
+three.js/
+three.js-controls/
