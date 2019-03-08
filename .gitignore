@@ -9,9 +9,9 @@ package-lock.json
 .project
 .jshintrc
 
-editor/
-io/
-p/
-three-ui/
-three.js/
-three.js-controls/
+editor
+io
+p
+three-ui
+three.js
+three.js-controls
