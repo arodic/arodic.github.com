@@ -5,8 +5,8 @@
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#7254a3",
-  "theme_color": "#7254a3",
+  "background_color": "#83a61e",
+  "theme_color": "#83a61e",
   "icons": [{
     "src": "images/logo/io-32.png",
     "type": "image/png",
