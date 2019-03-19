@@ -115,7 +115,7 @@
           font-size: 0.9em;
         }
       }
-      md-view {}
+      io-md-view {}
 
       .main {
         flex: 1 1 auto;
@@ -137,7 +137,7 @@
         display: flex;
         flex-direction: row;
       }
-      .about > md-view {
+      .about > io-md-view {
         flex: 1 1 auto;
       }
 
@@ -170,10 +170,7 @@
     </style>
     <script type="module">
 
-    import {html, IoElement, IoStorage as $} from "../io/build/io.js";
-    import {IoServiceLoader} from "../io/lib/service-loader.js";
-    import "../io/lib/md-view.js";
-
+    import {html, IoElement, IoStorage as $, IoServiceLoader} from "../io/build/io.js";
 
     export class IoMainPage extends IoElement {
       static get properties() {
@@ -185,24 +182,24 @@
         this.template([
           ['io-selector', {className: 'main', precache: true, selected: $('page', 0, true), elements: [
             ['div', {label: 'About', className: 'about'}, [
-              ['md-view', {path :'./docs/about.md'}],
+              ['io-md-view', {path :'./docs/about.md'}],
             ]],
             ['div', {label: 'Updates', className: 'updates', cache: false}, [
               !this.servce.granted ? ['io-button', {label: 'Subscribe', action: this.servce.requestNotification}] : ['div'],
-              ['md-view', {path :'./docs/updates/new-website.md'}],
+              ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
             ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0), elements: [
-              ['md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-              ['md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
-              ['md-view', {label: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-              ['md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-              ['md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-              ['md-view', {label: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
-              ['md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-              ['md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-              ['md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+              ['io-md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+              ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+              ['io-md-view', {label: 'Dreams of Black', path :'./docs/archive/rome.md'}],
+              ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+              ['io-md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+              ['io-md-view', {label: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+              ['io-md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+              ['io-md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+              ['io-md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
             ]}],
-            ['md-view', {label: 'Elsewhere', path :'./docs/contact.md'}],
+            ['io-md-view', {label: 'Elsewhere', path :'./docs/contact.md'}],
           ]}],
         ]);
       }
