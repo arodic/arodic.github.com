@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.4";
+const version = "0.0.6";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
@@ -45,17 +45,22 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('activate', async (event) => {
   event.waitUntil(self.clients.claim());
   console.log('sw activated');
-  try {
-    const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
-    const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
-    console.log('sw subscribed');
-    clients.matchAll({type: "window"}).then((clientList) => {
-      for (var i = 0; i < clientList.length; i++) {
-        clientList[i].postMessage(JSON.stringify({subscription: subscription}));
-      }
-    });
-  } catch (err) {
-    console.log('Error', err);
+});
+
+self.addEventListener('message', async (event) => {
+  if (event.data.command === 'subscribe') {
+    try {
+      const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
+      const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
+      console.log('sw subscribed');
+      clients.matchAll({type: "window"}).then((clientList) => {
+        for (var i = 0; i < clientList.length; i++) {
+          clientList[i].postMessage(JSON.stringify({subscription: subscription}));
+        }
+      });
+    } catch (err) {
+      console.log('Error', err);
+    }
   }
 });
 
