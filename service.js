@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.10";
+const version = "0.0.11";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
@@ -24,7 +24,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// const hostPattern = /(.+:\/\/)?([^\/]+)(\/.*)*/i;
+const hostPattern = /(.+:\/\/)?([^\/]+)(\/.*)*/i;
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
@@ -33,13 +33,13 @@ self.addEventListener('fetch', (event) => {
       return cache.match(event.request, {ignoreSearch: true});
     })
     .then(response => {
-      // const hostUrl = hostPattern.exec(event.request.url)[2];
-      // const hostRef = hostPattern.exec(event.request.referrer)[2];
+      const hostUrl = hostPattern.exec(event.request.url);
+      const hostRef = hostPattern.exec(event.request.referrer);
 
-      if (!response) {
+      if (!response && (!hostRef || (hostRef[2] === hostUrl[2]))) {
         caches.open(cacheName)
         .then(cache => {
-          cache.addAll([event.request.url]);
+          // cache.addAll([event.request.url]);
         });
       }
       return response || fetch(event.request);
