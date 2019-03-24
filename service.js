@@ -39,7 +39,7 @@ self.addEventListener('fetch', (event) => {
       if (!response && (!hostRef || (hostRef[2] === hostUrl[2]))) {
         caches.open(cacheName)
         .then(cache => {
-          // cache.addAll([event.request.url]);
+          cache.addAll([event.request.url]);
         });
       }
       return response || fetch(event.request);
