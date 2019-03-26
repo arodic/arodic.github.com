@@ -1,6 +1,6 @@
 ### Star Wars 1313
 
-<img style="width:100%;" sizing="cover" src="./images/project/star-wars-1313.jpg" />
+<img style="width:100%;" sizing="cover" src="./images/project/star-wars-1313.webp" />
 
 Star Wars 1313 was a game in development by LucasArts but unfortunately it was shelved after LucasArts was shut down.
 

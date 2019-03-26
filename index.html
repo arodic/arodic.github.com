@@ -58,28 +58,15 @@
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
+    <script async rel="noreferrer" src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-68216254-1');
     </script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
-    <script>
-      if (window.firebase) {
-        firebase.initializeApp({
-          apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
-          authDomain: "akirodic-c3d1d.firebaseapp.com",
-          databaseURL: "https://akirodic-c3d1d.firebaseio.com",
-          projectId: "akirodic-c3d1d",
-          storageBucket: "akirodic-c3d1d.appspot.com",
-          messagingSenderId: "717681979194"
-        });
-      }
-    </script>
+    <script async rel="noreferrer" src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
+    <script async rel="noreferrer" src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
 
     <style>
       html {
@@ -156,10 +143,7 @@
       }
       .archive > io-tabs > io-button,
       .archive > io-tabs > io-button.io-selected {
-        color: var(--io-theme-link-color);
-        border: none;
-        background: none;
-        background-image: none !important;
+        background: rgba(255, 255, 255, 0.5) !important;
       }
       .archive > io-tabs > io-button:hover {
         text-decoration: underline;
@@ -168,8 +152,6 @@
     <script type="module">
 
     import {html, IoElement, IoStorage as $, IoServiceLoader} from "../io/build/io.js";
-
-    const db = window.firebase !== undefined ? window.firebase.firestore() : null;
 
     export class IoMainPage extends IoElement {
       static get properties() {
@@ -184,6 +166,18 @@
         }
       }
       subscriptionChanged() {
+        let db;
+        if (window.firebase !== undefined) {
+          firebase.initializeApp({
+            apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
+            authDomain: "akirodic-c3d1d.firebaseapp.com",
+            databaseURL: "https://akirodic-c3d1d.firebaseio.com",
+            projectId: "akirodic-c3d1d",
+            storageBucket: "akirodic-c3d1d.appspot.com",
+            messagingSenderId: "717681979194"
+          });
+          db = window.firebase.firestore();
+        }
         if (db) {
           var subscribersRef = db.collection("subscriptions").doc("subscribers");
           subscribersRef.update({list: firebase.firestore.FieldValue.arrayUnion(this.subscription)});
@@ -219,6 +213,7 @@
     </script>
   </head>
   <body>
+    <noscript>JavaScript is required to view this page!</noscript>
     <io-main-page></io-main-page>
   </body>
 </html>

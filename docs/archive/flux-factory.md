@@ -1,6 +1,6 @@
 ### Flux Factory
 
-<img style="width:100%;" sizing="cover" src="./images/project/flux-factory.jpg" />
+<img style="width:100%;" sizing="cover" src="./images/project/flux-factory.webp" />
 
 In September 2014 I joined Flux Factory (now <a href="https://helix.re/" target="_blank">Helix</a>) as a front-end software engineer specializing in WebGL and front-end development.
 

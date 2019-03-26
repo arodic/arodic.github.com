@@ -1,6 +1,6 @@
 ### WebGL Jellyfish
 
-<img style="width:100%;" sizing="cover" src="./images/project/webgl-jellyfish.jpg" />
+<img style="width:100%;" sizing="cover" src="./images/project/webgl-jellyfish.webp" />
 
 <a href="http://akirodic.com/p/jellyfish/" target="_blank">Chrysaora</a> (WebGL Jellyfish) was my first WebGL project originally commissioned by Savannah College of Art and Design as a multi-screen video installation in Hong Kong.
 

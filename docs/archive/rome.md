@@ -1,6 +1,6 @@
 ### Three Dreams of Black
 
-<img style="width:100%;" sizing="cover" src="./images/project/rome.jpg" />
+<img style="width:100%;" sizing="cover" src="./images/project/rome.webp" />
 
 <a href="http://www.ro.me/" target="_blank">3 Dreams of Black</a> is the first interactive film I worked on at Google. It uses WebGL 3D graphics in the web browser. You can learn more about the tech <a href="http://www.ro.me/tech/" target="_blank">here</a>.
 
