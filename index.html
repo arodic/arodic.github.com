@@ -166,8 +166,8 @@
         }
       }
       subscriptionChanged() {
-        let db;
-        if (window.firebase !== undefined) {
+        let db = null;
+        if (window.firebase !== undefined && window.firebase.firestore) {
           firebase.initializeApp({
             apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
             authDomain: "akirodic-c3d1d.firebaseapp.com",
