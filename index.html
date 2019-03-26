@@ -58,15 +58,15 @@
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
-    <script async rel="noreferrer" src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-68216254-1');
     </script>
-    <script async rel="noreferrer" src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
-    <script async rel="noreferrer" src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
+    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
 
     <style>
       html {
@@ -151,7 +151,7 @@
     </style>
     <script type="module">
 
-    import {html, IoElement, IoStorage as $, IoServiceLoader} from "../io/build/io.js";
+    import {html, IoElement, IoStorage as $, IoServiceLoader} from "../io/build/io.min.js";
 
     export class IoMainPage extends IoElement {
       static get properties() {
@@ -185,7 +185,7 @@
       }
       changed() {
         this.template([
-          ['io-selector', {className: 'main', precache: true, selected: $('page', 0, true), elements: [
+          ['io-selector', {className: 'main', role: 'main', precache: true, selected: $('page', 0, true), elements: [
             ['div', {label: 'About', className: 'about'}, [
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
