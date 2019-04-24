@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.16";
+const version = "0.0.17";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
@@ -30,7 +30,8 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.open(cacheName)
     .then(cache => {
-      return cache.match(event.request, {ignoreSearch: true});
+      setTimeout(() => { cache.addAll([event.request]) }, 1);
+      return cache.match(event.request, {ignoreSearch: event.request.url.indexOf('?') != -1});
     })
     .then(response => {
       if (response && response.redirected) {
