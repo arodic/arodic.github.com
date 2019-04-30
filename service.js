@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.17";
+const version = "0.0.18";
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
@@ -31,7 +31,10 @@ self.addEventListener('fetch', (event) => {
   const hostUrl = hostPattern.exec(event.request.url);
   const hostRef = hostPattern.exec(event.request.referrer);
 
-  if (!hostRef[2] === hostUrl[2]) return fetch(event.request);
+  if (!hostRef || !hostUrl || hostRef[2] !== hostUrl[2]) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
 
   event.respondWith(
     caches.open(cacheName)
