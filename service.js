@@ -27,20 +27,25 @@ self.addEventListener('install', (event) => {
 const hostPattern = /(.+:\/\/)?([^\/]+)(\/.*)*/i;
 
 self.addEventListener('fetch', (event) => {
+
+  const hostUrl = hostPattern.exec(event.request.url);
+  const hostRef = hostPattern.exec(event.request.referrer);
+
+  if (!hostRef[2] === hostUrl[2]) return fetch(event.request);
+
   event.respondWith(
     caches.open(cacheName)
     .then(cache => {
-      setTimeout(() => { cache.addAll([event.request]) }, 1);
+      setTimeout(() => {
+        cache.addAll([event.request]);
+      });
       return cache.match(event.request, {ignoreSearch: event.request.url.indexOf('?') != -1});
     })
     .then(response => {
       if (response && response.redirected) {
         return fetch(event.request);
       }
-      const hostUrl = hostPattern.exec(event.request.url);
-      const hostRef = hostPattern.exec(event.request.referrer);
-
-      if (!response && (!hostRef || (hostRef[2] === hostUrl[2]))) {
+      if (!response && !hostRef) {
         caches.open(cacheName)
         .then(cache => {
           cache.addAll([event.request.url]);
