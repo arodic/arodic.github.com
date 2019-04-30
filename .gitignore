@@ -1,14 +1,5 @@
 .DS_Store
-npm-debug.log
-node_modules/
-package-lock.json
 .git/
-.idea/
-.vscode/
-.vs/
-.project
-.jshintrc
-
 editor
 io
 p
