@@ -185,7 +185,7 @@
       }
       changed() {
         this.template([
-          ['io-selector', {className: 'main', role: 'main', precache: true, selected: $('page', 0, true), elements: [
+          ['io-tabbed-elements', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
             ['div', {label: 'About', className: 'about'}, [
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
@@ -193,7 +193,7 @@
               !this.service.granted ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : ['div'],
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
-            ['io-selector', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 0), elements: [
+            ['io-tabbed-elements', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish'), elements: [
               ['io-md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
               ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['io-md-view', {label: 'Dreams of Black', path :'./docs/archive/rome.md'}],
