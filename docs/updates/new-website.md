@@ -1,3 +1,5 @@
+<div class="publishdate">Published: 2019/2/16</div>
+
 ### New Website! ###
 
 Last few months I have been busy working on [io](https://github.com/arodic/io). Today, I finally got around to updating my website.
@@ -11,5 +13,3 @@ This is a work in progress, so I apologize for possible hiccups and browser comp
 **For web developers:**
 
 This entire website is a very simple single page application built with [io](https://github.com/arodic/io). The content is authored in markdown and it is precached to ensure fast page transitions. Feel free to check out the [source code](https://github.com/arodic/arodic.github.com) and suggest improvements.
-
-<div class="publishdate">Published: 2019/2/16</div>
