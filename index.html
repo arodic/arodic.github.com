@@ -2,13 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
 
     <title>Aleksandar Aki Rodić</title>
 
-    <meta name="description" content="Aleksandar Aki Rodić is an artist, designer and software engineer.
-    He uses computer graphics and the art of programming to create new experiences on the web." />
+    <meta name="description" content="Aleksandar Aki Rodić is an artist, designer and software engineer. He uses computer graphics and the art of programming to create new experiences on the web." />
     <meta name="keywords" content="portfolio, webgl, visual effects, new media, art, design, engineering, web development" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
 
     <meta itemprop="name" content="Aleksandar Aki Rodić" />
     <meta itemprop="description" content="Aleksandar Aki Rodić is an artist, designer and software engineer." />
@@ -137,13 +136,17 @@
       .archive {
         overflow: visible;
       }
+      .archive io-md-view > h3:first-child {
+        display: none;
+      }
       .archive > io-element-cache  {
         display: contents;
       }
-      .archive > io-tabs {
-        margin-bottom: 0 !important;
+      .archive > io-element-cache > * {
+        border: 1px solid #ccc;
       }
       .archive > io-tabs > io-button.io-selected {
+        border-color: #ccc;
         background: white !important;
       }
       .archive > io-tabs > * {
