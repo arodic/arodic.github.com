@@ -191,7 +191,7 @@
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
             ['div', {label: 'Updates', className: 'updates', cache: false}, [
-              ("serviceWorker" in navigator && !this.service.granted) ?
+              ("serviceWorker" in navigator && "PushManager" in window && !this.service.granted) ?
                   ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
