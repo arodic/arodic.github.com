@@ -93,9 +93,10 @@
         background: #ccc;
       }
       @media screen and (max-width: 540px) {
+        .archive > io-tabs > *,
         .main > io-tabs > * {
           padding: var(--io-theme-padding);
-          font-size: 0.9em;
+          font-size: 0.71em;
         }
       }
       io-md-view {}
@@ -104,7 +105,6 @@
         flex: 1 1 auto;
       }
       .main > io-tabs {
-        /* font-size: 0.8em; */
         margin-top: var(--io-theme-spacing) !important;
       }
       .main > io-element-cache  {
@@ -134,24 +134,20 @@
         text-align: right;
         opacity: 0.5;
       }
-
       .archive {
-        --io-theme-spacing: 8px;
-        --io-theme-padding: 3px;
         overflow: visible;
       }
       .archive > io-element-cache  {
         display: contents;
       }
-      .archive > io-tabs  {
-        margin-right: 0 !important;
+      .archive > io-tabs {
+        margin-bottom: 0 !important;
       }
-      .archive > io-tabs > io-button,
       .archive > io-tabs > io-button.io-selected {
-        background: rgba(255, 255, 255, 0.5) !important;
+        background: white !important;
       }
-      .archive > io-tabs > io-button:hover {
-        text-decoration: underline;
+      .archive > io-tabs > * {
+        border-bottom: none;
       }
     </style>
     <script type="module">
@@ -195,7 +191,8 @@
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
             ['div', {label: 'Updates', className: 'updates', cache: false}, [
-              !this.service.granted ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : ['div'],
+              ("serviceWorker" in navigator && !this.service.granted) ?
+                  ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
             ['io-tabbed-elements', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish'), elements: [
