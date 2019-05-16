@@ -57,13 +57,13 @@
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
     <script async>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-68216254-1');
-    </script> -->
+    </script>
     <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
     <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
 
@@ -190,26 +190,26 @@
       changed() {
         this.template([
           ['io-tabbed-elements', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
-            ['div', {label: 'About', className: 'about'}, [
+            ['div', {name: 'About', className: 'about'}, [
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
-            ['div', {label: 'Updates', className: 'updates', cache: false}, [
+            ['div', {name: 'Updates', className: 'updates', cache: false}, [
               ("serviceWorker" in navigator && "PushManager" in window && !this.service.granted) ?
                   ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
-            ['io-tabbed-elements', {label: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish'), elements: [
-              ['io-md-view', {label: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-              ['io-md-view', {label: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
-              ['io-md-view', {label: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-              ['io-md-view', {label: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-              ['io-md-view', {label: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-              ['io-md-view', {label: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
-              ['io-md-view', {label: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-              ['io-md-view', {label: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-              ['io-md-view', {label: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+            ['io-tabbed-elements', {name: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), elements: [
+              ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+              ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+              ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
+              ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+              ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+              ['io-md-view', {name: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+              ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+              ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+              ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
             ]}],
-            ['io-md-view', {label: 'Elsewhere', path :'./docs/contact.md'}],
+            ['io-md-view', {name: 'Elsewhere', path :'./docs/contact.md'}],
           ]}],
         ]);
       }

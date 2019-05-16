@@ -7,25 +7,15 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = "0.0.20";
+const version = '0.0.21';
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(cacheName).then(cache => {
-      return cache.addAll([
-        '/',
-      ])
-      .then(() => {
-        self.skipWaiting();
-        console.log('sw installed');
-      });
-    })
-  );
+  self.skipWaiting();
+  console.log('sw installed');
 });
 
 const hostPattern = /(.+:\/\/)?([^\/]+)(\/.*)*/i;
-
 self.addEventListener('fetch', (event) => {
 
   const hostUrl = hostPattern.exec(event.request.url);
@@ -65,19 +55,21 @@ self.addEventListener('activate', async (event) => {
 });
 
 self.addEventListener('message', async (event) => {
-  if (event.data.command === 'subscribe') {
-    try {
-      const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
-      const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
-      console.log('sw subscribed');
-      clients.matchAll({type: "window"}).then((clientList) => {
-        for (var i = 0; i < clientList.length; i++) {
-          clientList[i].postMessage(JSON.stringify({subscription: subscription}));
-        }
-      });
-    } catch (err) {
-      console.log('Error', err);
-    }
+  switch (event.data.command) {
+    case "subscribe":
+      try {
+        const applicationServerKey = urlB64ToUint8Array('BPZ6Tyf3h6EvdLkX07j4PyimVrsjIY7-pLHWsp_ls1FRe1-pD3ZJPXl4iSt7B3OarLtQrof3OioPM3yDxqhn-P4');
+        const subscription = await self.registration.pushManager.subscribe({ applicationServerKey, userVisibleOnly: true });
+        console.log('sw subscribed');
+        clients.matchAll({type: "window"}).then((clientList) => {
+          for (var i = 0; i < clientList.length; i++) {
+            clientList[i].postMessage(JSON.stringify({subscription: subscription}));
+          }
+        });
+      } catch (err) {
+        console.log('Error', err);
+      }
+      break;
   }
 });
 
@@ -99,7 +91,7 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const url = 'https://akirodic.com/#page=1';
+  const url = 'https://akirodic.com/#page=Updates';
   event.waitUntil(
     clients.matchAll({type: "window"}).then(function(clientList) {
       for (var i = 0; i < clientList.length; i++) {
