@@ -7,7 +7,7 @@ const urlB64ToUint8Array = base64String => {
   return outputArray;
 }
 
-const version = '0.0.21';
+const version = '0.0.22';
 const cacheName = `arodic-${version}`;
 
 self.addEventListener('install', (event) => {
