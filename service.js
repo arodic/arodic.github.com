@@ -16,38 +16,38 @@ self.addEventListener('install', (event) => {
 });
 
 const hostPattern = /(.+:\/\/)?([^\/]+)(\/.*)*/i;
-self.addEventListener('fetch', (event) => {
-
-  const hostUrl = hostPattern.exec(event.request.url);
-  const hostRef = hostPattern.exec(event.request.referrer);
-
-  if (!hostRef || !hostUrl || hostRef[2] !== hostUrl[2]) {
-    event.respondWith(fetch(event.request));
-    return;
-  }
-
-  event.respondWith(
-    caches.open(cacheName)
-    .then(cache => {
-      setTimeout(() => {
-        cache.addAll([event.request]);
-      });
-      return cache.match(event.request, {ignoreSearch: event.request.url.indexOf('?') != -1});
-    })
-    .then(response => {
-      if (response && response.redirected) {
-        return fetch(event.request);
-      }
-      if (!response && !hostRef) {
-        caches.open(cacheName)
-        .then(cache => {
-          cache.addAll([event.request.url]);
-        });
-      }
-      return response || fetch(event.request);
-    }).catch(console.error)
-  );
-});
+// self.addEventListener('fetch', (event) => {
+//
+//   const hostUrl = hostPattern.exec(event.request.url);
+//   const hostRef = hostPattern.exec(event.request.referrer);
+//
+//   if (!hostRef || !hostUrl || hostRef[2] !== hostUrl[2]) {
+//     event.respondWith(fetch(event.request));
+//     return;
+//   }
+//
+//   event.respondWith(
+//     caches.open(cacheName)
+//     .then(cache => {
+//       setTimeout(() => {
+//         cache.addAll([event.request]);
+//       });
+//       return cache.match(event.request, {ignoreSearch: event.request.url.indexOf('?') != -1});
+//     })
+//     .then(response => {
+//       if (response && response.redirected) {
+//         return fetch(event.request);
+//       }
+//       if (!response && !hostRef) {
+//         caches.open(cacheName)
+//         .then(cache => {
+//           cache.addAll([event.request.url]);
+//         });
+//       }
+//       return response || fetch(event.request);
+//     }).catch(console.error)
+//   );
+// });
 
 self.addEventListener('activate', async (event) => {
   event.waitUntil(self.clients.claim());
