@@ -77,7 +77,7 @@
       body {
         padding: 0;
         margin: 0;
-        color: #4d4d4d;
+        color: #222;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
@@ -85,31 +85,34 @@
         flex-direction: column;
       }
       io-main-page {
-        --io-theme-spacing: 6px;
-        --io-theme-padding: 8px;
+        --io-spacing: 6px;
+        --io-padding: 8px;
         flex: 1 1 auto !important;
         display: flex;
-        background: #ccc;
+        background: #222;
       }
       @media screen and (max-width: 540px) {
         .archive > io-tabs > *,
         .main > io-tabs > * {
-          padding: var(--io-theme-padding);
+          padding: var(--io-padding);
           font-size: 0.71em;
         }
       }
-      io-md-view {}
+      io-md-view {
+        border: var(--io-outset-border);
+        border-color: var(--io-outset-border-color);
+      }
 
       .main {
         flex: 1 1 auto;
       }
       .main > io-tabs {
-        margin-top: var(--io-theme-spacing) !important;
+        margin-top: var(--io-spacing) !important;
       }
       .main > io-element-cache  {
-        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2) 15em) !important;
+        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5) 15em) !important;
         border-width: 0;
-        border-top-width: var(--io-theme-border-width);
+        border-top-width: var(--io-border-width);
         border-radius: 0;
       }
       .main > io-element-cache > * {
@@ -126,7 +129,7 @@
 
       .updates > io-button {
         background: #eee;
-        margin: var(--io-theme-spacing) 0;
+        margin: var(--io-spacing) 0;
       }
       .updates .publishdate {
         font-size: 0.75em;
@@ -143,7 +146,8 @@
         display: contents;
       }
       .archive > io-element-cache > * {
-        border: 1px solid #ccc;
+        border: var(--io-outset-border);
+        border-color: var(--io-outset-border-color);
       }
       .archive > io-tabs > io-button.io-selected {
         border-color: #ccc;
