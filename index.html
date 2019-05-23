@@ -194,14 +194,14 @@
         }
       }
       changed() {
+        const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
         this.template([
           ['io-tabbed-elements', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
             ['div', {name: 'About', className: 'about'}, [
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
             ['div', {name: 'Updates', className: 'updates', cache: false}, [
-              ("serviceWorker" in navigator && "PushManager" in window && !this.service.granted) ?
-                  ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
+              permissionPending ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
             ['io-tabbed-elements', {name: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), elements: [
