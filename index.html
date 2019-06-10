@@ -105,12 +105,21 @@
       io-md-view p {
         line-height: 1.4em !important;
       }
-
       .main {
         flex: 1 1 auto;
       }
-      .main > io-tabs {
-        margin-top: var(--io-spacing) !important;
+      .main io-tabs {
+        margin: var(--io-spacing) !important;
+        font-weight: normal;
+      }
+      .main io-tabs > io-button,
+      .main io-tabs > io-option {
+        border: none !important;
+        background: none !important;
+      }
+      .main > io-tabs > io-button:hover,
+      .main > io-tabs > io-button.io-selected-tab {
+        text-decoration: underline;
       }
       .main > io-element-cache  {
         background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5) 15em) !important;
