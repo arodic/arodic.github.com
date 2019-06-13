@@ -99,11 +99,7 @@
         }
       }
       io-md-view {
-        border: var(--io-outset-border);
-        border-color: var(--io-outset-border-color);
-      }
-      io-md-view p {
-        line-height: 1.4em !important;
+        padding: var(--io-padding) calc(3 * var(--io-padding));
       }
       .main {
         flex: 1 1 auto;
@@ -121,13 +117,13 @@
       .main > io-tabs > io-button.io-selected-tab {
         text-decoration: underline;
       }
-      .main > io-element-cache  {
+      .main > io-selector-tabs  {
         background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5) 15em) !important;
         border-width: 0;
         border-top-width: var(--io-border-width);
         border-radius: 0;
       }
-      .main > io-element-cache > * {
+      .main > io-selector-tabs > * {
         max-width: 50em;
       }
 
@@ -135,12 +131,9 @@
         display: flex;
         flex-direction: row;
       }
-      .about > io-md-view {
-        flex: 1 1 auto;
-      }
 
       .updates > io-button {
-        margin: var(--io-spacing) 0;
+        margin: calc(3 * var(--io-padding)) 0 0 calc(3 * var(--io-padding));
       }
       .updates .publishdate {
         font-size: 0.75em;
@@ -150,15 +143,11 @@
       .archive {
         overflow: visible;
       }
+      .archive > .io-content {
+        border: none;
+      }
       .archive io-md-view > h3:first-child {
         display: none;
-      }
-      .archive > io-element-cache  {
-        display: contents;
-      }
-      .archive > io-element-cache > * {
-        border: var(--io-outset-border);
-        border-color: var(--io-outset-border-color);
       }
       .archive > io-tabs > io-button.io-selected {
         border-color: #ccc;
