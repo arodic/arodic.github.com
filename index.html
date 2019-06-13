@@ -205,7 +205,7 @@
       changed() {
         const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
         this.template([
-          ['io-tabbed-elements', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
+          ['io-selector-tabs', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
             ['div', {name: 'About', className: 'about'}, [
               ['io-md-view', {path :'./docs/about.md'}],
             ]],
@@ -213,7 +213,7 @@
               permissionPending ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
             ]],
-            ['io-tabbed-elements', {name: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), elements: [
+            ['io-selector-sidebar', {name: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), minWidth: 750, elements: [
               ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
               ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
               ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
