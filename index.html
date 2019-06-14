@@ -98,7 +98,7 @@
         }
       }
       io-md-view {
-        padding: 0 var(--io-padding);
+        padding: 0 1em;
       }
       .main {
         flex: 1 1 auto;
@@ -106,6 +106,7 @@
       .main > .io-content {
         border-radius: 0;
         border-width: 1px 0 0 0;
+        padding: 0;
       }
       .main > io-tabs {
         margin: var(--io-border-width);
@@ -116,20 +117,26 @@
         background: none !important;
       }
       .updates > io-button {
-        margin: 0 0 -1.5em calc(1 * var(--io-padding));
+        margin: var(--io-padding);
+        margin-bottom: -1.5em;
       }
       .updates .publishdate {
         font-size: 0.75em;
         text-align: right;
         opacity: 0.5;
+        margin-top: 1.5em;
+        margin-bottom: -3em;
       }
       .archive[overflow] io-md-view > h3:first-child {
         display: none;
       }
+      .archive io-sidebar {
+        --io-color: #fff;
+        padding: 0;
+      }
       .archive:not([overflow]) io-sidebar {
         flex-basis: 8.8em !important;
-        padding: 0;
-        padding-right: var(--io-padding);
+        padding: 0.5em !important;
       }
       .archive[overflow] io-sidebar {
         padding-top: 0;
@@ -137,6 +144,18 @@
       .archive > io-sidebar > io-button {
         padding: 0 var(--io-padding);
       }
+
+      .archive > .io-content {
+        border-radius: 0;
+        border-width: 0 0 0 var(--io-border-width);
+        padding: 0 1em;
+      }
+      .archive[overflow] > .io-content {
+        padding-top: 2em;
+        border-width: var(--io-border-width) 0 0 0;
+      }
+
+
     </style>
     <script type="module">
 
