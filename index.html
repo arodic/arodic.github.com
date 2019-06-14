@@ -77,7 +77,6 @@
       body {
         padding: 0;
         margin: 0;
-        color: #222;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
@@ -87,11 +86,11 @@
       io-main-page {
         --io-spacing: 6px;
         --io-padding: 8px;
-        flex: 1 1 auto !important;
+        flex: 1 1 auto;
         display: flex;
         background: #222;
       }
-      @media screen and (max-width: 540px) {
+      @media screen and (max-width: 500px) {
         .archive > io-tabs > *,
         .main > io-tabs > * {
           padding: var(--io-padding);
@@ -104,56 +103,40 @@
       .main {
         flex: 1 1 auto;
       }
-      .main io-tabs {
-        margin: var(--io-spacing) !important;
-        font-weight: normal;
+      .main > .io-content {
+        border-radius: 0;
+        border-width: 1px 0 0 0;
       }
-      .main io-tabs > io-button,
-      .main io-tabs > io-option {
-        border: none !important;
+      .main > io-tabs {
+        margin: var(--io-spacing);
+      }
+      .main > io-tabs > io-button,
+      .main > io-tabs > io-option {
+        border: none;
         background: none !important;
       }
-      .main > io-tabs > io-button:hover,
-      .main > io-tabs > io-button.io-selected-tab {
-        text-decoration: underline;
-      }
-      .main > io-selector-tabs  {
-        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5) 15em) !important;
-        border-width: 0;
-        border-top-width: var(--io-border-width);
-        border-radius: 0;
-      }
-      .main > io-selector-tabs > * {
-        max-width: 50em;
-      }
-
-      .about {
-        display: flex;
-        flex-direction: row;
-      }
-
       .updates > io-button {
-        margin: 0 0 0 calc(1 * var(--io-padding));
+        margin: 0 0 -1.5em calc(1 * var(--io-padding));
       }
       .updates .publishdate {
         font-size: 0.75em;
         text-align: right;
         opacity: 0.5;
       }
-      .archive {
-        overflow: visible;
-      }
-      .archive > .io-content {
-        border: none;
-      }
-      .archive io-md-view > h3:first-child {
+      .archive[overflow] io-md-view > h3:first-child {
         display: none;
       }
-      .archive io-sidebar {
-        min-width: 7.9em !important;
-      }
-      .archive io-sidebar > io-button {
+      .archive:not([overflow]) io-sidebar {
+        flex-basis: 8.8em !important;
+        flex-shrink: 0;
         padding: 0;
+        padding-right: var(--io-padding);
+      }
+      .archive[overflow] io-sidebar {
+        padding-top: 0;
+      }
+      .archive > io-sidebar > io-button {
+        padding: 0 var(--io-padding);
       }
     </style>
     <script type="module">
