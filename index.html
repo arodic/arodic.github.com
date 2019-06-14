@@ -86,8 +86,9 @@
       io-main-page {
         --io-spacing: 6px;
         --io-padding: 8px;
-        flex: 1 1 auto;
         display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
         background: #222;
       }
       @media screen and (max-width: 500px) {
@@ -108,7 +109,7 @@
         border-width: 1px 0 0 0;
       }
       .main > io-tabs {
-        margin: var(--io-spacing);
+        margin: var(--io-border-width);
       }
       .main > io-tabs > io-button,
       .main > io-tabs > io-option {
@@ -128,7 +129,6 @@
       }
       .archive:not([overflow]) io-sidebar {
         flex-basis: 8.8em !important;
-        flex-shrink: 0;
         padding: 0;
         padding-right: var(--io-padding);
       }
