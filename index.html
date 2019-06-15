@@ -91,9 +91,15 @@
         flex: 1 1 auto;
         background: #222;
       }
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 460px) {
         io-tabs > * {
-          padding: var(--io-padding);
+          --io-padding: 6px;
+          font-size: 0.95em;
+        }
+      }
+      @media screen and (max-width: 410px) {
+        io-tabs > * {
+          --io-padding: 4px;
           font-size: 0.85em;
         }
       }
