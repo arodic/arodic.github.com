@@ -91,23 +91,11 @@
         flex: 1 1 auto;
         background: #222;
       }
-      @media screen and (max-width: 460px) {
-        io-tabs > * {
-          --io-padding: 6px;
-          font-size: 0.95em;
-        }
-      }
-      @media screen and (max-width: 410px) {
-        io-tabs > * {
-          --io-padding: 4px;
-          font-size: 0.85em;
-        }
-      }
-      io-md-view {
-        padding: 0 1em;
-      }
       .main {
         flex: 1 1 auto;
+      }
+      .main io-md-view {
+        padding: 0 1em;
       }
       .main > .io-content {
         border-radius: 0;
@@ -123,8 +111,7 @@
         background: none !important;
       }
       .updates > io-button {
-        margin: var(--io-padding);
-        margin-bottom: -1.5em;
+        margin: 1em 0 0 1em;
       }
       .updates .publishdate {
         font-size: 0.75em;
