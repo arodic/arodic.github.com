@@ -96,6 +96,7 @@
       }
       .main io-md-view {
         padding: 0 1em;
+        max-width: 40em;
       }
       .main > .io-content {
         border-radius: 0;
@@ -120,6 +121,9 @@
         margin-top: 1.5em;
         margin-bottom: -3em;
       }
+      .archive {
+        flex: 1 1 auto;
+      }
       .archive[overflow] io-md-view > h3:first-child {
         display: none;
       }
@@ -139,6 +143,7 @@
       }
 
       .archive > .io-content {
+        flex: 0 1 40em;
         border-radius: 0;
         border-width: 0 0 0 var(--io-border-width);
         padding: 0 1em;
