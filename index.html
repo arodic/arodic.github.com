@@ -77,19 +77,16 @@
       body {
         padding: 0;
         margin: 0;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        background: #222;
       }
       io-main-page {
         --io-spacing: 6px;
         --io-padding: 8px;
+        height: 100%;
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
-        background: #222;
       }
       .main {
         flex: 1 1 auto;
@@ -104,7 +101,10 @@
         padding: 0;
       }
       .main > io-tabs {
-        margin: var(--io-border-width);
+        margin-bottom: var(--io-border-width);
+      }
+      .main > io-tabs > .io-selected-tab {
+        border-bottom: var(--io-border-width) solid var(--io-link-color);
       }
       .main > io-tabs > io-button,
       .main > io-tabs > io-option {
