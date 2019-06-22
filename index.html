@@ -84,20 +84,20 @@
         display: flex;
         flex-direction: column;
       }
-      io-main-page {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 100%;
-        max-height: 100%;
+      io-md-view {
+        padding: 0 1em;
       }
       .main {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 100%;
+        max-height: 100%;
         flex: 1 1 auto;
       }
       .main > .io-content {
         border-radius: 0;
         border-width: var(--io-border-width) 0 0 0;
         padding: 0;
-        flex: 1 1 auto;
       }
       .main > io-tabs {
         margin: var(--io-border-width);
@@ -120,9 +120,6 @@
         opacity: 0.5;
         margin: 1em;
         margin-bottom: -3.2em;
-      }
-      io-md-view {
-        padding: 0 1em;
       }
       .archive {
         flex: 1 1 auto;
@@ -149,19 +146,45 @@
     </style>
     <script type="module">
 
-    import {html, IoElement, IoStorage as $, IoServiceLoader} from "../io/build/io.min.js";
+    import {html, IoSelectorTabs, IoStorage as $, IoServiceLoader} from "../io/build/io.min.js";
 
-    export class IoMainPage extends IoElement {
+    export class IoMainPage extends IoSelectorTabs {
       static get properties() {
         return {
+          precache: true,
+          selected: $('page', 'About', true),
           service: IoServiceLoader,
           subscription: '',
+          role: 'main',
+          class: 'main',
         };
       }
       get compose() {
         return {
           service: {subscription: this.bind('subscription')}
         }
+      }
+      constructor(props) {
+        super(props);
+        this.elements = [
+          ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
+          ['div', {name: 'Updates', class: 'updates', cache: false}, [
+            ['io-button', {label: 'Subscribe', action: this.service.requestNotification}],
+            ['io-md-view', {path :'./docs/updates/new-website.md'}],
+          ]],
+          ['io-selector-sidebar', {name: 'Archive', precache: true, class: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), minWidth: 450, elements: [
+            ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+            ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+            ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
+            ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+            ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+            ['io-md-view', {name: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+            ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+            ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+            ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+          ]}],
+          ['io-md-view', {name: 'Elsewhere', path :'./docs/contact.md'}],
+        ];
       }
       subscriptionChanged() {
         let db = null;
@@ -182,28 +205,8 @@
         }
       }
       changed() {
-        const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
-        this.template([
-          ['io-selector-tabs', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
-            ['io-md-view', {name: 'About', className: 'about', path :'./docs/about.md'}],
-            ['div', {name: 'Updates', className: 'updates', cache: false}, [
-              permissionPending ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
-              ['io-md-view', {path :'./docs/updates/new-website.md'}],
-            ]],
-            ['io-selector-sidebar', {name: 'Archive', precache: true, className: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), minWidth: 450, elements: [
-              ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-              ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
-              ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-              ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-              ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-              ['io-md-view', {name: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
-              ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-              ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-              ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
-            ]}],
-            ['io-md-view', {name: 'Elsewhere', path :'./docs/contact.md'}],
-          ]}],
-        ]);
+        super.changed();
+        // const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
       }
     }
     IoMainPage.Register();
