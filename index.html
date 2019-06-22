@@ -72,54 +72,57 @@
         font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
         letter-spacing: 0.05em;
         font-weight: 300;
+        width: 100%;
         height: 100%;
       }
       body {
         padding: 0;
         margin: 0;
+        width: 100%;
         height: 100%;
         background: #222;
-      }
-      io-main-page {
-        --io-spacing: 6px;
-        --io-padding: 8px;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        flex: 1 1 auto;
+      }
+      io-main-page {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+        max-height: 100%;
       }
       .main {
         flex: 1 1 auto;
       }
-      .main io-md-view {
-        padding: 0 1em;
-        max-width: 40em;
-      }
       .main > .io-content {
         border-radius: 0;
-        border-width: 1px 0 0 0;
+        border-width: var(--io-border-width) 0 0 0;
         padding: 0;
+        flex: 1 1 auto;
       }
       .main > io-tabs {
-        margin-bottom: var(--io-border-width);
+        margin: var(--io-border-width);
+        --io-spacing: 0.5em;
+      }
+      .main > io-tabs > * {
+        border: none;
+        background: none !important;
       }
       .main > io-tabs > .io-selected-tab {
         border-bottom: var(--io-border-width) solid var(--io-link-color);
       }
-      .main > io-tabs > io-button,
-      .main > io-tabs > io-option {
-        border: none;
-        background: none !important;
-      }
       .updates > io-button {
-        margin: 1em 0 0 1em;
+        margin: 1em;
+        padding: 0.5em 1em;
       }
       .updates .publishdate {
         font-size: 0.75em;
         text-align: right;
         opacity: 0.5;
-        margin-top: 1.5em;
-        margin-bottom: -3em;
+        margin: 1em;
+        margin-bottom: -3.2em;
+      }
+      io-md-view {
+        padding: 0 1em;
       }
       .archive {
         flex: 1 1 auto;
@@ -129,31 +132,20 @@
       }
       .archive io-sidebar {
         --io-color: #fff;
-        padding: 0;
+        --io-spacing: 0.25em;
       }
       .archive:not([overflow]) io-sidebar {
-        flex-basis: 8.8em !important;
-        padding: 0.5em !important;
+        flex-basis: 10em !important;
       }
-      .archive[overflow] io-sidebar {
-        padding-top: 0;
-      }
-      .archive > io-sidebar > io-button {
-        padding: 0 var(--io-padding);
-      }
-
       .archive > .io-content {
         flex: 0 1 40em;
         border-radius: 0;
         border-width: 0 0 0 var(--io-border-width);
-        padding: 0 1em;
       }
       .archive[overflow] > .io-content {
         padding-top: 2em;
         border-width: var(--io-border-width) 0 0 0;
       }
-
-
     </style>
     <script type="module">
 
@@ -193,9 +185,7 @@
         const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
         this.template([
           ['io-selector-tabs', {className: 'main', role: 'main', precache: true, selected: $('page', 'About', true), elements: [
-            ['div', {name: 'About', className: 'about'}, [
-              ['io-md-view', {path :'./docs/about.md'}],
-            ]],
+            ['io-md-view', {name: 'About', className: 'about', path :'./docs/about.md'}],
             ['div', {name: 'Updates', className: 'updates', cache: false}, [
               permissionPending ? ['io-button', {label: 'Subscribe', action: this.service.requestNotification}] : null,
               ['io-md-view', {path :'./docs/updates/new-website.md'}],
