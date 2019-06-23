@@ -110,7 +110,11 @@
       .main > io-tabs > .io-selected-tab {
         border-bottom: var(--io-border-width) solid var(--io-link-color);
       }
-      .updates > io-button {
+      .main[permissionPending] io-button[label="Subscribe"] {
+        display: inline-block;
+      }
+      io-button[label="Subscribe"] {
+        display: none;
         margin: 1em;
         padding: 0.5em 1em;
       }
@@ -155,6 +159,10 @@
           selected: $('page', 'About', true),
           service: IoServiceLoader,
           subscription: '',
+          permissionPending: {
+            value: true,
+            reflect: true,
+          },
           role: 'main',
           class: 'main',
         };
@@ -206,7 +214,7 @@
       }
       changed() {
         super.changed();
-        // const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
+        this.permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
       }
     }
     IoMainPage.Register();
