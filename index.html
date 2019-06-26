@@ -57,13 +57,13 @@
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
     <script async>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-68216254-1');
-    </script>
+    </script> -->
     <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
     <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
 
@@ -85,7 +85,7 @@
         flex-direction: column;
       }
       io-md-view {
-        padding: 0 1em;
+        padding: 1em;
       }
       .main {
         display: flex;
@@ -99,20 +99,13 @@
         border-width: var(--io-border-width) 0 0 0;
         padding: 0;
       }
-      .main > io-tabs {
-        margin: var(--io-border-width);
-        --io-spacing: 0.5em;
-      }
-      .main > io-tabs > * {
-        border: none;
-        background: none !important;
-      }
-      .main > io-tabs > .io-selected-tab {
-        border-bottom: var(--io-border-width) solid var(--io-link-color);
-      }
       .updates > io-button {
+        display: none;
         margin: 1em;
         padding: 0.5em 1em;
+      }
+      io-main-page[permissionPending] .updates > io-button {
+        display: inline-block;
       }
       .updates .publishdate {
         font-size: 0.75em;
@@ -129,24 +122,25 @@
       }
       .archive io-sidebar {
         --io-color: #fff;
-        --io-spacing: 0.25em;
       }
       .archive:not([overflow]) io-sidebar {
         flex-basis: 10em !important;
       }
       .archive > .io-content {
-        flex: 0 1 40em;
+        padding: 0;
         border-radius: 0;
         border-width: 0 0 0 var(--io-border-width);
+        flex: 0 1 50em;
       }
       .archive[overflow] > .io-content {
-        padding-top: 2em;
         border-width: var(--io-border-width) 0 0 0;
       }
     </style>
     <script type="module">
 
     import {html, IoSelectorTabs, IoStorage as $, IoServiceLoader} from "../io/build/io.min.js";
+
+    let db = null;
 
     export class IoMainPage extends IoSelectorTabs {
       static get properties() {
@@ -155,13 +149,17 @@
           selected: $('page', 'About', true),
           service: IoServiceLoader,
           subscription: '',
+          permissionPending: {
+            value: true,
+            reflect: true,
+          },
           role: 'main',
           class: 'main',
         };
       }
       get compose() {
         return {
-          service: {subscription: this.bind('subscription')}
+          service: {subscription: this.bind('subscription')},
         }
       }
       constructor(props) {
@@ -187,8 +185,8 @@
         ];
       }
       subscriptionChanged() {
-        let db = null;
-        if (window.firebase !== undefined) {
+        //TODO: see why it triggers twice
+        if (!db && window.firebase !== undefined) {
           firebase.initializeApp({
             apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
             authDomain: "akirodic-c3d1d.firebaseapp.com",
@@ -200,13 +198,18 @@
           db = window.firebase.firestore();
         }
         if (db) {
-          var subscribersRef = db.collection("subscriptions").doc("subscribers");
+          var subscribersRef;
+          if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            subscribersRef = db.collection("subscriptions").doc("local_test_subscribers");
+          } else {
+            subscribersRef = db.collection("subscriptions").doc("subscribers");
+          }
           subscribersRef.update({list: firebase.firestore.FieldValue.arrayUnion(this.subscription)});
         }
       }
       changed() {
         super.changed();
-        // const permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
+        this.permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
       }
     }
     IoMainPage.Register();
