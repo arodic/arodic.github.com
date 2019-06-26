@@ -99,7 +99,16 @@
         border-width: var(--io-border-width) 0 0 0;
         padding: 0;
       }
-      .updates > io-button {
+      .main > io-tabs {
+        background: none !important;
+      }
+      .main > io-tabs > * {
+        background: none !important;
+      }
+      .main[permissionPending] io-button[label="Subscribe"] {
+        display: inline-block;
+      }
+      io-button[label="Subscribe"] {
         display: none;
         margin: 1em;
         padding: 0.5em 1em;
