@@ -94,17 +94,6 @@
         max-height: 100%;
         flex: 1 1 auto;
       }
-      .main > .io-content {
-        border-radius: 0;
-        border-width: var(--io-border-width) 0 0 0;
-        padding: 0;
-      }
-      .main > io-tabs {
-        background: none !important;
-      }
-      .main > io-tabs > * {
-        background: none !important;
-      }
       .main[permissionPending] io-button[label="Subscribe"] {
         display: inline-block;
       }
@@ -123,26 +112,14 @@
         margin: 1em;
         margin-bottom: -3.2em;
       }
-      .archive {
-        flex: 1 1 auto;
-      }
       .archive[overflow] io-md-view > h3:first-child {
         display: none;
-      }
-      .archive io-sidebar {
-        --io-color: #fff;
       }
       .archive:not([overflow]) io-sidebar {
         flex-basis: 10em !important;
       }
       .archive > .io-content {
-        padding: 0;
-        border-radius: 0;
-        border-width: 0 0 0 var(--io-border-width);
         flex: 0 1 50em;
-      }
-      .archive[overflow] > .io-content {
-        border-width: var(--io-border-width) 0 0 0;
       }
     </style>
     <script type="module">
