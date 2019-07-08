@@ -10,5 +10,8 @@
   "bugs": {
     "url": "https://github.com/arodic/arodic.github.com/issues"
   },
-  "homepage": "https://akirodic.com"
+  "homepage": "https://akirodic.com",
+  "dependencies": {
+    "io-gui": "^2.5.0"
+  }
 }
