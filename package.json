@@ -1,0 +1,14 @@
+{
+  "name": "arodic.github.com",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arodic/arodic.github.com.git"
+  },
+  "author": "Aleksandar Rodic",
+  "bugs": {
+    "url": "https://github.com/arodic/arodic.github.com/issues"
+  },
+  "homepage": "https://akirodic.com"
+}
