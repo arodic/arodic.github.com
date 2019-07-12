@@ -1,0 +1,26 @@
+{
+  "name": "arodic.github.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "io-gui": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arodic/arodic.github.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arodic/arodic.github.com/issues"
+  },
+  "homepage": "https://github.com/arodic/arodic.github.com#readme"
+}

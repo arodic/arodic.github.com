@@ -11,27 +11,27 @@
 
     <meta itemprop="name" content="Aleksandar Aki Rodić" />
     <meta itemprop="description" content="Aleksandar Aki Rodić is an artist, designer and software engineer." />
-    <meta itemprop="image" content="./images/logo/io-192.png" />
+    <meta itemprop="image" content="/images/logo/io-192.png" />
 
     <link rel="author" content="Aleksandar Aki Rodić" href="https://github.com/arodic" />
     <link rel="me" content="Aleksandar Aki Rodić" href="http://akirodic.com" />
 
     <link rel="shortcut icon" href="./favicon.ico" />
 
-    <link rel="icon" sizes="32x32" href="./images/logo/io-32.png" />
-    <link rel="icon" sizes="72x72" href="./images/logo/io-72.png" />
-    <link rel="icon" sizes="96x96" href="./images/logo/io-96.png" />
-    <link rel="icon" sizes="128x128" href="./images/logo/io-128.png" />
-    <link rel="icon" sizes="144x144" href="./images/logo/io-144.png" />
-    <link rel="icon" sizes="152x152" href="./images/logo/io-152.png" />
-    <link rel="icon" sizes="192x192" href="./images/logo/io-192.png" />
-    <link rel="icon" sizes="384x384" href="./images/logo/io-384.png" />
-    <link rel="icon" sizes="512x512" href="./images/logo/io-512.png" />
+    <link rel="icon" sizes="32x32" href="/images/logo/io-32.png" />
+    <link rel="icon" sizes="72x72" href="/images/logo/io-72.png" />
+    <link rel="icon" sizes="96x96" href="/images/logo/io-96.png" />
+    <link rel="icon" sizes="128x128" href="/images/logo/io-128.png" />
+    <link rel="icon" sizes="144x144" href="/images/logo/io-144.png" />
+    <link rel="icon" sizes="152x152" href="/images/logo/io-152.png" />
+    <link rel="icon" sizes="192x192" href="/images/logo/io-192.png" />
+    <link rel="icon" sizes="384x384" href="/images/logo/io-384.png" />
+    <link rel="icon" sizes="512x512" href="/images/logo/io-512.png" />
 
     <link rel="manifest" href="./manifest.json" />
 
-    <meta name="theme-color" content="#f6f6f6" />
-    <meta name="msapplication-TileColor" content="#f6f6f6" />
+    <meta name="theme-color" content="#f5f5f5" />
+    <meta name="msapplication-TileColor" content="#f5f5f5" />
 
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Aleksandar Aki Rodić" />
@@ -39,23 +39,25 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Aleksandar Aki Rodić" />
-    <link rel="apple-touch-icon" href="./images/logo/io-152.png" />
+    <link rel="apple-touch-icon" href="/images/logo/io-152.png" />
 
-    <meta name="msapplication-TileImage" content="./images/logo/io-144-precomposed.png" />
+    <meta name="msapplication-TileImage" content="/images/logo/io-144-precomposed.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="arodic" />
     <meta name="twitter:title" content="Aleksandar Aki Rodić" />
     <meta name="twitter:creator" content="arodic" />
     <meta name="twitter:domain" content="akirodic.com" />
-    <meta name="twitter:image" content="./images/logo/io-192.png" />
+    <meta name="twitter:image" content="/images/logo/io-192.png" />
 
     <meta property="og:title" content="Aleksandar Aki Rodić" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./images/logo/io-192.png" />
+    <meta property="og:image" content="/images/logo/io-192.png" />
     <meta property="og:site_name" content="Aleksandar Aki Rodić" />
     <meta property="og:description" content="Aleksandar Aki Rodić" />
     <meta property="og:locale" content="en_US" />
+
+    <link lazyload href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap|Roboto+Mono&display=swap" rel="stylesheet">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68216254-1"></script>
     <script async>
@@ -69,7 +71,9 @@
 
     <style>
       html {
-        font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
+        width: 100%;
+        height: 100%;
         letter-spacing: 0.05em;
         font-weight: 300;
         width: 100%;
@@ -80,11 +84,12 @@
         margin: 0;
         width: 100%;
         height: 100%;
-        background: #f6f6f6;
+        background: #f5f5f5;
         display: flex;
         flex-direction: column;
       }
       io-md-view {
+        display: block; /* TODO: remove */
         padding: 1em;
       }
       .main {
@@ -94,15 +99,12 @@
         max-height: 100%;
         flex: 1 1 auto;
       }
-      .main[permissionPending] io-button[label="Subscribe"] {
-        display: inline-block;
-      }
       io-button[label="Subscribe"] {
         display: none;
         margin: 1em;
         padding: 0.5em 1em;
       }
-      io-main-page[permissionPending] .updates > io-button {
+      io-main-page[permissionPending] io-button[label="Subscribe"] {
         display: inline-block;
       }
       .updates .publishdate {
@@ -115,7 +117,7 @@
       .archive[overflow] io-md-view > h3:first-child {
         display: none;
       }
-      .archive:not([overflow]) io-sidebar {
+      .archive io-sidebar:not([overflow]) {
         flex-basis: 10em !important;
       }
       .archive > .io-content {
@@ -124,12 +126,13 @@
     </style>
     <script type="module">
 
-    import {html, IoSelectorTabs, IoStorage as $, IoServiceLoader} from "./node_modules/io-gui/dist/io.js";
+    import {html, IoSelectorTabs, IoStorage as $} from "./node_modules/io-gui/dist/io.js";
+    import {IoServiceLoader} from "./node_modules/io-gui/dist/io-extras.js";
 
     let db = null;
 
     export class IoMainPage extends IoSelectorTabs {
-      static get properties() {
+      static get Properties() {
         return {
           precache: true,
           selected: $('page', 'About', true),
