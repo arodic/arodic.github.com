@@ -102,7 +102,6 @@
       io-button[label="Subscribe"] {
         display: none;
         margin: 1em;
-        padding: 0.5em 1em;
       }
       io-main-page[permissionPending] io-button[label="Subscribe"] {
         display: inline-block;
@@ -127,10 +126,8 @@
     </style>
     <script type="module">
 
-    import {html, IoStorage as $} from "./node_modules/io-gui/dist/io.js";
-    import {IoSelectorTabs} from "./node_modules/io-gui/dist/io-elements-layout.js";
-    import {IoServiceLoader} from "./node_modules/io-gui/dist/io-elements-extras.js";
-    import "./node_modules/io-gui/dist/io-elements-menu.js";
+    import {IoStorageFactory as $, IoSelectorTabs} from "./node_modules/io-gui/build/io-core.js";
+    import {IoServiceLoader} from "./node_modules/io-gui/build/io-extras.js";
 
     let db = null;
 
@@ -138,7 +135,7 @@
       static get Properties() {
         return {
           precache: true,
-          selected: $('page', 'About', true),
+          selected: $({key: 'page', value: 'About', storage: 'hash'}),
           service: IoServiceLoader,
           subscription: '',
           permissionPending: {
@@ -156,23 +153,37 @@
       }
       constructor(props) {
         super(props);
+        this.options = ['About', 'Updates', 'Archive', 'Elsewhere'];
         this.elements = [
           ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
           ['div', {name: 'Updates', class: 'updates', cache: false}, [
             ['io-button', {label: 'Subscribe', action: this.service.requestNotification}],
             ['io-md-view', {path :'./docs/updates/new-website.md'}],
           ]],
-          ['io-selector-sidebar', {name: 'Archive', precache: true, class: 'archive', vertical: true, selected: $('project', 'WebGL Jellyfish', true), minWidth: 450, elements: [
-            ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-            ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
-            ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-            ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-            ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-            ['io-md-view', {name: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
-            ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-            ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-            ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
-          ]}],
+          ['io-selector-sidebar', {name: 'Archive', precache: true, class: 'archive', vertical: true, selected: $({key: 'project', value: 'WebGL Jellyfish', storage: 'hash'}), minWidth: 450,
+            options: [
+              'WebGL Jellyfish',
+              'Cardboard VR',
+              'Dreams of Black',
+              'Daily Routines',
+              'Flux Factory',
+              'Google Zeitgeist',
+              'Just Reflector',
+              'Star Wars 1313',
+              'TED Installation'
+            ],
+            elements: [
+              ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
+              ['io-md-view', {name: 'Cardboard VR', path :'./docs/archive/cardboard-launch.md'}],
+              ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
+              ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
+              ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
+              ['io-md-view', {name: 'Google Zeitgeist', path :'./docs/archive/google-zeitgeist-2013.md'}],
+              ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
+              ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
+              ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+            ]
+          }],
           ['io-md-view', {name: 'Elsewhere', path :'./docs/contact.md'}],
         ];
       }

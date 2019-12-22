@@ -1,17 +1,13 @@
 {
   "name": "arodic.github.com",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "",
   "main": "service.js",
   "directories": {
     "doc": "docs"
   },
   "dependencies": {
-    "io-gui": "^1.0.6"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "io-gui": "^1.0.10"
   },
   "repository": {
     "type": "git",
