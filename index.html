@@ -69,6 +69,9 @@
       gtag('config', 'UA-148217203-1');
     </script>
 
+    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
+    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+
     <style>
       html {
         font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
@@ -95,6 +98,10 @@
         max-height: 100%;
         flex: 1 1 auto;
       }
+      io-button[label="Subscribe"] {
+        display: none;
+        margin: 1em;
+      }
       .updates .publishdate {
         font-size: 0.75em;
         text-align: right;
@@ -116,6 +123,7 @@
     <script type="module">
 
     import {IoStorageFactory as $, IoSelectorTabs} from "./node_modules/io-gui/build/io-core.js";
+    import {IoServiceLoader} from "./node_modules/io-gui/build/io-extras.js";
 
     let db = null;
 
