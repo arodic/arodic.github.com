@@ -69,9 +69,6 @@
       gtag('config', 'UA-148217203-1');
     </script>
 
-    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
-    <script async src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
-
     <style>
       html {
         font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
@@ -98,13 +95,6 @@
         max-height: 100%;
         flex: 1 1 auto;
       }
-      io-button[label="Subscribe"] {
-        display: none;
-        margin: 1em;
-      }
-      io-main-page[permissionPending] io-button[label="Subscribe"] {
-        display: inline-block;
-      }
       .updates .publishdate {
         font-size: 0.75em;
         text-align: right;
@@ -126,7 +116,6 @@
     <script type="module">
 
     import {IoStorageFactory as $, IoSelectorTabs} from "./node_modules/io-gui/build/io-core.js";
-    import {IoServiceLoader} from "./node_modules/io-gui/build/io-extras.js";
 
     let db = null;
 
@@ -135,20 +124,9 @@
         return {
           precache: true,
           selected: $({key: 'page', value: 'About', storage: 'hash'}),
-          service: IoServiceLoader,
-          subscription: '',
-          permissionPending: {
-            value: true,
-            reflect: 1,
-          },
           role: 'main',
           class: 'main',
         };
-      }
-      get compose() {
-        return {
-          service: {subscription: this.bind('subscription')},
-        }
       }
       constructor(props) {
         super(props);
@@ -156,7 +134,6 @@
         this.elements = [
           ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
           ['div', {name: 'Updates', class: 'updates', cache: false}, [
-            ['io-button', {label: 'Subscribe', action: this.service.requestNotification}],
             ['io-md-view', {path :'./docs/updates/new-website.md'}],
           ]],
           ['io-selector-sidebar', {name: 'Archive', precache: true, class: 'archive', vertical: true, selected: $({key: 'project', value: 'WebGL Jellyfish', storage: 'hash'}), minWidth: 450,
@@ -185,33 +162,6 @@
           }],
           ['io-md-view', {name: 'Elsewhere', path :'./docs/contact.md'}],
         ];
-      }
-      subscriptionChanged() {
-        //TODO: see why it triggers twice
-        if (!db && window.firebase !== undefined) {
-          firebase.initializeApp({
-            apiKey: "AIzaSyAuvhV5js7UQm95TvZECdlQxe9GQgpBMLQ",
-            authDomain: "akirodic-c3d1d.firebaseapp.com",
-            databaseURL: "https://akirodic-c3d1d.firebaseio.com",
-            projectId: "akirodic-c3d1d",
-            storageBucket: "akirodic-c3d1d.appspot.com",
-            messagingSenderId: "717681979194"
-          });
-          db = window.firebase.firestore();
-        }
-        if (db) {
-          var subscribersRef;
-          if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            subscribersRef = db.collection("subscriptions").doc("local_test_subscribers");
-          } else {
-            subscribersRef = db.collection("subscriptions").doc("subscribers");
-          }
-          subscribersRef.update({list: firebase.firestore.FieldValue.arrayUnion(this.subscription)});
-        }
-      }
-      changed() {
-        super.changed();
-        this.permissionPending = "serviceWorker" in navigator && "PushManager" in window && this.service.permission === 'default';
       }
     }
     IoMainPage.Register();
