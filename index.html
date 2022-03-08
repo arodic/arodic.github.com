@@ -135,10 +135,10 @@
       }
       constructor(props) {
         super(props);
-        this.options = ['About', 'Archive', 'Contact'];
+        this.options = ['About', 'Projects', 'Contact'];
         this.elements = [
           ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
-          ['io-selector-sidebar', {name: 'Archive', precache: true, class: 'archive', vertical: true, selected: $({key: 'project', value: 'WebGL Jellyfish', storage: 'hash'}), minWidth: 450,
+          ['io-selector-sidebar', {name: 'Projects', precache: true, class: 'archive', vertical: true, selected: $({key: 'project', value: 'WebGL Jellyfish', storage: 'hash'}), minWidth: 450,
             options: [
               'WebGL Jellyfish',
               'Dreams of Black',
