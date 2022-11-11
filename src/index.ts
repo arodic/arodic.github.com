@@ -1,5 +1,5 @@
 export * from 'io-gui';
-import { IoStorage as $, IoSelectorTabs, RegisterIoElement, Property, Options, Item, Path } from 'io-gui';
+import { IoStorage as $, IoSelectorTabs, RegisterIoElement, Property, Options, Item, Path, IoThemeSingleton } from 'io-gui';
 
 const OPTIONS = new Options([
   new Item('About'),
@@ -16,6 +16,8 @@ const OPTIONS = new Options([
 ], {
   path: new Path({string: $({key: 'page', storage: 'hash', value: 'About'})}),
 });
+
+IoThemeSingleton.theme = 'dark';
 
 @RegisterIoElement
 export class IoMainPage extends IoSelectorTabs {
