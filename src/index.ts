@@ -1,5 +1,4 @@
-export * from 'io-gui';
-import { IoStorage as $, IoSelectorTabs, RegisterIoElement, Property, Options, Item, Path, IoThemeSingleton } from 'io-gui';
+import { IoStorage as $, IoSelectorTabs, RegisterIoElement, Property, Options, Item, Path, IoThemeSingleton } from '../lib/iogui.js';
 
 const OPTIONS = new Options([
   new Item('About'),

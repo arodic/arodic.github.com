@@ -2,7 +2,9 @@ import path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 
-const externals = [];
+const externals = [
+  '../lib/iogui.js',
+];
 
 function makeBundleTarget(src, target) {
   const _externals = [...externals];
@@ -16,7 +18,7 @@ function makeBundleTarget(src, target) {
         keep_fnames: true,
       })
     ],
-    treeshake: false,
+    treeshake: true,
     inlineDynamicImports: true,
     output: [{
       format: 'es',
