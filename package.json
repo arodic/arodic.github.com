@@ -1,22 +1,47 @@
 {
   "name": "arodic.github.com",
-  "version": "1.0.10",
-  "description": "",
-  "main": "service.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "dependencies": {
-    "io-gui": "^1.0.10"
+  "version": "1.0.11",
+  "description": "Personal Website of Aki Rodic",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "typings": "build/index.d.ts",
+  "type": "module",
+  "files": [
+    "/src/",
+    "/build/",
+    "/docs/",
+    "/CNAME",
+    "/robots.txt",
+    "/manifest.json",
+    "/index.html"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf build && rm -rf bundle",
+    "lint": "eslint src --fix",
+    "docs": "typedoc",
+    "build": "yarn clean && yarn lint && tsc && rollup -c && rm -rf build && mv bundle build",
+    "dev": "yarn clean && yarn lint && tsc -w"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arodic/arodic.github.com.git"
   },
-  "author": "",
+  "author": "Aki Rodic",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/arodic/arodic.github.com/issues"
   },
-  "homepage": "https://github.com/arodic/arodic.github.com#readme"
+  "homepage": "https://akirodic.com",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.34.0",
+    "@typescript-eslint/parser": "^5.34.0",
+    "io-gui": "1.3.4",
+    "eslint": "^8.22.0",
+    "rollup": "^2.78.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  }
 }

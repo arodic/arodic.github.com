@@ -15,6 +15,8 @@
     <link rel="author" content="Aleksandar Aki Rodić" href="https://github.com/arodic" />
     <link rel="me" content="Aleksandar Aki Rodić" href="http://akirodic.com" />
 
+    <link rel="me" href="https://mastodon.gamedev.place/@aki" />
+
     <!-- Web application enable -->
     <link rel="manifest" href="./manifest.json" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -69,7 +71,18 @@
       gtag('config', 'UA-148217203-1');
     </script>
 
-    <style>
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "io-gui": "./node_modules/io-gui/build/iogui.js"
+        }
+      }
+    </script>
+
+<style>
       html {
         font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
         width: 100%;
@@ -84,86 +97,8 @@
         display: flex;
         flex-direction: column;
       }
-      io-md-view {
-        display: block; /* TODO: remove */
-        padding: 1em !important;
-      }
-      .main {
-        display: flex;
-        flex-direction: column;
-        flex: 0 0 100%;
-        max-height: 100%;
-        flex: 1 1 auto;
-      }
-      io-button[label="Subscribe"] {
-        display: none;
-        margin: 1em;
-      }
-      .updates .publishdate {
-        font-size: 0.75em;
-        text-align: right;
-        opacity: 0.5;
-        margin: 0.5em;
-        margin-bottom: -2.3em;
-      }
-      .archive[overflow] io-md-view > h3:first-child {
-        display: none;
-      }
-      .archive io-sidebar > io-button {
-        text-align: left;
-        align-self: stretch;
-      }
-      .archive > .io-content {
-        flex: 0 1 50em;
-      }
     </style>
-    <script type="module">
-
-    import {IoStorageFactory as $, IoSelectorTabs} from "./node_modules/io-gui/build/io-core.js";
-    import {IoServiceLoader} from "./node_modules/io-gui/build/io-extras.js";
-
-    localStorage.setItem('io-storage-user-permitted', true);
-
-    export class IoMainPage extends IoSelectorTabs {
-      static get Properties() {
-        return {
-          precache: true,
-          selected: $({key: 'page', value: 'About', storage: 'hash'}),
-          role: 'main',
-          class: 'main',
-        };
-      }
-      constructor(props) {
-        super(props);
-        this.options = ['About', 'Projects', 'Contact'];
-        this.elements = [
-          ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
-          ['io-selector-sidebar', {name: 'Projects', precache: true, class: 'archive', vertical: true, selected: $({key: 'project', value: 'WebGL Jellyfish', storage: 'hash'}), minWidth: 450,
-            options: [
-              'WebGL Jellyfish',
-              'Dreams of Black',
-              'Daily Routines',
-              'Flux Factory',
-              'Just Reflector',
-              'Star Wars 1313',
-              'TED Installation'
-            ],
-            elements: [
-              ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-              ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-              ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-              ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-              ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-              ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-              ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
-            ]
-          }],
-          ['io-md-view', {name: 'Contact', path :'./docs/contact.md'}],
-        ];
-      }
-    }
-    IoMainPage.Register();
-    </script>
+    <script type="module" src="./build/index.js"></script>
   </head>
   <body>
     <noscript>JavaScript is required to view this page!</noscript>
