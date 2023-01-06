@@ -1,9 +1,9 @@
 export * from 'io-gui';
-import { IoStorage as $, IoSelectorTabs, RegisterIoElement, Property, Options, Item, Path } from 'io-gui';
+import { IoStorage as $, IoNavigator, RegisterIoElement, Property, MenuOptions } from 'io-gui';
 
-const OPTIONS = new Options([
-  new Item('About'),
-  new Item({value: 'Projects', options: new Options([
+const OPTIONS = new MenuOptions([
+  'About',
+  {value: 'Projects', options: [
     'WebGL Jellyfish',
     'Dreams of Black',
     'Daily Routines',
@@ -11,22 +11,22 @@ const OPTIONS = new Options([
     'Just Reflector',
     'Star Wars 1313',
     'TED Installation'
-  ])}),
-  new Item('Contact')
+  ]},
+  'Contact'
 ], {
-  path: new Path({string: $({key: 'page', storage: 'hash', value: 'About'})}),
-});
+  path: $({key: 'path', storage: 'hash', value: 'About'}),
+} as any);
 
 @RegisterIoElement
-export class IoMainPage extends IoSelectorTabs {
+export class IoMainPage extends IoNavigator {
 
-  @Property(true)
-  declare precache: boolean;
+  // @Property(true)
+  // declare precache: boolean;
 
   @Property({value: OPTIONS})
-  declare options: string;
+  declare options: MenuOptions;
 
-  @Property(OPTIONS.path.bind('root'))
+  @Property(OPTIONS.bind('first'))
   declare selected: string;
 
   @Property('main')
@@ -37,25 +37,27 @@ export class IoMainPage extends IoSelectorTabs {
 
   init() {
     this.elements = [
-    ['io-md-view', {name: 'About', class: 'about', path :'./docs/about.md'}],
-    ['io-selector-sidebar', {
-      name: 'Projects',
-      precache: true,
+    ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
+    ['io-navigator', {
+      id: 'Projects',
+
+      // precache: true,
+
+      menu: 'left',
       class: 'projects',
       vertical: true,
-      selected: OPTIONS.option('Projects').path.bind('leaf'),
-      options: OPTIONS.option('Projects').options,
+      options: OPTIONS.getItem('Projects').options,
       elements: [
-        ['io-md-view', {name: 'WebGL Jellyfish', path :'./docs/archive/webgl-jellyfish.md'}],
-        ['io-md-view', {name: 'Dreams of Black', path :'./docs/archive/rome.md'}],
-        ['io-md-view', {name: 'Daily Routines', path :'./docs/archive/daily-routines.md'}],
-        ['io-md-view', {name: 'Flux Factory', path :'./docs/archive/flux-factory.md'}],
-        ['io-md-view', {name: 'Just Reflector', path :'./docs/archive/just-a-reflector.md'}],
-        ['io-md-view', {name: 'Star Wars 1313', path :'./docs/archive/star-wars-1313.md'}],
-        ['io-md-view', {name: 'TED Installation', path :'./docs/archive/unnumbered-sparks.md'}],
+        ['io-md-view', {id: 'WebGL Jellyfish', src :'./docs/archive/webgl-jellyfish.md'}],
+        ['io-md-view', {id: 'Dreams of Black', src :'./docs/archive/rome.md'}],
+        ['io-md-view', {id: 'Daily Routines', src :'./docs/archive/daily-routines.md'}],
+        ['io-md-view', {id: 'Flux Factory', src :'./docs/archive/flux-factory.md'}],
+        ['io-md-view', {id: 'Just Reflector', src :'./docs/archive/just-a-reflector.md'}],
+        ['io-md-view', {id: 'Star Wars 1313', src :'./docs/archive/star-wars-1313.md'}],
+        ['io-md-view', {id: 'TED Installation', src :'./docs/archive/unnumbered-sparks.md'}],
       ]
     }],
-    ['io-md-view', {name: 'Contact', path :'./docs/contact.md'}],
+    ['io-md-view', {id: 'Contact', src :'./docs/contact.md'}],
     ];
   }
 }

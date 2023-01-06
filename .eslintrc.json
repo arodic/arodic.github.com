@@ -43,6 +43,7 @@
     }]
   },
   "plugins": [
+    "html",
     "@typescript-eslint"
   ],
   "env": {

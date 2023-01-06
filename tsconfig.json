@@ -35,23 +35,5 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": true
   },
-  "typedocOptions": {
-    "hideBreadcrumbs": true,
-    "hideInPageTOC": true,
-    "hideGenerator": true,
-    "hideMembersSymbol": true,
-    "excludePrivate": true,
-    "excludeProtected": true,
-    "excludeInternal": true,
-    "excludeExternals": true,
-    "cleanOutputDir": true,
-    "githubPages": false,
-    "readme": "none",
-    "gitRevision": "main",
-    "entryPoints": [
-      "src/iogui.ts"
-    ],
-    "out": "docs/tsdoc"
-  },
   "include": ["./src"]
 }

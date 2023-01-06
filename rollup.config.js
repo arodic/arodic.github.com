@@ -2,11 +2,12 @@ import path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 
-const externals = [];
+function makeBundleTarget(src, target, externals = [], debug) {
 
-function makeBundleTarget(src, target) {
-  const _externals = [...externals];
-  externals.push(path.resolve(src));
+  externals.forEach(function(part, index) {
+    externals[index] = path.resolve(externals[index]);
+  });
+
   return {
     input: src,
     plugins: [
@@ -16,14 +17,14 @@ function makeBundleTarget(src, target) {
         keep_fnames: true,
       })
     ],
-    treeshake: false,
-    inlineDynamicImports: true,
+    treeshake: true,
     output: [{
+      inlineDynamicImports: true,
       format: 'es',
       file: target,
       indent: '  '
     }],
-    external: _externals,
+    external: externals,
     onwarn: (warning, warn) => {
       if (warning.code === 'THIS_IS_UNDEFINED') return;
       warn(warning);
