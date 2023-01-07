@@ -20,6 +20,14 @@ const OPTIONS = new MenuOptions([
 @RegisterIoElement
 export class IoMainPage extends IoNavigator {
 
+  static get Style() {
+    return /* css */`
+      :host io-md-view h1 {
+        border-bottom: none;
+      }
+    `;
+  }
+
   @Property(true)
   declare cache: boolean;
 
@@ -40,25 +48,25 @@ export class IoMainPage extends IoNavigator {
 
   init() {
     this.elements = [
-    ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
-    ['io-navigator', {
-      id: 'Projects',
-      cache: true,
-      precache: true,
-      menu: 'left',
-      class: 'projects',
-      options: OPTIONS.getItem('Projects').options,
-      elements: [
-        ['io-md-view', {id: 'WebGL Jellyfish', src :'./docs/archive/webgl-jellyfish.md'}],
-        ['io-md-view', {id: 'Dreams of Black', src :'./docs/archive/rome.md'}],
-        ['io-md-view', {id: 'Daily Routines', src :'./docs/archive/daily-routines.md'}],
-        ['io-md-view', {id: 'Flux Factory', src :'./docs/archive/flux-factory.md'}],
-        ['io-md-view', {id: 'Just Reflector', src :'./docs/archive/just-a-reflector.md'}],
-        ['io-md-view', {id: 'Star Wars 1313', src :'./docs/archive/star-wars-1313.md'}],
-        ['io-md-view', {id: 'TED Installation', src :'./docs/archive/unnumbered-sparks.md'}],
-      ]
-    }],
-    ['io-md-view', {id: 'Contact', src :'./docs/contact.md'}],
+      ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
+      ['io-navigator', {
+        id: 'Projects',
+        cache: true,
+        precache: true,
+        menu: 'left',
+        class: 'projects',
+        options: OPTIONS.getItem('Projects').options,
+        elements: [
+          ['io-md-view', {id: 'WebGL Jellyfish', src:'./docs/archive/webgl-jellyfish.md', sanitize: false}],
+          ['io-md-view', {id: 'Dreams of Black', src:'./docs/archive/rome.md', sanitize: false}],
+          ['io-md-view', {id: 'Daily Routines', src:'./docs/archive/daily-routines.md'}],
+          ['io-md-view', {id: 'Flux Factory', src:'./docs/archive/flux-factory.md'}],
+          ['io-md-view', {id: 'Just Reflector', src:'./docs/archive/just-a-reflector.md', sanitize: false}],
+          ['io-md-view', {id: 'Star Wars 1313', src:'./docs/archive/star-wars-1313.md', sanitize: false}],
+          ['io-md-view', {id: 'TED Installation', src:'./docs/archive/unnumbered-sparks.md', sanitize: false}],
+        ]
+      }],
+      ['io-md-view', {id: 'Contact', src:'./docs/contact.md'}],
     ];
   }
 }
