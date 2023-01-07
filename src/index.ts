@@ -20,8 +20,11 @@ const OPTIONS = new MenuOptions([
 @RegisterIoElement
 export class IoMainPage extends IoNavigator {
 
-  // @Property(true)
-  // declare precache: boolean;
+  @Property(true)
+  declare cache: boolean;
+
+  @Property(true)
+  declare precache: boolean;
 
   @Property({value: OPTIONS})
   declare options: MenuOptions;
@@ -40,12 +43,10 @@ export class IoMainPage extends IoNavigator {
     ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
     ['io-navigator', {
       id: 'Projects',
-
-      // precache: true,
-
+      cache: true,
+      precache: true,
       menu: 'left',
       class: 'projects',
-      vertical: true,
       options: OPTIONS.getItem('Projects').options,
       elements: [
         ['io-md-view', {id: 'WebGL Jellyfish', src :'./docs/archive/webgl-jellyfish.md'}],
