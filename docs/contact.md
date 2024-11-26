@@ -1,10 +1,10 @@
-# Get in touch:
+## Get in touch:
 
 <a href="https://github.com/arodic/" rel="me" target="_blank">GitHub</a>
 
 <a href="https://mastodon.gamedev.place/@aki" target="_blank">Mastodon</a>
 
-<a href="https://twitter.com/akirodic/" rel="me" target="_blank">Twitter</a>
+<a href="https://bsky.app/profile/akirodic.com" rel="me" target="_blank">Bluesky</a>
 
 <a href="https://vimeo.com/user1857580/" rel="me" target="_blank">Vimeo</a>
 

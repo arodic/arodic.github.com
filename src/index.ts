@@ -1,9 +1,12 @@
 export * from 'io-gui';
-import { IoStorage as $, IoNavigator, RegisterIoElement, Property, MenuOptions } from 'io-gui';
+import { IoStorage as $, IoElement, Register, MenuOptions } from 'io-gui';
 
-const OPTIONS = new MenuOptions([
-  'About',
-  {value: 'Projects', options: [
+type MenuItem = string;
+type SubMenu = { value: string; options: string[] };
+
+const PROJECTS: SubMenu = {
+  value: 'Projects',
+  options: [
     'WebGL Jellyfish',
     'Dreams of Black',
     'Daily Routines',
@@ -11,62 +14,60 @@ const OPTIONS = new MenuOptions([
     'Just Reflector',
     'Star Wars 1313',
     'TED Installation'
-  ]},
+  ]
+};
+
+const MENU_STRUCTURE: (MenuItem | SubMenu)[] = [
+  'About',
+  PROJECTS,
   'Contact'
-], {
-  path: $({key: 'path', storage: 'hash', value: 'About'}),
+];
+
+const OPTIONS = new MenuOptions(MENU_STRUCTURE, {
+  path: $({key: 'path', storage: 'hash', value: 'About'})
 } as any);
 
-@RegisterIoElement
-export class IoMainPage extends IoNavigator {
+@Register
+export class IoMainPage extends IoElement {
 
   static get Style() {
     return /* css */`
-      :host io-md-view h1 {
-        border-bottom: none;
+      :host {
+        display: flex;
+        flex: 1 1 auto;
       }
     `;
   }
 
-  @Property(true)
-  declare cache: boolean;
-
-  @Property(true)
-  declare precache: boolean;
-
-  @Property({value: OPTIONS})
-  declare options: MenuOptions;
-
-  @Property(OPTIONS.bind('first'))
-  declare selected: string;
-
-  @Property('main')
-  declare role: string;
-
-  @Property('main')
-  declare class: string;
-
   init() {
-    this.elements = [
-      ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
-      ['io-navigator', {
-        id: 'Projects',
+    this.template([
+      ['io-navigator-selector', {
         cache: true,
         precache: true,
-        menu: 'left',
-        class: 'projects',
-        options: OPTIONS.getItem('Projects').options,
+        menu: 'top',
+        options: OPTIONS,
+        depth: 0,
         elements: [
-          ['io-md-view', {id: 'WebGL Jellyfish', src:'./docs/archive/webgl-jellyfish.md', sanitize: false}],
-          ['io-md-view', {id: 'Dreams of Black', src:'./docs/archive/rome.md', sanitize: false}],
-          ['io-md-view', {id: 'Daily Routines', src:'./docs/archive/daily-routines.md'}],
-          ['io-md-view', {id: 'Flux Factory', src:'./docs/archive/flux-factory.md'}],
-          ['io-md-view', {id: 'Just Reflector', src:'./docs/archive/just-a-reflector.md', sanitize: false}],
-          ['io-md-view', {id: 'Star Wars 1313', src:'./docs/archive/star-wars-1313.md', sanitize: false}],
-          ['io-md-view', {id: 'TED Installation', src:'./docs/archive/unnumbered-sparks.md', sanitize: false}],
+          ['io-md-view', {id: 'About', class: 'about', src :'./docs/about.md'}],
+          ['io-navigator-selector', {
+            id: 'Projects',
+            cache: true,
+            precache: true,
+            options: OPTIONS.getItem('Projects').options,
+            class: 'projects',
+            elements: [
+              ['io-md-view', {id: 'WebGL Jellyfish', src:'./docs/archive/webgl-jellyfish.md', sanitize: false}],
+              ['io-md-view', {id: 'Dreams of Black', src:'./docs/archive/rome.md', sanitize: false}],
+              ['io-md-view', {id: 'Daily Routines', src:'./docs/archive/daily-routines.md', sanitize: false}],
+              ['io-md-view', {id: 'Flux Factory', src:'./docs/archive/flux-factory.md', sanitize: false}],
+              ['io-md-view', {id: 'Just Reflector', src:'./docs/archive/just-a-reflector.md', sanitize: false}],
+              ['io-md-view', {id: 'Star Wars 1313', src:'./docs/archive/star-wars-1313.md', sanitize: false}],
+              ['io-md-view', {id: 'TED Installation', src:'./docs/archive/unnumbered-sparks.md', sanitize: false}],
+            ]
+          }],
+          ['io-md-view', {id: 'Contact', src:'./docs/contact.md'}],
         ]
       }],
-      ['io-md-view', {id: 'Contact', src:'./docs/contact.md'}],
-    ];
+    ]);
   }
 }
