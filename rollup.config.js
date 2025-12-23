@@ -1,30 +1,29 @@
 import path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import terser from "@rollup/plugin-terser";
+import terser from '@rollup/plugin-terser';
 
-function makeBundleTarget(src, target, externals = [], debug) {
-
-  externals.forEach(function(part, index) {
-    externals[index] = path.resolve(externals[index]);
-  });
-
+function makeBundleTarget(src, target) {
   return {
     input: src,
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        moduleDirectories: ['node_modules', 'packages'],
+      }),
       terser({
         keep_classnames: true,
         keep_fnames: true,
+        compress: {
+          keep_infinity: true,
+        }
       })
     ],
-    treeshake: true,
+    // treeshake: true,
     output: [{
       inlineDynamicImports: true,
       format: 'es',
       file: target,
       indent: '  '
     }],
-    external: externals,
     onwarn: (warning, warn) => {
       if (warning.code === 'THIS_IS_UNDEFINED') return;
       warn(warning);
