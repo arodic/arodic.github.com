@@ -74,7 +74,19 @@
     <script type="importmap">
       {
         "imports": {
-          "io-gui": "./lib/io-gui/index.js"
+          "@io-gui/core": "./packages/core/dist/index.js",
+          "@io-gui/colors": "./packages/colors/dist/index.js",
+          "@io-gui/editors": "./packages/editors/dist/index.js",
+          "@io-gui/icons": "./packages/icons/dist/index.js",
+          "@io-gui/inputs": "./packages/inputs/dist/index.js",
+          "@io-gui/layout": "./packages/layout/dist/index.js",
+          "@io-gui/markdown": "./packages/markdown/dist/index.js",
+          "@io-gui/menus": "./packages/menus/dist/index.js",
+          "@io-gui/navigation": "./packages/navigation/dist/index.js",
+          "@io-gui/sliders": "./packages/sliders/dist/index.js",
+          "marked": "./packages/markdown/node_modules/marked/lib/marked.esm.js",
+          "marked-highlight": "./packages/markdown/node_modules/marked-highlight/src/index.js",
+          "dompurify": "./packages/markdown/node_modules/dompurify/dist/purify.es.mjs"
         }
       }
     </script>
@@ -91,7 +103,7 @@
         flex-direction: column;
       }
     </style>
-    <script type="module" src="./build/index.js"></script>
+    <script type="module" src="./index.js"></script>
   </head>
   <body>
     <noscript>JavaScript is required to view this page!</noscript>

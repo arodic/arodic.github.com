@@ -1,5 +1,7 @@
-export * from 'io-gui'
-import { Storage as $, IoElement, Register, MenuOption, ioNavigator, ioMarkdown } from 'io-gui'
+import { Storage as $, ReactiveElement, Register } from '@io-gui/core'
+import { MenuOption } from '@io-gui/menus'
+import { ioNavigator } from '@io-gui/navigation'
+import { ioMarkdown } from '@io-gui/markdown'
 
 const MENU = new MenuOption({
   id: 'root',
@@ -23,7 +25,7 @@ const MENU = new MenuOption({
 })
 
 @Register
-export class IoMainPage extends IoElement {
+export class IoMainPage extends ReactiveElement {
   static get Style() {
     return /* css */`
       :host {

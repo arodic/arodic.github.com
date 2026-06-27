@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["esnext", "dom"],
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "inlineSources": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "inlineSources": false,
     "strict": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "rootDir": "./src",
-    "outDir": "./build",
-    "paths": {
-      "io-gui": ["./lib/io-gui/"],
-    }
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["./node_modules", "./dist"]
 }

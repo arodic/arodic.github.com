@@ -2,14 +2,14 @@
   "name": "arodic.github.com",
   "version": "1.2.0",
   "type": "module",
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@10.26.1",
   "description": "Personal Website of Aki Rodic",
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "typings": "build/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "/src/",
-    "/build/",
+    "/dist/",
     "/docs/",
     "/CNAME",
     "/robots.txt",
@@ -18,10 +18,12 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "clean": "rm -rf build && rm -rf bundle",
-    "lint": "eslint -c ./.eslintrc.js src --fix",
-    "build": "pnpm clean && pnpm lint && tsc && rollup -c && rm -rf build && mv bundle build",
-    "dev": "pnpm clean && pnpm lint && tsc -w"
+    "dev": "vite",
+    "build": "pnpm clean && tsc",
+    "bundle": "pnpm lint && pnpm build && node bundle.js",
+    "lint": "eslint . --fix",
+    "test": "vitest",
+    "clean": "rm -rf build && rm -rf bundle"
   },
   "repository": {
     "type": "git",
@@ -34,15 +36,21 @@
   },
   "homepage": "https://akirodic.com",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-terser": "0.4.4",
+    "@eslint/js": "^9.39.2",
+    "@rollup/plugin-strip": "^3.0.4",
     "@stylistic/eslint-plugin": "^5.6.1",
     "@types/gtag.js": "^0.0.8",
+    "@types/node": "^25.0.3",
+    "@io-gui/core": "2.0.0-alpha.3",
+    "@io-gui/markdown": "2.0.0-alpha.3",
+    "@io-gui/menus": "2.0.0-alpha.3",
+    "@io-gui/navigation": "2.0.0-alpha.3",
     "eslint": "9.39.2",
-    "eslint-plugin-html": "8.1.3",
-    "rollup": "4.54.0",
+    "terser": "^5.44.1",
     "tslib": "^2.8.1",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.50.0"
+    "typescript-eslint": "8.50.0",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   }
 }
